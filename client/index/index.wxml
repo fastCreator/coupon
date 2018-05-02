@@ -1,0 +1,31 @@
+<view class="z-search">
+  <view class="input">输入关键词搜索</view>
+</view>
+<scroll-view class="z-tabs" scroll-x>
+    <view class="selected">全部</view>
+    <view>女装</view>
+    <view>女装</view>
+    <view>女装</view>
+    <view>女装</view>
+    <view>女装</view>
+    <view>女装</view>
+    <view>女装</view>
+    <view>女装</view>
+    <view>女装</view>
+    <view>女装</view>
+    <view>女装</view>
+</scroll-view>
+<swiper indicator-dots="true" autoplay="true" interval="3000" duration="500">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item}}" class="slide-image" width="355" height="150"/>
+    </swiper-item>
+  </block>
+</swiper>
+<view class="special">
+  <view class="weui-flex">
+    <image class="weui-flex__item" src="http://img.alicdn.com/tps/TB1_UFmOXXXXXc4aXXXXXXXXXXX-794-320.png"></image>
+    <image class="weui-flex__item" src="http://img.alicdn.com/tps/TB1fztJOXXXXXcfXpXXXXXXXXXX-794-320.png"></image>
+  </view>
+  
+</view>

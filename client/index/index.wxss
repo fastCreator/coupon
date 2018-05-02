@@ -1,0 +1,30 @@
+.z-search{
+  padding: 10px;
+  font-size:14px;
+  background-color: #F96153;
+  color: #fff;
+}
+.z-search .input{
+  background-color: #F04E43;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+.z-tabs{
+  display: inline-block;
+  height:34px;
+  white-space: nowrap;
+  font-size:14px;
+  width:100%;
+}
+.z-tabs view{
+  display: inline-block;
+  padding: 6px 6px 4px 6px;
+  border-bottom: 2px solid #fff;
+}
+.z-tabs view.selected{
+  color: #FF6140;
+  border-color: #FF6140;
+}
+.special image.weui-flex__item {
+  height:100px;
+}

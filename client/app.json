@@ -1,0 +1,11 @@
+{
+  "pages":[
+    "index/index"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#F96153",
+    "navigationBarTitleText": "省钱小果",
+    "navigationBarTextStyle":"#ffffff"
+  }
+}
