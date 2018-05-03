@@ -1,1 +1,1 @@
-@import './lib/weui.wxss';
+@import './vendor/weui.wxss';
