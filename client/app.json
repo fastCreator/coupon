@@ -1,8 +1,12 @@
 {
   "pages":[
+    "pages/list/index",
+    "pages/search/index",
     "pages/index/index"
+    
   ],
   "window":{
+    "backgroundColor":"#ccc",
     "backgroundTextStyle":"light",
     "navigationBarBackgroundColor": "#F96153",
     "navigationBarTitleText": "省钱小果",

@@ -25,6 +25,38 @@
   color: #FF6140;
   border-color: #FF6140;
 }
-.special image.weui-flex__item {
-  height:100px;
+
+.special .thtj image.weui-flex__item {
+  border-right: 1px solid #E2E2E9;
+  border-bottom: 1px solid #E2E2E9;
+}
+
+.special .iconfont:before{
+  margin-left: 4px;
+  margin-right:4px;
+}
+.special .iconfont{
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+.special{
+  margin-top: 10px;
+}
+.special .thtj image.weui-flex__item {
+  height:68px;
+}
+.special .thtj{
+  border-top:2px solid #F28430;
+}
+.special .hyjx image.weui-flex__item {
+  height:58px;
+}
+.special .hyjx1{
+  border-top:2px solid #a44bd0;
+}
+.special .hyhh image.weui-flex__item {
+  height:150px;
+}
+.special .hyhh{
+  border-top:2px solid #EC495E;
 }

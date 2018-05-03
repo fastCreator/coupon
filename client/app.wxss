@@ -1,1 +1,9 @@
 @import './vendor/weui.wxss';
+@import './vendor/font/iconfont.wxss';
+page {  
+  min-height: 100%;
+  background-color: #F0F0F0;  
+  color: #333;
+  padding-bottom: 6px;
+  box-sizing: border-box;
+}  
