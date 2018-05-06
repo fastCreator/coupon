@@ -1,0 +1,88 @@
+page{
+  width:100%;
+  min-height: 100%;
+  box-sizing:border-box;
+} 
+.title{
+  background: #fff;
+  padding: 4px;
+  background: #fff;
+  border-bottom: 1px solid #F0F0F0;
+}
+.item1{
+  padding: 4px;
+  background: #fff;
+}
+.item1 .price{
+  color: #FE0136;
+}
+.item1 .numb{
+  color: #ccc;
+  font-size: 12px;
+}
+
+.fix-buttom{
+  position: fixed;
+  bottom: 0;
+  height: 40px;
+  width:100%;
+  border-top:1px solid #ccc;
+  background: #fff;
+}
+.fix-buttom>view{
+  text-align: center;
+  display: inline-block
+}
+.fix-buttom>.it1{
+  width:25%;
+  line-height: 40px;
+  font-size:15px;
+  border-right: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.fix-buttom>.it1:before{
+  color: #F96150;
+  font-size:20px;
+  margin-right: 4px;
+  box-sizing: border-box;
+}
+.fix-buttom>.it2{
+  text-align: right;
+  height:100%;
+  width:50%;
+  float:right;
+  background: #F96150;
+  color: #fff;
+  box-sizing: border-box;
+}
+.fix-buttom>.it2>view{
+  display: inline-block;
+  width:50%;
+  text-align: center;
+}
+.fix-buttom>.it2>.it2{
+  float:right;
+  line-height: 40px;
+}
+.fix-buttom>.it2 .it1{
+  position: relative;
+}
+.fix-buttom>.it2 .it1::before{
+  font-size:28px;
+  line-height: 40px;
+  color: #FFAFAF;
+}
+.fix-buttom>.it3{
+  border-right-width: 0;
+}
+.fix-buttom>.it2 .it1>view{
+  color: #FA6554;
+  position: absolute;
+  text-align: center;
+  display: inline-block;
+  width:100%;
+  top:0;
+  line-height: 40px;
+  left:0;
+  font-size:12px;
+}

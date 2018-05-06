@@ -7,3 +7,14 @@ page {
   padding-bottom: 6px;
   box-sizing: border-box;
 }  
+.ltr{
+  overflow: hidden;
+}
+.ltr view:nth-child(odd){
+  line-height: 22px;
+  float: left;
+}
+.ltr view:nth-child(even){
+  line-height: 22px;
+  float: right;
+}

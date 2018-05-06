@@ -1,15 +1,54 @@
 {
-  "pages":[
+  "pages": [
+    "pages/index/index",
+    "pages/detils/index",
     "pages/list/index",
-    "pages/search/index",
-    "pages/index/index"
-    
+    "pages/rushBuy/index",
+    "pages/search/index"
   ],
-  "window":{
-    "backgroundColor":"#ccc",
-    "backgroundTextStyle":"light",
+  "window": {
+    "backgroundColor": "#ccc",
+    "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F96153",
     "navigationBarTitleText": "省钱小果",
-    "navigationBarTextStyle":"#ffffff"
+    "navigationBarTextStyle": "#ffffff"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "vendor/images/home_light.png",
+        "selectedIconPath": "vendor/images/home_fill_light.png"
+      },
+      {
+        "pagePath": "pages/rushBuy/index",
+        "text": "精品推荐",
+        "iconPath": "vendor/images/choiceness.png",
+        "selectedIconPath": "vendor/images/choiceness_fill.png"
+      },
+      {
+        "pagePath": "pages/rushBuy/index",
+        "text": "咚咚抢",
+        "iconPath": "vendor/images/countdown.png",
+        "selectedIconPath": "vendor/images/countdown_fill.png"
+      },
+      {
+        "pagePath": "pages/rushBuy/index",
+        "text": "搜索",
+        "iconPath": "vendor/images/search.png",
+        "selectedIconPath": "vendor/images/search_fill.png"
+      },
+      {
+        "pagePath": "pages/rushBuy/index",
+        "text": "我的",
+        "iconPath": "vendor/images/my_light.png",
+        "selectedIconPath": "vendor/images/my_fill_light.png"
+      }
+    ],
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "color":"#8a8a8a",
+    "selectedColor": "#FA605D"
   }
 }

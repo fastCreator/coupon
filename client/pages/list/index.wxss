@@ -78,12 +78,6 @@ page{
   overflow:hidden; 
   text-overflow:ellipsis;
 }
-.list .ltr view:nth-child(odd){
-  float: left;
-}
-.list .ltr view:nth-child(even){
-  float: right;
-}
 .list .item .price{
   display: inline;
   color: #F26166;

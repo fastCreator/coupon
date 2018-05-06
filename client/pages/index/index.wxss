@@ -41,22 +41,13 @@
 }
 .special{
   margin-top: 10px;
-}
-.special .thtj image.weui-flex__item {
-  height:68px;
-}
+} 
 .special .thtj{
   border-top:2px solid #F28430;
-}
-.special .hyjx image.weui-flex__item {
-  height:58px;
-}
+} 
 .special .hyjx1{
   border-top:2px solid #a44bd0;
-}
-.special .hyhh image.weui-flex__item {
-  height:150px;
-}
+} 
 .special .hyhh{
   border-top:2px solid #EC495E;
 }
