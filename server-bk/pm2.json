@@ -1,0 +1,15 @@
+{
+  "apps": [{
+    "name": "server",
+    "script": "production.js",
+    "cwd": "D:\My Documents\桌面\coupon\server",
+    "exec_mode": "fork",
+    "max_memory_restart": "1G",
+    "autorestart": true,
+    "node_args": [],
+    "args": [],
+    "env": {
+      
+    }
+  }]
+}

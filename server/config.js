@@ -40,7 +40,13 @@ const CONF = {
 
     // 微信登录态有效期
     wxLoginExpires: 7200,
-    wxMessageToken: 'abcdefgh'
+    wxMessageToken: 'abcdefgh',
+    serverHost: '', // 当前服务器的 hostname
+    tunnelServerUrl: '', // 信道服务器地址
+    tunnelSignatureKey: '', // 信道服务签名密钥
+    qcloudAppId: '', // 腾讯云 AppId
+    qcloudSecretId: '', // 腾讯云 SecretId
+    qcloudSecretKey: ''// 腾讯云 SecretKey
 }
 
 module.exports = CONF
