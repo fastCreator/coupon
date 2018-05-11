@@ -1,4 +1,4 @@
-var util = require('../topUtil.js');
+var util = require('../topUtil.js')
 var RestClient = require('./network.js')
 var Stream = require('stream')
 
@@ -9,17 +9,17 @@ var Stream = require('stream')
  * @constructor
  */
 
-function TopClient(options) {
+function TopClient (options) {
     if (!(this instanceof TopClient)) {
-        return new TopClient(options);
+        return new TopClient(options)
     }
-    options = options || {};
+    options = options || {}
     if (!options.appkey || !options.appsecret) {
-        throw new Error('appkey or appsecret need!');
+        throw new Error('appkey or appsecret need!')
     }
-    this.url = options.url || 'http://gw.api.taobao.com/router/rest';
-    this.appkey = options.appkey;
-    this.appsecret = options.appsecret;
+    this.url = options.url || 'http://gw.api.taobao.com/router/rest'
+    this.appkey = options.appkey
+    this.appsecret = options.appsecret
 }
 
 /**
@@ -31,26 +31,26 @@ function TopClient(options) {
  * @param {Object} defaultResponse
  * @param {Function(err, response)} callback
  */
-TopClient.prototype.invoke = function (type,method, params,reponseNames, callback) {
-    params.method = method;
-    this.request(type,params,function (err, result) {
+TopClient.prototype.invoke = function (type, method, params, reponseNames, callback) {
+    params.method = method
+    this.request(type, params, function (err, result) {
         if (err) {
-            return callback(err);
+            return callback(err)
         }
-        var response = result;
+        var response = result
         if (reponseNames && reponseNames.length > 0) {
-            var retResult = undefined;
+            var retResult;
             for (var i = 0; i < reponseNames.length; i++) {
-                var name = reponseNames[i];
-                retResult = response[name];
+                var name = reponseNames[i]
+                retResult = response[name]
                 if (retResult != undefined) {
-                    response = retResult;
+                    response = retResult
                     break;
                 }
             }
         }
-        callback(null, response);
-    });
+        callback(null, response)
+    })
 };
 
 /**
@@ -61,10 +61,10 @@ TopClient.prototype.invoke = function (type,method, params,reponseNames, callbac
  * @param {Function(err, result)} callback
  * @public
  */
-TopClient.prototype.request = function (type,params,callback) {
-    var err = util.checkRequired(params, 'method');
+TopClient.prototype.request = function (type, params, callback) {
+    var err = util.checkRequired(params, 'method')
     if (err) {
-        return callback(err);
+        return callback(err)
     }
     var args = {
         timestamp: this.timestamp(),
@@ -72,55 +72,55 @@ TopClient.prototype.request = function (type,params,callback) {
         app_key: this.appkey,
         v: '2.0',
         sign_method: 'md5'
-    };
+    }
 
-    var request = null;
-    if(type == 'get'){
-        request = RestClient.get(this.url);
-    }else{
-        request = RestClient.post(this.url);
+    var request = null
+    if (type == 'get') {
+        request = RestClient.get(this.url)
+    }else {
+        request = RestClient.post(this.url)
     }
 
     for (var key in params) {
-        if(typeof params[key] === 'object' && Buffer.isBuffer(params[key])){
-            request.attach(key,params[key],{knownLength:params[key].length,filename:key})
-        } else if(typeof params[key] === 'object'){
-            args[key] = JSON.stringify(params[key]);
-        } else{
-            args[key] = params[key];
+        if (typeof params[key] === 'object' && Buffer.isBuffer(params[key])) {
+            request.attach(key, params[key], {knownLength: params[key].length, filename: key})
+        } else if (typeof params[key] === 'object') {
+            args[key] = JSON.stringify(params[key])
+        } else {
+            args[key] = params[key]
         }
     }
 
-    args.sign = this.sign(args);
-    for(var key in args){
-        request.field(key, args[key]);
+    args.sign = this.sign(args)
+    for (var key in args) {
+        request.field(key, args[key])
     }
 
-    request.end(function(response){
-        if(response.statusCode == 200){
-            var data = response.body;
-            var errRes = data && data.error_response;
+    request.end(function (response) {
+        if (response.statusCode == 200) {
+            var data = response.body
+            var errRes = data && data.error_response
             if (errRes) {
-                callback(errRes, data);
-            }else{
-                callback(err, data);
+                callback(errRes, data)
+            }else {
+                callback(err, data)
             }
-        }else{
-            err = new Error('NetWork-Error');
-            err.name = 'NetWork-Error';
-            err.code = 15;
-            err.sub_code = response.statusCode;
-            callback(err, null);
+        }else {
+            err = new Error('NetWork-Error')
+            err.name = 'NetWork-Error'
+            err.code = 15
+            err.sub_code = response.statusCode
+            callback(err, null)
         }
     })
-};
+}
 
 /**
  * Get now timestamp with 'yyyy-MM-dd HH:mm:ss' format.
  * @return {String}
  */
 TopClient.prototype.timestamp = function () {
-    return util.YYYYMMDDHHmmss();
+    return util.YYYYMMDDHHmmss()
 };
 
 /**
@@ -131,25 +131,25 @@ TopClient.prototype.timestamp = function () {
  * @return {String} sign string
  */
 TopClient.prototype.sign = function (params) {
-    var sorted = Object.keys(params).sort();
-    var basestring = this.appsecret;
+    var sorted = Object.keys(params).sort()
+    var basestring = this.appsecret
     for (var i = 0, l = sorted.length; i < l; i++) {
-        var k = sorted[i];
-        basestring += k + params[k];
+        var k = sorted[i]
+        basestring += k + params[k]
     }
-    basestring += this.appsecret;
-    return util.md5(basestring).toUpperCase();
+    basestring += this.appsecret
+    return util.md5(basestring).toUpperCase()
 };
 
 /**
  * execute top api
  */
-TopClient.prototype.execute = function (apiname,params,callback) {
-    this.invoke('post',apiname, params, [util.getApiResponseName(apiname)], callback);
+TopClient.prototype.execute = function (apiname, params, callback) {
+    this.invoke('post', apiname, params, [util.getApiResponseName(apiname)], callback)
 };
 
-TopClient.prototype.get = function (apiname,params,callback) {
-    this.invoke('get',apiname, params, [util.getApiResponseName(apiname)], callback);
+TopClient.prototype.get = function (apiname, params, callback) {
+    this.invoke('get', apiname, params, [util.getApiResponseName(apiname)], callback)
 };
 
-exports.TopClient = TopClient;
+exports.TopClient = TopClient
