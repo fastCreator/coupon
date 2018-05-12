@@ -46,8 +46,9 @@ var tbk = (url, data, cb) => {
     data: {
       "url": url,
       "data": data,
-      session: true,
-      adzone: true,
+      "session": true,
+      "adzone": true,
+      "site": true
     },
     success: function (res) {
       cb(res.data)

@@ -20,7 +20,7 @@ module.exports = async (ctx, next) => {
             data = Object.assign({}, data, { adzone_id: ADZONE_ID })
         }
         if (site) {
-            data = Object.assign({}, data, { adzone_id: SITE_ID })
+            data = Object.assign({}, data, { site_id: SITE_ID })
         }
         client.execute(url, data, function (error, response) {
             if (!error) {
