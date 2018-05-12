@@ -25,10 +25,8 @@ Page({
     this.setData({ value: e.detail.value })
   },
   search:function(v){
-    if(typeof(v) !== 'Object'){
-      console.log(this)
+    if (v.type){
       v = this.data.value
-      console.log('search',v)
     }
     if(!v) return false
     var history = wx.getStorageSync('historySearch')

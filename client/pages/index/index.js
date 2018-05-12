@@ -1,8 +1,22 @@
 const app = getApp()
 Page({
-  data: {},
+  data: {
+    imgUrls: [
+      {
+        img: "http://img.alicdn.com/tps/TB1_UFmOXXXXXc4aXXXXXXXXXXX-794-320.png",
+      },
+      {
+        img: "http://img.alicdn.com/tps/TB1fztJOXXXXXcfXpXXXXXXXXXX-794-320.png"
+      },
+      {
+        img: "http://img.alicdn.com/tps/TB1gKlIOXXXXXcJXpXXXXXXXXXX-794-320.png"
+      }
+    ],
+    imageHeight: 0.387*wx.getSystemInfoSync().windowWidth
+  },
   onLoad() { },
-  onReady() { },
+  onReady() {  
+  },
   toSearch() {
     wx.navigateTo({
       url: '../search/index'

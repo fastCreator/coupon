@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/index/index",
-    "pages/detils/index",
     "pages/list/index",
+    "pages/detils/index",
+    "pages/index/index",
     "pages/rushBuy/index",
     "pages/search/index"
   ],

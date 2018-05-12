@@ -10,8 +10,8 @@
 <view class="fix-buttom">
     <view class="it1 iconfont icon-home_light">首页</view>
     <view class="it1 it3 iconfont icon-share1">分享</view>
-    <view class="it2">
-      <view class="it1 icon-A iconfont"><view>省￥{{sPrice}}</view></view>
+    <view class="it2" bindtap='buy' >
+      <view class="it1 icon-A iconfont"><view>{{sPrice}}</view></view>
       <view class="it2">领券购买</view>
     </view>
 </view>
