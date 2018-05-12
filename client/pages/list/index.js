@@ -1,12 +1,17 @@
 import { tbk } from '../../utils/util.js'
+const Sort = {
+  popular: 'tk_total_sales_des',
+  sales: 'total_sales_des',
+  price: 'price_asc'
+}
 const app = getApp()
 //综合（月支出佣金从高到低）
 Page({
   data: {
     searchTxt: '',
     filter: {
-      page: 1,
-      sort: 'default'
+      page_no: 1,
+      sort: 'popular'
     },
     list: []
   },

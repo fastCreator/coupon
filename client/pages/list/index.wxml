@@ -1,9 +1,8 @@
 <scroll-view scroll-y bindscrolltolower="load">
   <view class='filter'>
+    <view class="{{filter.sort==='default'?'active':''}}" bindtap='toggleSort' data-sort='default'>人气 </view>
     <view class="{{filter.sort==='default'?'active':''}}" bindtap='toggleSort' data-sort='default'>销量</view>
-    <view class="{{filter.sort==='sales'?'active':''}}" bindtap='toggleSort' data-sort='sales'>最新</view>
     <view class="{{filter.sort==='sales'?'active':''}}" bindtap='toggleSort' data-sort='sales'>价格</view>
-    <view class="{{filter.sort==='price_up'?'active':''}}" bindtap='toggleSort' data-sort='price_up'>人气</view>
     <view class="{{filter.sort==='high_bate'?'active':''}}" bindtap='toggleSort' data-sort='high_bate'>优惠劵</view>
   </view>
 
