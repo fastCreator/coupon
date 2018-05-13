@@ -1,11 +1,11 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/detils/index",
     "pages/list/index",
     "pages/them/index",
     "pages/jxtj/index",
     "pages/tqg/index",
-    "pages/detils/index",
     "pages/search/index",
     "pages/my/index",
     "pages/search-nav/index"

@@ -27,6 +27,16 @@ Page({
     this.init()
   },
   onReady: function () { },
+  gohome() {
+    wx.switchTab({
+      url: '../index/index'
+    })
+  },
+  share() {
+    wx.showShareMenu({
+      withShareTicket: true
+    })
+  },
   buy() {
     let that = this
     let coupon_id = this.data.coupon_id
