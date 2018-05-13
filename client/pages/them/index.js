@@ -3,11 +3,11 @@ Page({
   data: {
     page_size: 10,
     page_no: 1,
-    favorites_id: '17342881',
+    favorites_id: '',
     list: [],
   },
   onLoad(options) {
-    // this.setData({ favorites_id: options.favorites_id })
+    this.setData({ favorites_id: options.favorites_id })
     this.search()
   },
   nextPage() {
