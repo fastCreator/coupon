@@ -2,21 +2,24 @@ import { tbk } from '../../utils/util.js'
 const app = getApp()
 Page({
   data: {
-    imgUrls: [
-      {
-        img: "http://img.alicdn.com/tps/TB1_UFmOXXXXXc4aXXXXXXXXXXX-794-320.png",
-      },
-      {
-        img: "http://img.alicdn.com/tps/TB1fztJOXXXXXcfXpXXXXXXXXXX-794-320.png"
-      },
-      {
-        img: "http://img.alicdn.com/tps/TB1gKlIOXXXXXcJXpXXXXXXXXXX-794-320.png"
-      }
-    ],
+    imgUrls: [],
     imageHeight: 0.387 * wx.getSystemInfoSync().windowWidth,
     favorites: []
   },
-  onLoad() { },
+  onLoad() {
+    this.getImageUrls()
+  },
+  getImageUrls() {
+    let that = this
+    wx.request({
+      url: 'https://wx.firecloud.club/apis/imgUrls',
+      success: function (res) {
+        that.setData({
+          imgUrls: res.data
+        })
+      }
+    })
+  },
   onReady() {
     tbk('taobao.tbk.uatm.favorites.get', {
       fields: 'favorites_title,favorites_id,type',
@@ -28,6 +31,28 @@ Page({
   toSearch() {
     wx.navigateTo({
       url: '../search/index'
+    })
+  },
+  hd(e) {
+    let d = this.data.imgUrls[e.currentTarget.dataset.index].clip
+    let clip = `
+      ${d.title}
+      淘口令:${d.kl}
+      活动地址：${d.dlj}
+      `
+    wx.setClipboardData({
+      data: clip,
+      success: function (res) {
+        wx.getClipboardData({
+          success: function (res) {
+            wx.showModal({
+              title: '提示',
+              showCancel: false,
+              content: `活动[${d.title}]链接复制成功，通过浏览器打开或者手动打开淘宝自动跳转；遇到延迟，请点击淘宝顶部搜索即可`
+            })
+          }
+        })
+      }
     })
   },
   theme(e) {

@@ -1,7 +1,7 @@
 import { tbk } from '../../utils/util.js'
 Page({
   data: {
-    page_size: 10,
+    page_size: 6,
     page_no: 1,
     favorites_id: '',
     list: [],
