@@ -2,7 +2,7 @@
  * ajax 服务路由集合
  */
 const router = require('koa-router')({
-    prefix: '/apis'
+  prefix: '/apis'
 })
 const controllers = require('../controllers')
 
@@ -14,11 +14,13 @@ const { auth: { authorizationMiddleware, validationMiddleware } } = require('../
 
 // 淘宝客接口
 router.post('/tbk', controllers.tbk)
+// 小程序首页图片
+router.post('/tbk', controllers.tbk)
 
 // 登录接口
 router.get('/login', authorizationMiddleware, controllers.login)
 // 用户信息接口（可以用来验证登录态）
-router.get('/user', validationMiddleware, controllers.user)
+router.get('/imgUrls', controllers.imgUrls)
 
 // --- 图片上传 Demo --- //
 // 图片上传接口，小程序端可以直接将 url 填入 wx.uploadFile 中
