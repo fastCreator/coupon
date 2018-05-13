@@ -1,18 +1,28 @@
-<scroll-view scroll-y bindscrolltolower="load">
+<scroll-view scroll-y bindscrolltolower="nextPage">
   <view class='filter'>
-    <view class="{{filter.sort==='default'?'active':''}}" bindtap='toggleSort' data-sort='default'>人气 </view>
-    <view class="{{filter.sort==='default'?'active':''}}" bindtap='toggleSort' data-sort='default'>销量</view>
-    <view class="{{filter.sort==='sales'?'active':''}}" bindtap='toggleSort' data-sort='sales'>价格</view>
-    <view class="{{filter.sort==='high_bate'?'active':''}}" bindtap='toggleSort' data-sort='high_bate'>优惠劵</view>
+    <view class="{{filter.sort===SORT.popular?'active':''}}" bindtap='toggleSort' data-sort='{{SORT.popular}}'>人气 </view>
+    <view class="{{filter.sort===SORT.sales?'active':''}}" bindtap='toggleSort' data-sort='{{SORT.sales}}'>销量</view>
+    <view class="{{filter.sort===SORT.price?'active':''}}" bindtap='toggleSort' data-sort='{{SORT.price}}'>价格</view>
+
+    <checkbox-group bindchange="selectCoupon" class="checkbox">
+      <label>
+        <checkbox value="true" checked="{{filter.has_coupon}}" />优惠劵
+      </label>
+    </checkbox-group>
   </view>
 
   <view class="list">
-    <view class="item" wx:for="{{list}}" bindtap='godetils' data-id='{{item.id}}'>
-      <image src="{{item.pic}}" />
+    <view class="item" wx:for="{{list}}" wx:key="{{index}}" bindtap='godetils'  data-num_iid='{{item.num_iid}}' data-coupon_id='{{item.coupon_id}}' data-coupon='{{item.coupon||"促销"}}'>
+      <image src="{{item.pict_url}}" />
       <view class="title">{{item.title}}</view>
+
       <view class="ltr">
-        <view class="coupon">{{item.coupon}}</view>
-        <view class="endprice">{{item.endprice}}</view>
+        <view class="coupon">{{item.coupon || '促'}}</view>
+        <view class="endprice">￥{{item.zk_final_price}}</view>
+      </view>
+      <view class="ltr">
+        <view></view>
+        <view class="xl">已售{{item.volume}}</view>
       </view>
     </view>
   </view>

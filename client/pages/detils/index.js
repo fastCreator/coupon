@@ -1,77 +1,86 @@
+import { tbk } from '../../utils/util.js'
 const app = getApp()
 Page({
   data: {
-    id: 0,
-    imgSrc: '',
+    sPrice: '',
+    num_iid: 0,
+    coupon_id: 0,
+    pict_url: '',
     title: '',
-    endPrice: 0,
-    numb: 0,
     imageList: [],
-    sPrice: 10.2,
-    coupon: ''
+    zk_final_price: '',
+    numb: 0,
+    sPrice: '',
+    coupon: '',
+    item_url: ''
+
   },
   onLoad: function (option) {
-    this.setData({ id: option.id || '1006713' })
+    this.setData({
+      num_iid: option.num_iid,
+      coupon_id: option.coupon_id,
+      sPrice: option.coupon
+    })
     this.init()
   },
   onReady: function () { },
   buy() {
-    this.parseCoupon('￥MGW80GylRfO￥', function (data) {
-      // createCoupon({
-      //   url:1,
-      //   logo: data.pic_url,
-      //   text: content,
-      //   user_id: 12
-      // }, function (coupon) {
-      //   console.log(coupon)
-      // })
-
-    })
-  },
-  parseCoupon(content, cb) {
-    wx.request({
-      url: `https://wx.firecloud.club/apis/tbk`,
-      method: 'post',
-      data: {
-        "url": "taobao.wireless.share.tpwd.query",
-        "data": { "password_content": content }
-      },
-      success: function (res) {
-        cb(res.data)
-      }
-    })
-  },
-  createCoupon(obj, cb) {
-    wx.request({
-      url: `https://wx.firecloud.club/apis/tbk`,
-      method: 'post',
-      data: {
-        "url": "taobao.wireless.share.tpwd.create",
-        "data": {
-          "tpwd_param": obj
+    let that = this
+    let coupon_id = this.data.coupon_id
+    let pid = 'mm_131778178_45276106_534348035'
+    let url = ''
+    let item_id = this.data.item_url.match(/\?id=(\d+)/)[1]
+    if (coupon_id) {
+      url = `https://uland.taobao.com/coupon/edetail?activityId=${coupon_id}&itemId=${item_id}&src=pgy_pgyqf`
+    } else {
+      url = `https://uland.taobao.com/coupon/edetail?activityId=${coupon_id}&itemId=${item_id}&src=pgy_pgyqf`
+    }
+    tbk('taobao.tbk.tpwd.create', {
+      user_id: '',
+      text: this.data.title,
+      url: url,
+      logo: this.data.pict_url
+    }, (d) => {
+      let clip = `
+      ${that.data.title}
+      促销价:${that.data.zk_final_price}
+      淘口令:${d.data.model}
+      抢购：${url}
+      `
+      wx.setClipboardData({
+        data: clip,
+        success: function (res) {
+          wx.getClipboardData({
+            success: function (res) {
+              wx.showModal({
+                title: '提示',
+                showCancel: false,
+                content: '优惠卷复制成功，手动打开淘宝自动跳转；遇到延迟，请点击淘宝顶部搜索即可'
+              })
+            }
+          })
         }
-      },
-      success: function (res) {
-        cb(res.data)
-      }
+      })
     })
+
   },
   init() {
     let that = this
-    wx.request({
-      url: `https://wx.firecloud.club/pczhe?act=wx&op=detail&id=${that.data.id}`,
-      success: function (res) {
-        let data = res.data.data[0]
-        that.setData({
-          imgSrc: data.pic_url,
-          title: data.title,
-          imageList: data.detail_images,
-          endPrice: data.price_end,
-          numb: data.volume,
-          sPrice: data.quan_con ? '省￥' + data.quan_con : '促销',
-          coupon: data.quan_con ? data.yh_serial : data.taobao_serial
-        })
-      }
+
+    tbk('taobao.tbk.item.info.get', {
+      fields: 'volume,num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url',
+      num_iids: that.data.num_iid
+    }, (d) => {
+      let data = d.results.n_tbk_item[0]
+      that.setData({
+        pict_url: data.pict_url,
+        title: data.title,
+        small_images: data.small_images.string,
+        numb: data.volume,
+        item_url: data.item_url,
+        zk_final_price: data.zk_final_price
+      })
     })
+
   }
 })
