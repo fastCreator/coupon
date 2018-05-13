@@ -5,6 +5,7 @@ Page({
     sPrice: '',
     num_iid: 0,
     coupon_id: 0,
+    coupon_click_url: '',
     pict_url: '',
     title: '',
     imageList: [],
@@ -16,10 +17,12 @@ Page({
 
   },
   onLoad: function (option) {
+    console.log(option)
     this.setData({
       num_iid: option.num_iid,
-      coupon_id: option.coupon_id,
-      sPrice: option.coupon
+      coupon_id: option.coupon_id || '',
+      coupon_click_url: option.coupon_click_url || '',
+      sPrice: option.coupon || ''
     })
     this.init()
   },
@@ -27,16 +30,19 @@ Page({
   buy() {
     let that = this
     let coupon_id = this.data.coupon_id
+    let coupon_click_url = this.data.coupon_click_url
     let pid = 'mm_131778178_45276106_534348035'
     let url = ''
     let item_id = this.data.item_url.match(/\?id=(\d+)/)[1]
-    if (coupon_id) {
-      url = `https://uland.taobao.com/coupon/edetail?activityId=${coupon_id}&itemId=${item_id}&src=pgy_pgyqf`
+    if (coupon_click_url) {
+      url = wx.getStorageSync('coupon_click_url')
     } else {
       url = `https://uland.taobao.com/coupon/edetail?activityId=${coupon_id}&itemId=${item_id}&src=pgy_pgyqf`
     }
+
+    //生成口令，并复制
     tbk('taobao.tbk.tpwd.create', {
-      user_id: '',
+      user_id: '87491795',
       text: this.data.title,
       url: url,
       logo: this.data.pict_url
@@ -69,6 +75,7 @@ Page({
 
     tbk('taobao.tbk.item.info.get', {
       fields: 'volume,num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url',
+      platform: 2,
       num_iids: that.data.num_iid
     }, (d) => {
       let data = d.results.n_tbk_item[0]

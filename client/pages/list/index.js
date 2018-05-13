@@ -11,7 +11,7 @@ Page({
     filter: {
       page_no: 1,
       page_size: 10,
-      platform:1,
+      platform: 1,
       sort: 'tk_total_sales_des',
       q: '',
       has_coupon: true
@@ -56,7 +56,7 @@ Page({
     })
     tbk('taobao.tbk.sc.material.optional', that.data.filter, (d) => {
       wx.hideLoading()
-      if (!d.result_list.map_data || !d.result_list.map_data) {
+      if (!d.result_list.map_data || !d.result_list.map_data.length) {
         wx.showLoading({
           title: '暂无更多',
         })

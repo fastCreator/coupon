@@ -1,10 +1,14 @@
 {
   "pages": [
-    "pages/list/index",
-    "pages/detils/index",
     "pages/index/index",
-    "pages/rushBuy/index",
-    "pages/search/index"
+    "pages/list/index",
+    "pages/them/index",
+    "pages/jxtj/index",
+    "pages/tqg/index",
+    "pages/detils/index",
+    "pages/search/index",
+    "pages/my/index",
+    "pages/search-nav/index"
   ],
   "window": {
     "backgroundColor": "#ccc",
@@ -22,25 +26,25 @@
         "selectedIconPath": "vendor/images/home_fill_light.png"
       },
       {
-        "pagePath": "pages/rushBuy/index",
+        "pagePath": "pages/jxtj/index",
         "text": "精品推荐",
         "iconPath": "vendor/images/choiceness.png",
         "selectedIconPath": "vendor/images/choiceness_fill.png"
       },
       {
-        "pagePath": "pages/rushBuy/index",
-        "text": "咚咚抢",
+        "pagePath": "pages/tqg/index",
+        "text": "淘抢购",
         "iconPath": "vendor/images/countdown.png",
         "selectedIconPath": "vendor/images/countdown_fill.png"
       },
       {
-        "pagePath": "pages/rushBuy/index",
+        "pagePath": "pages/search-nav/index",
         "text": "搜索",
         "iconPath": "vendor/images/search.png",
         "selectedIconPath": "vendor/images/search_fill.png"
       },
       {
-        "pagePath": "pages/rushBuy/index",
+        "pagePath": "pages/my/index",
         "text": "我的",
         "iconPath": "vendor/images/my_light.png",
         "selectedIconPath": "vendor/images/my_fill_light.png"
@@ -48,7 +52,7 @@
     ],
     "borderStyle": "white",
     "backgroundColor": "#fff",
-    "color":"#8a8a8a",
+    "color": "#8a8a8a",
     "selectedColor": "#FA605D"
   }
 }

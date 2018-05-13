@@ -3,6 +3,9 @@ page{
   min-height: 100%;
   box-sizing:border-box;
 } 
+image{
+  width:100%;
+}
 .title{
   background: #fff;
   padding: 4px;
