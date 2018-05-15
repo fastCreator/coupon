@@ -2,6 +2,9 @@
 var ApiClient = require('../lib/api/topClient.js').TopClient
 // var tmcClient = require('../lib/tmc/tmcClient.js').TmcClient
 const SESSION = '6100d05a218011d4cf13f4c994e10314659174cd34910fd87491795'
+const PID = 'mm_131778178_45276106_534348035'
+const ADZONE_ID = '534348035'
+const SITE_ID = '45276106'
 const client = new ApiClient({
     'appkey': '24884330',
     'appsecret': 'bac78cb1d551fbcfd517b8e10d6c310d',
