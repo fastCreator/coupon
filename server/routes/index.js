@@ -17,7 +17,7 @@ router.post('/tbk', controllers.tbk)
 // 小程序首页图片
 router.get('/imgUrls', controllers.imgUrls)
 // 是否审核
-router.get('/issj', controllers.issj)
+router.get('/issh', controllers.issh)
 // 登录接口
 router.get('/login', authorizationMiddleware, controllers.login)
 // 用户信息接口（可以用来验证登录态）
