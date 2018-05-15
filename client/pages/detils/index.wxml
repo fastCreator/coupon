@@ -1,17 +1,21 @@
-<image class="imghead" src="{{imgSrc}}" mode="widthFix"></image>
+<image class="imghead" src="{{pict_url}}" mode="widthFix"></image>
 <view class="title">{{title}}</view>
 <view class="item1 ltr">
-  <view class="price">￥{{endPrice}}</view>
+  <view class="price">￥{{zk_final_price}}</view>
   <view class="numb">销量：{{numb}}</view>
 </view>
 <view class="imageList">
-  <image wx:for="{{imageList}}" src="{{item}}" mode="widthFix"></image>
+  <image wx:for="{{small_images}}" src="{{item}}" mode="widthFix"></image>
 </view>
 <view class="fix-buttom">
-    <view class="it1 iconfont icon-home_light">首页</view>
-    <view class="it1 it3 iconfont icon-share1">分享</view>
-    <view class="it2">
-      <view class="it1 icon-A iconfont"><view>省￥{{sPrice}}</view></view>
-      <view class="it2">领券购买</view>
+  <view class="it1 iconfont icon-home_light" bindtap='gohome'>首页</view>
+  <button open-type='share' class="share" plain>
+    <view class="it1 it3 iconfont icon-share1" bindtap='share'>分享</view>
+  </button>
+  <view class="it2" bindtap='buy'>
+    <view class="it1 icon-A iconfont">
+      <view>{{sPrice}}</view>
     </view>
+    <view class="it2">领券购买</view>
+  </view>
 </view>

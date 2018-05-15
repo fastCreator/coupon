@@ -1,48 +1,36 @@
 page {
-  height: 100%;
-  overflow: hidden;
-  padding: 0;
-}
-
-scroll-view {
-  height: 100%;
-}
-
-.none {
-  display: none;
-}
-
-.filter {
-  display: inline-block;
   width: 100%;
-  background-color: #fff;
+  height: 100%;
+  box-sizing: border-box;
+  background: #f0f0f0;
 }
 
-.filter>view {
-  font-size: 18px;
-  line-height: 40px;
-  text-align: center;
+.page {
+  height: 100%;
+}
+
+.logo {
+  width: 100%;
+}
+
+.search input {
   display: inline-block;
-  width: 24%;
-  box-sizing: border-box; 
+  background-color: #faf5f5;
+  width: calc(100% - 80px);
+  height: 40px;
+  border-radius: 8px;
+  padding-left: 10px;
 }
 
-.filter>.checkbox {
-  width: 28%;
+.search button {
   display: inline-block;
-}
-
-.filter .text {
-  display: inline-block;
-  margin-left: -2px;
-}
-
-.filter>view.active {
-  color: #f26166;
-}
-
-.filter .iconfont {
-  display: inline;
+  width: 60px;
+  margin-left: 10px;
+  background-color: #f96150;
+  border-radius: 8px;
+  font-size: 16px;
+  color: #fff;
+  height: 40px;
 }
 
 .list .item:nth-of-type(odd) {

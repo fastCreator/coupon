@@ -17,26 +17,68 @@ const formatNumber = n => {
 
 // 显示繁忙提示
 var showBusy = text => wx.showToast({
-    title: text,
-    icon: 'loading',
-    duration: 10000
+  title: text,
+  icon: 'loading',
+  duration: 10000
 })
 
 // 显示成功提示
 var showSuccess = text => wx.showToast({
-    title: text,
-    icon: 'success'
+  title: text,
+  icon: 'success'
 })
 
 // 显示失败提示
 var showModel = (title, content) => {
-    wx.hideToast();
+  wx.hideToast();
 
-    wx.showModal({
-        title,
-        content: JSON.stringify(content),
-        showCancel: false
-    })
+  wx.showModal({
+    title,
+    content: JSON.stringify(content),
+    showCancel: false
+  })
 }
 
-module.exports = { formatTime, showBusy, showSuccess, showModel }
+var tbk = (url, data, cb) => {
+  wx.request({
+    url: `https://wx.firecloud.club/apis/tbk`,
+    method: 'post',
+    data: {
+      "url": url,
+      "data": data,
+      "session": true,
+      "adzone": true,
+      "site": true
+    },
+    success: function (res) {
+      cb(res.data)
+    }
+  })
+}
+var padLeft = (n) => {
+  n -= 0
+  if (n < 10) {
+    return '0' + n
+  }
+  return n + ''
+}
+
+var myformatTime = function (d, format) {
+  var o = {
+    "M+": d.getMonth() + 1, //month
+    "d+": d.getDate(), //day
+    "h+": d.getHours(), //hour
+    "m+": d.getMinutes(), //minute
+    "s+": d.getSeconds(), //second
+    "q+": Math.floor((d.getMonth() + 3) / 3), //quarter
+    "S": d.getMilliseconds() //millisecond
+  }
+  if (/(y+)/.test(format)) format = format.replace(RegExp.$1,
+    (d.getFullYear() + "").substr(4 - RegExp.$1.length));
+  for (var k in o) if (new RegExp("(" + k + ")").test(format))
+    format = format.replace(RegExp.$1,
+      RegExp.$1.length == 1 ? o[k] :
+        ("00" + o[k]).substr(("" + o[k]).length));
+  return format;
+}
+module.exports = { formatTime, showBusy, showSuccess, showModel, tbk, padLeft, myformatTime }

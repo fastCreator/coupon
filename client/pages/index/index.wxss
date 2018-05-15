@@ -1,3 +1,6 @@
+swiper image {
+  width: 100%;
+}
 .z-search{
   padding: 10px;
   font-size:14px;

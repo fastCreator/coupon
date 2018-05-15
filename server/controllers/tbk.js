@@ -10,9 +10,18 @@ const client = new ApiClient({
 
 module.exports = async (ctx, next) => {
     return new Promise((r, j) => {
-        let { url, data, session } = ctx.request.body
+        let { url, data, session, adzone, site } = ctx.request.body
         if (session) {
             data = Object.assign({}, data, { session: SESSION })
+        }
+        if (adzone) {
+            data = Object.assign({}, data, { adzone_id: ADZONE_ID })
+        }
+        if (site) {
+            data = Object.assign({}, data, { site_id: SITE_ID })
+        }
+        if (url === 'taobao.tbk.tpwd.create') {
+            data.url += `&pid=${PID}`
         }
         client.execute(url, data, function (error, response) {
             if (!error) {

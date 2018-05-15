@@ -1,16 +1,103 @@
+import { tbk } from '../../utils/util.js'
 const app = getApp()
 Page({
   data: {
-imgSrc:'https://g-search1.alicdn.com/img/bao/uploaded/i4/imgextra/i3/98818554/TB2UqdGelHH8KJjy0FbXXcqlpXa_!!0-saturn_solar.jpg_230x230.jpg',
-    title:'2018新款短靴秋冬真皮内增高女鞋防水台女式皮靴子坡跟百搭马丁靴',
-    endPrice:29.9,
-    numb:10145,
-    imageList: [
-      'https://img.alicdn.com/imgextra/i2/2201240830/TB2RTzoicjI8KJjSsppXXXbyVXa_!!2201240830.png',
-      'https://img.alicdn.com/imgextra/i2/2201240830/TB2XpkhXoEIL1JjSZFFXXc5kVXa_!!2201240830.jpg'
-      ],
-    sPrice:10.2
+    sPrice: '',
+    num_iid: 0,
+    coupon_id: 0,
+    coupon_click_url: '',
+    pict_url: '',
+    title: '',
+    imageList: [],
+    zk_final_price: '',
+    numb: 0,
+    sPrice: '',
+    coupon: '',
+    item_url: ''
+
   },
-  onLoad: function () { },
-  onReady: function () { } 
+  onLoad: function (option) {
+    console.log(option)
+    this.setData({
+      num_iid: option.num_iid,
+      coupon_id: option.coupon_id || '',
+      coupon_click_url: option.coupon_click_url || '',
+      sPrice: option.coupon || ''
+    })
+    this.init()
+  },
+  onReady: function () { },
+  gohome() {
+    wx.switchTab({
+      url: '../index/index'
+    })
+  },
+  share() {
+    wx.showShareMenu({
+      withShareTicket: true
+    })
+  },
+  buy() {
+    let that = this
+    let coupon_id = this.data.coupon_id
+    let coupon_click_url = this.data.coupon_click_url
+    let pid = 'mm_131778178_45276106_534348035'
+    let url = ''
+    let item_id = this.data.item_url.match(/\?id=(\d+)/)[1]
+    if (coupon_click_url) {
+      url = wx.getStorageSync('coupon_click_url')
+    } else {
+      url = `https://uland.taobao.com/coupon/edetail?activityId=${coupon_id}&itemId=${item_id}&src=pgy_pgyqf`
+    }
+
+    //生成口令，并复制
+    tbk('taobao.tbk.tpwd.create', {
+      user_id: '87491795',
+      text: this.data.title,
+      url: url,
+      logo: this.data.pict_url
+    }, (d) => {
+      let clip = `
+      ${that.data.title}
+      促销价:${that.data.zk_final_price}
+      淘口令:${d.data.model}
+      抢购：${url}
+      `
+      wx.setClipboardData({
+        data: clip,
+        success: function (res) {
+          wx.getClipboardData({
+            success: function (res) {
+              wx.showModal({
+                title: '提示',
+                showCancel: false,
+                content: '优惠卷复制成功，手动打开淘宝自动跳转；遇到延迟，请点击淘宝顶部搜索即可'
+              })
+            }
+          })
+        }
+      })
+    })
+
+  },
+  init() {
+    let that = this
+
+    tbk('taobao.tbk.item.info.get', {
+      fields: 'volume,num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url',
+      platform: 2,
+      num_iids: that.data.num_iid
+    }, (d) => {
+      let data = d.results.n_tbk_item[0]
+      that.setData({
+        pict_url: data.pict_url,
+        title: data.title,
+        small_images: data.small_images.string,
+        numb: data.volume,
+        item_url: data.item_url,
+        zk_final_price: data.zk_final_price
+      })
+    })
+
+  }
 })
