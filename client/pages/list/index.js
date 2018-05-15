@@ -25,7 +25,7 @@ Page({
   onReady: function () {
   },
   nextPage() {
-    this.data.filter.page = this.data.filter.page + 1
+    this.data.filter.page_no = this.data.filter.page_no + 1
     this.search()
   },
   godetils(e) {
