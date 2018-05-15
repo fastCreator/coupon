@@ -1,4 +1,4 @@
-import { padLeft, tbk, myformatTime } from '../../utils/util.js'
+import { padLeft, tbk, myformatTime, copy } from '../../utils/util.js'
 const app = getApp()
 const time = ['00', '08', '10', '13', '15', '17', '19', '20', '21', '24']
 Page({
@@ -53,19 +53,12 @@ Page({
       淘口令:${data.data.model}
       抢购：${d.click_url}
       `
-      wx.setClipboardData({
-        data: clip,
-        success: function (res) {
-          wx.getClipboardData({
-            success: function (res) {
-              wx.showModal({
-                title: '提示',
-                showCancel: false,
-                content: '优惠卷复制成功，手动打开淘宝自动跳转；遇到延迟，请点击淘宝顶部搜索即可'
-              })
-            }
-          })
-        }
+      copy(clip, () => {
+        wx.showModal({
+          title: '提示',
+          showCancel: false,
+          content: '优惠卷复制成功，手动打开淘宝自动跳转；遇到延迟，请点击淘宝顶部搜索即可'
+        })
       })
     })
   },

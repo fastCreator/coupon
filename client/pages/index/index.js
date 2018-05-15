@@ -1,4 +1,4 @@
-import { tbk } from '../../utils/util.js'
+import { tbk, copy } from '../../utils/util.js'
 const app = getApp()
 Page({
   data: {
@@ -53,19 +53,12 @@ Page({
       淘口令:${d.kl}
       活动地址：${d.dlj}
       `
-    wx.setClipboardData({
-      data: clip,
-      success: function (res) {
-        wx.getClipboardData({
-          success: function (res) {
-            wx.showModal({
-              title: '提示',
-              showCancel: false,
-              content: `活动[${d.title}]链接复制成功，通过浏览器打开或者手动打开淘宝自动跳转；遇到延迟，请点击淘宝顶部搜索即可`
-            })
-          }
-        })
-      }
+    copy(clip, function () {
+      wx.showModal({
+        title: '提示',
+        showCancel: false,
+        content: `活动[${d.title}]链接复制成功，通过浏览器打开或者手动打开淘宝自动跳转；遇到延迟，请点击淘宝顶部搜索即可`
+      })
     })
   },
   theme(e) {

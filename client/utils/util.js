@@ -81,4 +81,21 @@ var myformatTime = function (d, format) {
         ("00" + o[k]).substr(("" + o[k]).length));
   return format;
 }
-module.exports = { formatTime, showBusy, showSuccess, showModel, tbk, padLeft, myformatTime }
+
+var copy = (clip, cb) => {
+  if (wx.getStorageSync('issh') != 1) {
+    wx.setClipboardData({
+      data: clip,
+      success: function (res) {
+        cb()
+      }
+    })
+  } else {
+    wx.showModal({
+      title: '提示',
+      showCancel: false,
+      content: '本站只提供商品信息查询，暂不支持商品购买等渠道'
+    })
+  }
+}
+module.exports = { formatTime, showBusy, showSuccess, showModel, tbk, padLeft, myformatTime, copy }
