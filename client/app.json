@@ -33,7 +33,7 @@
       },
       {
         "pagePath": "pages/tqg/index",
-        "text": "淘抢购",
+        "text": "咚咚抢",
         "iconPath": "vendor/images/countdown.png",
         "selectedIconPath": "vendor/images/countdown_fill.png"
       },
