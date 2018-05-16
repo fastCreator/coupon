@@ -1,3 +1,3 @@
 module.exports = async (ctx, next) => {
-  ctx.body = 1
+  ctx.body = 0
 }
