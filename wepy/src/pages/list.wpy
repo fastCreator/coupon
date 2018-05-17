@@ -1,0 +1,218 @@
+<style type="less">
+.list {
+  height: 100%;
+  .none {
+    display: none;
+  }
+
+  .filter {
+    display: inline-block;
+    width: 100%;
+    background-color: #fff;
+    font-size: 0;
+  }
+
+  .filter > .item {
+    font-size: 18px;
+    line-height: 40px;
+    text-align: center;
+    display: inline-block;
+    width: 24%;
+    box-sizing: border-box;
+  }
+
+  .filter > .checkbox {
+    font-size: 18px;
+    width: 28%;
+    display: inline-block;
+  }
+
+  .filter .text {
+    display: inline-block;
+    margin-left: -2px;
+  }
+
+  .filter > .item.active {
+    color: #f26166;
+  }
+
+  .filter .iconfont {
+    display: inline;
+  }
+
+  .list .item:nth-of-type(odd) {
+    padding-right: 0;
+  }
+
+  .list .item {
+    display: inline-block;
+    width: 50%;
+    overflow: hidden;
+    border-left: 6px solid #f0f0f0;
+    box-sizing: border-box;
+    background: #fff;
+  }
+  .list .item:nth-child(even) {
+    border-right: 6px solid #f0f0f0;
+  }
+
+  .list .item .ltr,
+  .list .item .title {
+    padding: 0 6px;
+  }
+
+  .list .item .title {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 12px;
+  }
+
+  .list .item .coupon {
+    background: #f26166;
+    color: #fff;
+    border: 1px solid #f26166;
+    border-radius: 5px;
+    font-size: 12px;
+    line-height: 12px;
+    padding: 2px;
+  }
+
+  .list .item .endprice {
+    font-size: 14px;
+    line-height: 18px;
+    color: #f26166;
+  }
+
+  .list .item .xl {
+    color: #ccc;
+    font-size: 12px;
+  }
+}
+</style>
+<template> 
+        <my-scroll-view class="list" >
+  <view class='filter'>
+    <view class="{{filter.sort===SORT.popular?'active item':'item'}}" bindtap='toggleSort' data-sort='{{SORT.popular}}'>人气 </view>
+    <view class="{{filter.sort===SORT.sales?'active item':'item'}}" bindtap='toggleSort' data-sort='{{SORT.sales}}'>销量</view>
+    <view class="{{filter.sort===SORT.price?'active item':'item'}}" bindtap='toggleSort' data-sort='{{SORT.price}}'>价格</view>
+
+    <checkbox-group bindchange="selectCoupon" class="checkbox">
+      <label>
+        <checkbox value="true" checked="{{filter.has_coupon}}" />优惠劵
+      </label>
+    </checkbox-group>
+  </view>
+
+  <view class="list">
+    <view class="item" wx:for="{{list}}" wx:key="{{index}}" bindtap='godetils'  data-num_iid='{{item.num_iid}}' data-coupon_id='{{item.coupon_id}}' data-coupon="{{item.coupon || '促销'}}">
+      <image src="{{item.pict_url}}" mode="widthFix"/>
+      <view class="title">{{item.title}}</view>
+
+      <view class="ltr">
+        <view class="coupon">{{item.coupon || '促'}}</view>
+        <view class="endprice">￥{{item.zk_final_price}}</view>
+      </view>
+      <view class="ltr">
+        <view></view>
+        <view class="xl">已售{{item.volume}}</view>
+      </view>
+    </view>
+  </view>
+</my-scroll-view> 
+</template>
+
+<script>
+import wepy from 'wepy';
+import { tbk } from '../utils/util.js';
+import scrollView from '../components/scroll-view';
+
+export default class Index extends wepy.page {
+  components = {
+    myScrollView: scrollView
+  };
+  data = {
+    SORT: {
+      popular: 'tk_total_sales_des',
+      sales: 'total_sales_des',
+      price: 'price_asc'
+    },
+    filter: {
+      page_no: 1,
+      page_size: 10,
+      platform: 1,
+      sort: 'tk_total_sales_des',
+      q: '',
+      has_coupon: true
+    },
+    list: []
+  };
+  onLoad (option) {
+    this.data.filter.q = option.search || '123'
+    console.log(123123)
+    this.search()
+  };
+  onReady () {
+  };
+
+  async search () {
+    let that = this
+    wx.showLoading({
+      title: '加载中',
+    })
+    let d = (await tbk('taobao.tbk.sc.material.optional', that.data.filter)).data
+
+    wx.hideLoading()
+    if (!d.result_list.map_data || !d.result_list.map_data.length) {
+      wx.showLoading({
+        title: '暂无更多',
+      })
+      setTimeout(function () {
+        wx.hideLoading()
+      }, 500)
+      return false
+    }
+    d.result_list.map_data.forEach(it => {
+      if (it.coupon_info) {
+        it.coupon = it.coupon_info.match(/减(\d+)元/)[1] + '元劵'
+      }
+    })
+    this.list = that.list.concat(d.result_list.map_data)
+    this.$apply()
+  };
+  nextPage () {
+    console.log(123123)
+    console.log(this)
+    this.filter.page_no = this.filter.page_no + 1
+    this.search()
+  }
+  methods = {
+    godetils (e) {
+      let d = e.currentTarget.dataset
+      wx.navigateTo({
+        url: `../detils/index?num_iid=${d.num_iid}&coupon_id=${d.coupon_id}&coupon=${d.coupon}`
+      })
+    },
+    selectCoupon (e) {
+      this.filter.has_coupon = !!e.detail.value.length
+      this.setData({
+        list: []
+      })
+      this.search()
+    },
+    toggleSort (e) {
+      this.setData({
+        list: []
+      })
+      this.filter.sort = e.currentTarget.dataset.sort
+      this.search()
+    },
+    parseInfo (v) {
+      if (v) {
+        console.log(v)
+        return v.match(/减(\d+)元/)[1]
+      }
+    }
+  };
+}
+</script>

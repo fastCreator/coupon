@@ -1,0 +1,41 @@
+<style type="less">
+.scroll-view {
+  height: 100%;
+  overflow: auto;
+}
+</style>
+<template>
+    <view class="scroll-view" @scroll="scroll">
+        <slot></slot>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import { tbk } from '../utils/util.js';
+
+export default class Index extends wepy.page {
+  emit = true
+  data = {
+  };
+  onLoad () {
+  };
+  onReady () {
+    console.log(this)
+  };
+  methods = {
+    scroll (e) {
+      let ele = e.currentTarget
+      if (ele.offsetHeight + ele.scrollTop + 10 >= ele.scrollHeight) {
+        if (this.emit === true) {
+          this.$parent.nextPage()
+        }
+        this.emit = false
+        setTimeout(() => {
+          this.emit = true
+        }, 1000);
+      }
+    }
+  };
+}
+</script>

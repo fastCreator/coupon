@@ -1,0 +1,125 @@
+<style type="less">
+.page.search {
+  background: #fff;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  .search input {
+    display: inline-block;
+    background-color: #faf5f5;
+    width: calc(~"100% - 80px");
+    height: 40px;
+    border-radius: 8px;
+    padding-left: 10px;
+  }
+  .search button {
+    display: inline-block;
+    width: 60px;
+    margin-left: 10px;
+    background-color: #f96150;
+    border-radius: 8px;
+    font-size: 16px;
+    color: #fff;
+    height: 40px;
+  }
+  .hot .title {
+    color: #f8503d;
+  }
+  .hot .tag {
+    overflow: hidden;
+  }
+  .hot .tag .tag-item {
+    display: inline;
+    background-color: #f4f4f4;
+    border: 1px solid #f4f4f4;
+    padding: 2px 8px;
+    font-size: 14px;
+    border-radius: 8px;
+    color: #998c8c;
+    margin-right: 20px;
+    margin-top: 10px;
+    float: left;
+  }
+  .history {
+    margin-top: 10px;
+  }
+  .title .iconfont {
+    float: right;
+    color: #333;
+  }
+}
+</style>
+<template>
+    <view class="search page">
+      <view class="search">
+    <input placeholder="输入关键词搜索" bindinput="inputValue"></input>
+    <button bindtap="search" >搜索</button>
+</view>
+<view class="hot">
+  <view class="title" bindtap="search">热门搜索</view>
+  <view class="tag">
+    <view wx:for="{{tags}}" class="tag-item" bindtap="selectTag" data-item="{{item}}">{{item}}</view>
+  </view>
+</view>
+<view class="hot history">
+  <view class="title">历史搜索 <view class="iconfont icon-delete" bindtap="clearHistory"></view></view>
+  <view class="tag">
+    <view wx:for="{{history}}" class="tag-item" bindtap="selectTag" data-item="{{item}}">{{item}}</view>
+  </view>
+  </view>
+</view>
+</template>
+
+<script>
+import wepy from 'wepy';
+
+export default class Index extends wepy.page {
+
+  data = {
+    value: '',
+    tags: ['连衣裙', '女鞋', '两件套', 'T恤', '零食'],
+    history: []
+  };
+  onLoad () {
+  };
+  onReady () {
+  };
+  methods = {
+    selectTag: function (e) {
+      let it = e.target.dataset.item
+      this.search(it)
+    },
+    setHistory: function () {
+      var history = wepy.getStorageSync('historySearch')
+      this.setData({ history: history.split(',') })
+    },
+    clearHistory: function () {
+      wepy.setStorageSync('historySearch', '')
+      this.setHistory()
+    },
+    inputValue: function (e) {
+      this.setData({ value: e.detail.value })
+    },
+    search: function (v) {
+      if (v.type) {
+        v = this.data.value
+      }
+      if (!v) return false
+      var history = wepy.getStorageSync('historySearch')
+      if (history) {
+        let s = history.split(',')
+        if (!~s.indexOf(v)) {
+          wepy.setStorageSync('historySearch', history + ',' + v)
+        }
+      } else {
+        wepy.setStorageSync('historySearch', v)
+      }
+      this.setHistory()
+      wepy.navigateTo({
+        url: 'list?search=' + v
+      })
+    }
+  };
+}
+</script>

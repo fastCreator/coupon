@@ -1,0 +1,185 @@
+<style type="less">
+.index {
+  .z-search {
+    padding: 10px;
+    font-size: 14px;
+    background-color: #f96153;
+    color: #fff;
+  }
+  .z-search .input {
+    background-color: #f04e43;
+    padding: 6px 10px;
+    border-radius: 8px;
+  }
+  .z-tabs {
+    display: inline-block;
+    height: 34px;
+    white-space: nowrap;
+    font-size: 14px;
+    width: 100%;
+  }
+  .z-tabs view {
+    display: inline-block;
+    padding: 6px 6px 4px 6px;
+    border-bottom: 2px solid #fff;
+  }
+  .z-tabs view.selected {
+    color: #ff6140;
+    border-color: #ff6140;
+  }
+
+  .special .thtj .weui-flex__item {
+    border-right: 1px solid #e2e2e9;
+    border-bottom: 1px solid #e2e2e9;
+  }
+
+  .special .iconfont:before {
+    margin-left: 4px;
+    margin-right: 4px;
+  }
+  .special .iconfont {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+  .special {
+    margin-top: 10px;
+  }
+  .special .thtj {
+    border-top: 2px solid #f28430;
+  }
+  .special .hyjx1 {
+    border-top: 2px solid #a44bd0;
+  }
+  .special .hyhh {
+    border-top: 2px solid #ec495e;
+  }
+}
+</style>
+<template>
+    <view class="index page">
+        <view class="z-search">
+  <view class="input" bindtap="toSearch">输入关键词搜索</view>
+</view>
+<!-- <scroll-view class="z-tabs" scroll-x>
+  <view class="selected">全部</view>
+  <view>女装</view>
+  <view>女装</view>
+  <view>女装</view>
+  <view>女装</view>
+  <view>女装</view>
+  <view>女装</view>
+  <view>女装</view>
+  <view>女装</view>
+  <view>女装</view>
+  <view>女装</view>
+  <view>女装</view>
+</scroll-view> -->
+<swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" style="height:{{imageHeight}}px;">
+  <block wx:for="{{imgUrls}}">
+    <swiper-item>
+      <image src="{{item.img}}" class="slide-image" mode="widthFix" bindtap='hd' data-index='{{index}}'/>
+    </swiper-item>
+  </block>
+</swiper>
+
+<view class="special">
+  <view>
+    <view class="iconfont icon-ticket">特惠推荐</view>
+  </view>
+  <view class="weui-flex thtj">
+    <image class="weui-flex__item" bindtap='theme' data-type="9k9" src="http://img.alicdn.com/tps/TB1_UFmOXXXXXc4aXXXXXXXXXXX-794-320.png" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="20k" src="http://img.alicdn.com/tps/TB1fztJOXXXXXcfXpXXXXXXXXXX-794-320.png" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="tjhh" src="http://img.alicdn.com/tps/TB1gKlIOXXXXXcJXpXXXXXXXXXX-794-320.png" mode="widthFix"></image>
+  </view>
+</view>
+<view class="special">
+  <view>
+    <view class="iconfont icon-tao">淘宝行业市场精选</view>
+  </view>
+  <view class="weui-flex hyjx hyjx1">
+    <image class="weui-flex__item" bindtap='theme' data-type="ifashion" src="http://img.alicdn.com/tps/TB1JQ9gKFXXXXX.XFXXXXXXXXXX-592-236.jpg" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="qbb" src="http://img.alicdn.com/tps/TB1oyxZNpXXXXbdXVXXXXXXXXXX-594-236.png" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="tbhc" src="http://img.alicdn.com/tps/TB1EdnZKpXXXXc9XpXXXXXXXXXX-592-236.png" mode="widthFix"></image>
+  </view>
+  <view class="weui-flex hyjx hyjx2">
+    <image class="weui-flex__item" bindtap='theme' data-type="cdj" src="http://img.alicdn.com/tps/TB10R6.KpXXXXceXXXXXXXXXXXX-592-236.png" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="jyj" src="http://img.alicdn.com/tps/TB1sGn9KpXXXXXPXpXXXXXXXXXX-592-236.png" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="kdc" src="http://img.alicdn.com/tps/TB1W.6YKpXXXXbBXFXXXXXXXXXX-592-236.png" mode="widthFix"></image>
+
+  </view>
+  <view class="weui-flex hyjx hyjx2">
+    <image class="weui-flex__item" bindtap='theme' data-type="tbdiy" src="http://img.alicdn.com/tps/TB1xZCmKFXXXXalXpXXXXXXXXXX-592-236.jpg" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="gyhd" src="http://img.alicdn.com/tps/TB1IMTTKpXXXXXIXVXXXXXXXXXX-592-236.png" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="gyhd" src="http://img.alicdn.com/tps/TB1IMTTKpXXXXXIXVXXXXXXXXXX-592-236.png" mode="widthFix"></image>
+  </view>
+</view>
+<view class="special">
+  <view>
+    <view class="iconfont icon-appreciate_light">行业好货</view>
+  </view>
+  <view class="weui-flex hyjx hyhh">
+    <image class="weui-flex__item" bindtap='theme' data-type="nzjh" src="http://img.alicdn.com/tps/TB1MLBTOXXXXXa.XXXXXXXXXXXX-586-800.png" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="myrt" src="http://img.alicdn.com/tps/TB1k94bOXXXXXanaFXXXXXXXXXX-586-800.png" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="gyhd" src="http://img.alicdn.com/tps/TB18MXoMpXXXXXRXVXXXXXXXXXX-586-800.png" mode="widthFix"></image>
+  </view>
+</view>
+    </view>
+</template>
+
+<script>
+import wepy from 'wepy';
+import { tbk, copy } from '../utils/util.js';
+
+export default class Index extends wepy.page {
+
+  data = {
+    imgUrls: [],
+    imageHeight: 0.387 * wepy.getSystemInfoSync().windowWidth,
+    favorites: []
+  };
+  async onLoad () {
+    this.methods.setissh()
+    this.imgUrls = (await wepy.request({ url: 'https://wx.firecloud.club/apis/imgUrls' })).data
+    this.$apply()
+  };
+  async onReady () {
+    let d = (await tbk('taobao.tbk.uatm.favorites.get', {
+      fields: 'favorites_title,favorites_id,type',
+      type: '-1'
+    })).data
+    this.favorites = d.results.tbk_favorites
+  };
+  methods = {
+    async setissh () {
+      let issh = (await wepy.request({ url: 'https://wx.firecloud.club/apis/issh' })).data
+      wepy.setStorage({
+        key: "issh",
+        data: issh
+      })
+    },
+    toSearch () {
+      wepy.navigateTo({
+        url: 'search'
+      })
+    },
+    hd (e) {
+      let d = this.data.imgUrls[e.currentTarget.dataset.index].clip
+      let clip = `${d.title}
+                    淘口令:${d.kl}
+                    活动地址：${d.dlj}`
+      copy(clip, function () {
+        wepy.showModal({
+          title: '提示',
+          showCancel: false,
+          content: `活动[${d.title}]链接复制成功，通过浏览器打开或者手动打开淘宝自动跳转；遇到延迟，请点击淘宝顶部搜索即可`
+        })
+      })
+    },
+    theme (e) {
+      wepy.navigateTo({
+        url: 'them?favorites_id=' + this.data.favorites.find(it => it.favorites_title === e.currentTarget.dataset.type).favorites_id
+      })
+    }
+  };
+}
+</script>

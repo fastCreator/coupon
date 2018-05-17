@@ -1,0 +1,96 @@
+<style lang="less">
+@import "./style/weui.less";
+html,body,#app{
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
+page {
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  background-color: #f0f0f0;
+  color: #333;
+  padding-bottom: 6px;
+  box-sizing: border-box;
+}
+
+image,
+img {
+  width: 100%;
+}
+.ltr {
+  overflow: hidden;
+}
+
+.ltr > view:nth-child(odd) {
+  line-height: 22px;
+  float: left;
+}
+
+.ltr > view:nth-child(even) {
+  line-height: 22px;
+  float: right;
+}
+.ltr > div:nth-child(odd) {
+  line-height: 22px;
+  float: left;
+}
+
+.ltr > div:nth-child(even) {
+  line-height: 22px;
+  float: right;
+}
+.page__ft {
+  padding-bottom: 10px;
+  text-align: center;
+}
+
+.page__title {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.page__desc {
+  margin-top: 5px;
+  color: #888888;
+  text-align: left;
+  font-size: 14px;
+}
+</style>
+
+<script>
+
+import wepy from 'wepy';
+import 'wepy-async-function';
+
+export default class extends wepy.app {
+
+    config = {
+        'pages': [
+            'pages/list',
+            'pages/index',
+            'pages/search'
+        ],
+        'window': {
+            'navigationBarTextStyle': 'black',
+            'navigationBarTitleText': 'WeUI in WePY',
+            'navigationBarBackgroundColor': '#f8f8f8',
+            'backgroundColor': '#f8f8f8'
+        },
+        'networkTimeout': {
+            'request': 10000,
+            'connectSocket': 10000,
+            'uploadFile': 10000,
+            'downloadFile': 10000
+        }
+    };
+
+    constructor() {
+        super();
+        this.use('promisify');
+        this.use('requestfix');
+    }
+}
+</script>
