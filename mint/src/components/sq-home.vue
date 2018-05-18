@@ -1,7 +1,7 @@
 <template>
   <div class="sq-home">
     <div class="z-search">
-      <div class="input" bindtap="toSearch">输入关键词搜索</div>
+      <div class="input" @click="toSearch">输入关键词搜索</div>
     </div>
     <mt-swipe :auto="3000" :style="{height:swipeHeight}">
       <mt-swipe-item v-for="(item,i) in imgUrl" :key="i"><img :src="item.img" /></mt-swipe-item>
@@ -62,6 +62,11 @@ export default {
     this.imgUrl = (await axios.get(
       'https://wx.firecloud.club/apis/imgUrls'
     )).data
+  },
+  methods: {
+    toSearch () {
+      this.$router.push({ path: '/search' })
+    }
   }
 }
 </script>
