@@ -11,6 +11,9 @@
       <keep-alive>
         <sq-tqg v-if="selected==='tqg'"></sq-tqg>
       </keep-alive>
+      <keep-alive>
+        <page-seach v-if="selected==='search'"></page-seach>
+      </keep-alive>
 
     </div>
     <mt-tabbar v-model="selected" fixed>
@@ -42,11 +45,13 @@
 import Home from './sq-home.vue'
 import Mrjx from './sq-mrjx.vue'
 import Tqg from './sq-tqg.vue'
+import search from './page-search.vue'
 export default {
   components: {
     'sq-home': Home,
     'sq-mrjx': Mrjx,
-    'sq-tqg': Tqg
+    'sq-tqg': Tqg,
+    'page-seach': search
   },
   data () {
     return {

@@ -1,10 +1,10 @@
 <template>
   <div class="good-list">
-    <div class="item" v-for="(item,i) in data" bindtap='godetils' :key="i">
+    <div class="item" v-for="(item,i) in data" @click='godetils(item)' :key="i">
       <img :src="item.pict_url" />
       <div class="title">{{item.title}}</div>
       <div class="ltr">
-        <div class="coupon">{{item.coupon || '促'}}</div>
+        <div class="coupon">{{item.coupon_info ? setc(item.coupon_info): '促'}}</div>
         <div class="endprice">￥{{item.zk_final_price}}</div>
       </div>
       <div class="shop_title">{{item.shop_title}}</div>
@@ -29,12 +29,24 @@ export default {
   data () {
     return {}
   },
-  async created () {}
+  methods: {
+    setc (c) {
+      return c.match(/减(\d+)元/)[1] + '元劵'
+    },
+    godetils (item) {
+      let query = {
+        num_iid: item.num_iid,
+        coupon_click_url: item.coupon_click_url,
+        coupon_id: item.coupon_id
+      }
+      this.$router.push({ path: '/detils', query: query })
+    }
+  }
 }
 </script>
 <style scoped lang="less">
 .good-list {
-  background: #F0F0F0;
+  background: #f0f0f0;
   .item {
     background: #fff;
     display: inline-block;
@@ -42,24 +54,25 @@ export default {
     margin-top: 5px;
   }
   .item:nth-of-type(odd) {
-    border-left: 8px solid #F0F0F0;
-    border-right: 4px solid #F0F0F0;
+    border-left: 8px solid #f0f0f0;
+    border-right: 4px solid #f0f0f0;
   }
   .item:nth-of-type(even) {
-    border-left: 4px solid #F0F0F0;
-    border-right: 8px solid #F0F0F0;
+    border-left: 4px solid #f0f0f0;
+    border-right: 8px solid #f0f0f0;
   }
-  .title,.shop_title {
+  .title,
+  .shop_title {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 13px;
   }
-  .shop_title{
+  .shop_title {
     text-align: center;
     color: #ccc;
   }
-  
+
   .coupon {
     background: #f26166;
     color: #fff;

@@ -34,7 +34,6 @@ export default {
   },
   methods: {
     search (v) {
-      console.log(this)
       this.$router.push({ path: '/list', query: { q: v } })
     },
     addSearch (v) {
@@ -82,7 +81,7 @@ export default {
     color: #fff;
     height: 40px;
   }
-  .hot{
+  .hot {
     margin-top: 10px;
   }
   .hot .title {
