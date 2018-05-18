@@ -59,17 +59,7 @@ export default {
     text-align: center;
     color: #ccc;
   }
-  .ltr {
-    overflow: hidden;
-  }
-  .ltr > div:nth-child(odd) {
-    margin-left: 5px;
-    float: left;
-  }
-  .ltr > div:nth-child(even) {
-    margin-right: 5px;
-    float: right;
-  }
+  
   .coupon {
     background: #f26166;
     color: #fff;

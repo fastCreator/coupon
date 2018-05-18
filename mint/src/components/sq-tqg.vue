@@ -1,11 +1,29 @@
 <template>
-  <div class="sq-tqg">
+  <div class="sq-tqg" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="40">
     <div class="time">
-      <div v-for="(item,i) in time" :key="i" :class="time[active]==item?'now item':'item'" @click="selectTime">
+      <div v-for="(item,i) in time" :key="i" :class="time[active]==item?'now item':'item'" @click="selectTime(i)">
         <div>{{item}}:00</div>
         <div>{{time[now]==item?'正在疯抢':(time[now]>item?'已开抢':'即将开抢')}}</div>
       </div>
     </div>
+    <div class="good">
+    <div class="item" v-for="(item,i) in list" :key="i">
+      <img :src="item.pic_url"/>
+      <div class="info">
+        <div class="title">[{{item.category_name}}]{{item.title}}</div>
+        <div class="ltr">
+          <div class="reserve_price">￥{{item.reserve_price}}</div>
+          <div class="sold_num">已抢购{{item.sold_num}}件</div>
+        </div>
+        <div class="ltr">
+          <div class="zk_final_price">￥
+            <div class="f16">{{item.zk_final_price}}</div>
+          </div>
+          <div class="buy" bindtap='buy'>马上抢</div>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
 </template>
 
@@ -48,11 +66,12 @@ var myformatTime = function (d, format) {
 export default {
   data () {
     return {
+      loading: false,
       now: -1,
       time: time,
       scrollLeft: new Date().getHours() > 15 ? 1000 : 0,
       list: [],
-      page_no: 1,
+      page_no: 0,
       active: -1
     }
   },
@@ -67,10 +86,14 @@ export default {
     }
     this.now = now
     this.active = now
-    this.page_no = 1
-    this.search()
   },
   methods: {
+    async loadMore () {
+      this.page_no++
+      this.loading = true
+      await this.search()
+      this.loading = false
+    },
     selectTime (i) {
       this.active = i
       this.page_no = 1
@@ -114,6 +137,66 @@ export default {
     }
     .now {
       background: #da2432;
+    }
+  }
+  .good {
+    .item {
+      padding: 8px 0 8px 8px;
+      border-bottom: 1px solid #eee;
+      background: #fff;
+    }
+
+    .item img {
+      display: inline-block;
+      width: 106px;
+      height: 106px;
+    }
+
+    .item .info {
+      vertical-align: top;
+      box-sizing: border-box;
+      padding-left: 8px;
+      font-size: 14px;
+      display: inline-block;
+      overflow: hidden;
+      width: calc(100% - 120px);
+    }
+
+    .item .info .title {
+      width: 100%;
+      font-size: 16px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .item .info .reserve_price {
+      color: #ff5501;
+      text-decoration: line-through;
+    }
+
+    .item .info .sold_num {
+      color: #ccc;
+    }
+
+    .item .info .zk_final_price {
+      color: #ff5501;
+      font-size: 12px;
+    }
+
+    .f16 {
+      display: inline;
+      font-size: 16px;
+    }
+
+    .item .info .ltr {
+      margin-top: 10px;
+    }
+
+    .item .info .buy {
+      background: #df2434;
+      color: #fff;
+      padding: 2px 18px;
     }
   }
 }
