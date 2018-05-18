@@ -5,9 +5,9 @@
 }
 </style>
 <template>
-    <view class="scroll-view" @scroll="scroll">
+    <div class="carousel slide" data-ride="carousel">
         <slot></slot>
-    </view>
+    </div>
 </template>
 
 <script>
@@ -25,13 +25,13 @@ export default class MyScroll extends wepy.component {
             let ele = e.currentTarget;
             if (ele.offsetHeight + ele.scrollTop + 2 >= ele.scrollHeight) {
                 if (this.emit === true) {
-                    console.log('child');
-                    this.$emit('scrollBottom', 100);
-                }
+                  console.log('child');
+                  this.$emit('scrollBottom', 100);
+              }
                 this.emit = false;
                 setTimeout(() => {
-                    this.emit = true;
-                }, 200);
+                  this.emit = true;
+              }, 200);
             }
         }
     };

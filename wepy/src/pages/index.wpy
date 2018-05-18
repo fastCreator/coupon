@@ -87,9 +87,9 @@
     <view class="iconfont icon-ticket">特惠推荐</view>
   </view>
   <view class="weui-flex thtj">
-    <image class="weui-flex__item" bindtap='theme' data-type="9k9" src="http://img.alicdn.com/tps/TB1_UFmOXXXXXc4aXXXXXXXXXXX-794-320.png" mode="widthFix"/>
-    <image class="weui-flex__item" bindtap='theme' data-type="20k" src="http://img.alicdn.com/tps/TB1fztJOXXXXXcfXpXXXXXXXXXX-794-320.png" mode="widthFix"/>
-    <image class="weui-flex__item" bindtap='theme' data-type="tjhh" src="http://img.alicdn.com/tps/TB1gKlIOXXXXXcJXpXXXXXXXXXX-794-320.png" mode="widthFix"/>
+    <image class="weui-flex__item" bindtap='theme' data-type="9k9" src="http://img.alicdn.com/tps/TB1_UFmOXXXXXc4aXXXXXXXXXXX-794-320.png" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="20k" src="http://img.alicdn.com/tps/TB1fztJOXXXXXcfXpXXXXXXXXXX-794-320.png" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="tjhh" src="http://img.alicdn.com/tps/TB1gKlIOXXXXXcJXpXXXXXXXXXX-794-320.png" mode="widthFix"></image>
   </view>
 </view>
 <view class="special">
@@ -97,20 +97,20 @@
     <view class="iconfont icon-tao">淘宝行业市场精选</view>
   </view>
   <view class="weui-flex hyjx hyjx1">
-    <image class="weui-flex__item" bindtap='theme' data-type="ifashion" src="http://img.alicdn.com/tps/TB1JQ9gKFXXXXX.XFXXXXXXXXXX-592-236.jpg" mode="widthFix"/>
-    <image class="weui-flex__item" bindtap='theme' data-type="qbb" src="http://img.alicdn.com/tps/TB1oyxZNpXXXXbdXVXXXXXXXXXX-594-236.png" mode="widthFix"/>
-    <image class="weui-flex__item" bindtap='theme' data-type="tbhc" src="http://img.alicdn.com/tps/TB1EdnZKpXXXXc9XpXXXXXXXXXX-592-236.png" mode="widthFix"/>
+    <image class="weui-flex__item" bindtap='theme' data-type="ifashion" src="http://img.alicdn.com/tps/TB1JQ9gKFXXXXX.XFXXXXXXXXXX-592-236.jpg" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="qbb" src="http://img.alicdn.com/tps/TB1oyxZNpXXXXbdXVXXXXXXXXXX-594-236.png" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="tbhc" src="http://img.alicdn.com/tps/TB1EdnZKpXXXXc9XpXXXXXXXXXX-592-236.png" mode="widthFix"></image>
   </view>
   <view class="weui-flex hyjx hyjx2">
-    <image class="weui-flex__item" bindtap='theme' data-type="cdj" src="http://img.alicdn.com/tps/TB10R6.KpXXXXceXXXXXXXXXXXX-592-236.png" mode="widthFix"/>
-    <image class="weui-flex__item" bindtap='theme' data-type="jyj" src="http://img.alicdn.com/tps/TB1sGn9KpXXXXXPXpXXXXXXXXXX-592-236.png" mode="widthFix"/>
-    <image class="weui-flex__item" bindtap='theme' data-type="kdc" src="http://img.alicdn.com/tps/TB1W.6YKpXXXXbBXFXXXXXXXXXX-592-236.png" mode="widthFix"/>
+    <image class="weui-flex__item" bindtap='theme' data-type="cdj" src="http://img.alicdn.com/tps/TB10R6.KpXXXXceXXXXXXXXXXXX-592-236.png" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="jyj" src="http://img.alicdn.com/tps/TB1sGn9KpXXXXXPXpXXXXXXXXXX-592-236.png" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="kdc" src="http://img.alicdn.com/tps/TB1W.6YKpXXXXbBXFXXXXXXXXXX-592-236.png" mode="widthFix"></image>
 
   </view>
   <view class="weui-flex hyjx hyjx2">
-    <image class="weui-flex__item" bindtap='theme' data-type="tbdiy" src="http://img.alicdn.com/tps/TB1xZCmKFXXXXalXpXXXXXXXXXX-592-236.jpg" mode="widthFix"/>
-    <image class="weui-flex__item" bindtap='theme' data-type="gyhd" src="http://img.alicdn.com/tps/TB1IMTTKpXXXXXIXVXXXXXXXXXX-592-236.png" mode="widthFix"/>
-    <image class="weui-flex__item" bindtap='theme' data-type="gyhd" src="http://img.alicdn.com/tps/TB1IMTTKpXXXXXIXVXXXXXXXXXX-592-236.png" mode="widthFix"/>
+    <image class="weui-flex__item" bindtap='theme' data-type="tbdiy" src="http://img.alicdn.com/tps/TB1xZCmKFXXXXalXpXXXXXXXXXX-592-236.jpg" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="gyhd" src="http://img.alicdn.com/tps/TB1IMTTKpXXXXXIXVXXXXXXXXXX-592-236.png" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="gyhd" src="http://img.alicdn.com/tps/TB1IMTTKpXXXXXIXVXXXXXXXXXX-592-236.png" mode="widthFix"></image>
   </view>
 </view>
 <view class="special">
@@ -118,9 +118,9 @@
     <view class="iconfont icon-appreciate_light">行业好货</view>
   </view>
   <view class="weui-flex hyjx hyhh">
-    <image class="weui-flex__item" bindtap='theme' data-type="nzjh" src="http://img.alicdn.com/tps/TB1MLBTOXXXXXa.XXXXXXXXXXXX-586-800.png" mode="widthFix"/>
-    <image class="weui-flex__item" bindtap='theme' data-type="myrt" src="http://img.alicdn.com/tps/TB1k94bOXXXXXanaFXXXXXXXXXX-586-800.png" mode="widthFix"/>
-    <image class="weui-flex__item" bindtap='theme' data-type="gyhd" src="http://img.alicdn.com/tps/TB18MXoMpXXXXXRXVXXXXXXXXXX-586-800.png" mode="widthFix"/>
+    <image class="weui-flex__item" bindtap='theme' data-type="nzjh" src="http://img.alicdn.com/tps/TB1MLBTOXXXXXa.XXXXXXXXXXXX-586-800.png" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="myrt" src="http://img.alicdn.com/tps/TB1k94bOXXXXXanaFXXXXXXXXXX-586-800.png" mode="widthFix"></image>
+    <image class="weui-flex__item" bindtap='theme' data-type="gyhd" src="http://img.alicdn.com/tps/TB18MXoMpXXXXXRXVXXXXXXXXXX-586-800.png" mode="widthFix"></image>
   </view>
 </view>
     </view>

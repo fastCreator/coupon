@@ -1,6 +1,8 @@
 <style lang="less">
 @import "./style/weui.less";
-html,body,#app{
+html,
+body,
+#app {
   height: 100%;
   width: 100%;
   overflow: hidden;
@@ -61,29 +63,23 @@ img {
 </style>
 
 <script>
-
 import wepy from 'wepy';
 import 'wepy-async-function';
 
 export default class extends wepy.app {
-
     config = {
-        'pages': [
-            'pages/list',
-            'pages/index',
-            'pages/search'
-        ],
-        'window': {
-            'navigationBarTextStyle': 'black',
-            'navigationBarTitleText': 'WeUI in WePY',
-            'navigationBarBackgroundColor': '#f8f8f8',
-            'backgroundColor': '#f8f8f8'
+        pages: ['pages/list', 'pages/index', 'pages/search'],
+        window: {
+            navigationBarTextStyle: 'black',
+            navigationBarTitleText: 'WeUI in WePY',
+            navigationBarBackgroundColor: '#f8f8f8',
+            backgroundColor: '#f8f8f8'
         },
-        'networkTimeout': {
-            'request': 10000,
-            'connectSocket': 10000,
-            'uploadFile': 10000,
-            'downloadFile': 10000
+        networkTimeout: {
+            request: 10000,
+            connectSocket: 10000,
+            uploadFile: 10000,
+            downloadFile: 10000
         }
     };
 

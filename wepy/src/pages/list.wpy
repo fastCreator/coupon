@@ -91,7 +91,7 @@
 }
 </style>
 <template>
-    <my-scroll @scrollBottom.user="nextPage">
+    <scroll-view @scrolltolower="nextPage" @scrolltolower.user="nextPage" scroll-y  class="list">
         <view class='filter'>
             <view class="{{filter.sort===SORT.popular?'active item':'item'}}" bindtap='toggleSort' data-sort='{{SORT.popular}}'>人气 </view>
             <view class="{{filter.sort===SORT.sales?'active item':'item'}}" bindtap='toggleSort' data-sort='{{SORT.sales}}'>销量</view>
@@ -119,17 +119,17 @@
                 </view>
             </view>
         </view>
-    </my-scroll>
+    </scroll-view>
 </template>
 
 <script>
 import wepy from 'wepy';
-import MyScroll from '../components/scroll-view';
+import scrollView from '../components/scroll-view';
 import { tbk } from '../utils/util.js';
 
 export default class Index extends wepy.page {
     components = {
-        'my-scroll': MyScroll
+        'scroll-view': scrollView
     };
     data = {
         SORT: {
@@ -149,7 +149,6 @@ export default class Index extends wepy.page {
     };
     onLoad(option) {
         this.data.filter.q = option.search || '123';
-        console.log(123123);
         this.search();
     }
     onReady() {}
@@ -159,8 +158,7 @@ export default class Index extends wepy.page {
         wx.showLoading({
             title: '加载中'
         });
-        let d = (await tbk('taobao.tbk.sc.material.optional', that.data.filter))
-      .data;
+        let d = (await tbk('taobao.tbk.sc.material.optional', that.data.filter)).data;
 
         wx.hideLoading();
         if (!d.result_list.map_data || !d.result_list.map_data.length) {
@@ -183,8 +181,6 @@ export default class Index extends wepy.page {
 
     methods = {
         nextPage() {
-            console.log(123123);
-            console.log(this);
             this.filter.page_no = this.filter.page_no + 1;
             this.search();
         },

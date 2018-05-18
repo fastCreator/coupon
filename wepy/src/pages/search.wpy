@@ -52,56 +52,55 @@
 </style>
 <template>
     <view class="search page">
-      <view class="search">
-    <input placeholder="输入关键词搜索" bindinput="inputValue"></input>
-    <button bindtap="search" >搜索</button>
-</view>
-<view class="hot">
-  <view class="title" bindtap="search">热门搜索</view>
-  <view class="tag">
-    <view wx:for="{{tags}}" class="tag-item" bindtap="selectTag" data-item="{{item}}">{{item}}</view>
-  </view>
-</view>
-<view class="hot history">
-  <view class="title">历史搜索 <view class="iconfont icon-delete" bindtap="clearHistory"></view></view>
-  <view class="tag">
-    <view wx:for="{{history}}" class="tag-item" bindtap="selectTag" data-item="{{item}}">{{item}}</view>
-  </view>
-  </view>
-</view>
+        <view class="search">
+            <input placeholder="输入关键词搜索" bindinput="inputValue"></input>
+            <button bindtap="search">搜索</button>
+        </view>
+        <view class="hot">
+            <view class="title" bindtap="search">热门搜索</view>
+            <view class="tag">
+                <view wx:for="{{tags}}" class="tag-item" bindtap="selectTag" data-item="{{item}}">{{item}}</view>
+            </view>
+        </view>
+        <view class="hot history">
+            <view class="title">历史搜索
+                <view class="iconfont icon-delete" bindtap="clearHistory"></view>
+            </view>
+            <view class="tag">
+                <view wx:for="{{history}}" class="tag-item" bindtap="selectTag" data-item="{{item}}">{{item}}</view>
+            </view>
+        </view>
+    </view>
 </template>
 
 <script>
 import wepy from 'wepy';
 
 export default class Index extends wepy.page {
-
     data = {
         value: '',
         tags: ['连衣裙', '女鞋', '两件套', 'T恤', '零食'],
         history: []
     };
-    onLoad () {
-    };
-    onReady () {
-    };
+    onLoad() {}
+    onReady() {}
     methods = {
-        selectTag: function (e) {
+        selectTag: function(e) {
             let it = e.target.dataset.item;
             this.search(it);
         },
-        setHistory: function () {
+        setHistory: function() {
             var history = wepy.getStorageSync('historySearch');
             this.setData({ history: history.split(',') });
         },
-        clearHistory: function () {
+        clearHistory: function() {
             wepy.setStorageSync('historySearch', '');
             this.setHistory();
         },
-        inputValue: function (e) {
+        inputValue: function(e) {
             this.setData({ value: e.detail.value });
         },
-        search: function (v) {
+        search: function(v) {
             if (v.type) {
                 v = this.data.value;
             }
