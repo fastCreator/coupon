@@ -55,7 +55,7 @@ export default {
   },
   data () {
     return {
-      selected: 'tqg'
+      selected: 'home'
     }
   }
 }
