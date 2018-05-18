@@ -76,50 +76,50 @@ import wepy from 'wepy';
 
 export default class Index extends wepy.page {
 
-  data = {
-    value: '',
-    tags: ['连衣裙', '女鞋', '两件套', 'T恤', '零食'],
-    history: []
-  };
-  onLoad () {
-  };
-  onReady () {
-  };
-  methods = {
-    selectTag: function (e) {
-      let it = e.target.dataset.item
-      this.search(it)
-    },
-    setHistory: function () {
-      var history = wepy.getStorageSync('historySearch')
-      this.setData({ history: history.split(',') })
-    },
-    clearHistory: function () {
-      wepy.setStorageSync('historySearch', '')
-      this.setHistory()
-    },
-    inputValue: function (e) {
-      this.setData({ value: e.detail.value })
-    },
-    search: function (v) {
-      if (v.type) {
-        v = this.data.value
-      }
-      if (!v) return false
-      var history = wepy.getStorageSync('historySearch')
-      if (history) {
-        let s = history.split(',')
-        if (!~s.indexOf(v)) {
-          wepy.setStorageSync('historySearch', history + ',' + v)
+    data = {
+        value: '',
+        tags: ['连衣裙', '女鞋', '两件套', 'T恤', '零食'],
+        history: []
+    };
+    onLoad () {
+    };
+    onReady () {
+    };
+    methods = {
+        selectTag: function (e) {
+            let it = e.target.dataset.item;
+            this.search(it);
+        },
+        setHistory: function () {
+            var history = wepy.getStorageSync('historySearch');
+            this.setData({ history: history.split(',') });
+        },
+        clearHistory: function () {
+            wepy.setStorageSync('historySearch', '');
+            this.setHistory();
+        },
+        inputValue: function (e) {
+            this.setData({ value: e.detail.value });
+        },
+        search: function (v) {
+            if (v.type) {
+                v = this.data.value;
+            }
+            if (!v) return false;
+            var history = wepy.getStorageSync('historySearch');
+            if (history) {
+                let s = history.split(',');
+                if (!~s.indexOf(v)) {
+                    wepy.setStorageSync('historySearch', history + ',' + v);
+                }
+            } else {
+                wepy.setStorageSync('historySearch', v);
+            }
+            this.setHistory();
+            wepy.navigateTo({
+                url: 'list?search=' + v
+            });
         }
-      } else {
-        wepy.setStorageSync('historySearch', v)
-      }
-      this.setHistory()
-      wepy.navigateTo({
-        url: 'list?search=' + v
-      })
-    }
-  };
+    };
 }
 </script>

@@ -4,7 +4,7 @@
 </style>
 <template>
     <view class="demo page">
-        
+
     </view>
 </template>
 
@@ -14,13 +14,13 @@ import { tbk } from '../utils/util.js';
 
 export default class Index extends wepy.page {
 
-  data = {
-  };
-  onLoad () {
-  };
-  onReady () {
-  };
-  methods = {
-  };
+    data = {
+    };
+    onLoad () {
+    };
+    onReady () {
+    };
+    methods = {
+    };
 }
 </script>

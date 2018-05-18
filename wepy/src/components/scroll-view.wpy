@@ -12,30 +12,28 @@
 
 <script>
 import wepy from 'wepy';
-import { tbk } from '../utils/util.js';
 
-export default class Index extends wepy.page {
-  emit = true
-  data = {
-  };
-  onLoad () {
-  };
-  onReady () {
-    console.log(this)
-  };
-  methods = {
-    scroll (e) {
-      let ele = e.currentTarget
-      if (ele.offsetHeight + ele.scrollTop + 10 >= ele.scrollHeight) {
-        if (this.emit === true) {
-          this.$parent.nextPage()
-        }
-        this.emit = false
-        setTimeout(() => {
-          this.emit = true
-        }, 1000);
-      }
+export default class MyScroll extends wepy.component {
+    emit = true;
+    data = {};
+    onLoad() {}
+    onReady() {
+        console.log(this);
     }
-  };
+    methods = {
+        scroll(e) {
+            let ele = e.currentTarget;
+            if (ele.offsetHeight + ele.scrollTop + 10 >= ele.scrollHeight) {
+                if (this.emit === true) {
+                    console.log('child');
+                    this.$emit('scrollBottom', 100);
+                }
+                this.emit = false;
+                setTimeout(() => {
+                    this.emit = true;
+                }, 1000);
+            }
+        }
+    };
 }
 </script>
