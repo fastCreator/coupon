@@ -7,12 +7,12 @@
       <div class="numb">销量：{{data.volume}}</div>
     </div>
     <div class="imgList">
-      <img v-for="(src,i) in data.small_images.string" :key="i" :src="src" mode="widthFix" />
+      <img v-for="(src,i) in data.small_images.string" :key="i" :src="src"/>
     </div>
     <div class="fix-buttom">
-      <div class="it1 iconfont icon-home_light" bindtap='gohome'>首页</div>
+      <div class="it1 iconfont icon-home_light" @click='gohome'>首页</div>
       <div class="it1 iconfont icon-share1" bindtap='share'>分享</div>
-      <div class="it2 copyText" @click='buy' :data-clipboard-text="copyText" data-clipboard-action="copy">
+      <div class="it2" @click='buy'>
         领券购买
       </div>
     </div>
@@ -21,20 +21,21 @@
 
 <script>
 import utils from '../utils/utils.js'
-import { MessageBox } from 'mint-ui'
 export default {
   data () {
     return {
       num_iid: this.$route.query.num_iid,
       coupon_click_url: this.$route.query.coupon_click_url,
       coupon_id: this.$route.query.coupon_id,
-      data: {},
-      copyText: ''
+      data: {
+        small_images: {
+          string: []
+        }
+      }
     }
   },
-  async created () {
-    await this.getData()
-    await this.copy()
+  created () {
+    this.getData()
   },
   computed: {
     url () {
@@ -50,37 +51,12 @@ export default {
       }
       const PID = 'mm_131778178_45276106_534348035'
       return url + `&pid=${PID}`
-    },
-    scheme () {
-      return (
-        'taobao://' + this.url.replace('https://', '').replace('http://', '')
-      )
     }
   },
   mounted () {},
   methods: {
-    async copy () {
-      if (utils.is_weixn()) {
-        let model = (await utils.tbk('taobao.tbk.tpwd.create', {
-          user_id: '87491795',
-          text: this.data.title,
-          url: this.url,
-          logo: this.data.pict_url
-        })).data.data.model
-        this.copyText = `
-        ${this.data.title}
-        促销价:${this.data.zk_final_price}
-        淘口令:${model}元
-        抢购：${this.url}
-        `
-        var clipboard = new window.ClipboardJS('.copyText')
-        clipboard.on('success', e => {
-          MessageBox.alert(
-            '打开手机淘宝APP,即可进入优惠券领取页面',
-            '口令复制成功'
-          )
-        })
-      }
+    gohome () {
+      this.$router.push({ path: '/' })
     },
     async getData () {
       let data = await utils.tbk('taobao.tbk.item.info.get', {
@@ -91,16 +67,8 @@ export default {
       })
       this.data = data.data.results.n_tbk_item[0]
     },
-    async buy () {
-      if (utils.is_weixn()) {
-        return false
-      } else if (
-        /Android|webOS|iPhone|iPod|BlackBerry|UCBrowser|iOS|Windows Phone/i.test(navigator.userAgent)
-      ) {
-        location.href = this.scheme
-      } else {
-        window.open(this.url)
-      }
+    buy () {
+      utils.copy(this.data.title, this.url, this.data.pict_url, this.data.zk_final_price)
     }
   }
 }
