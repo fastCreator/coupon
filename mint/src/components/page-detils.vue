@@ -12,27 +12,29 @@
     <div class="fix-buttom">
       <div class="it1 iconfont icon-home_light" bindtap='gohome'>首页</div>
       <div class="it1 iconfont icon-share1" bindtap='share'>分享</div>
-      <a class="it2" @click='buy' :src="scheme">
+      <div class="it2 copyText" @click='buy' :data-clipboard-text="copyText">
         领券购买
-      </a>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 import utils from '../utils/utils.js'
-
+import { MessageBox } from 'mint-ui'
 export default {
   data () {
     return {
       num_iid: this.$route.query.num_iid,
       coupon_click_url: this.$route.query.coupon_click_url,
       coupon_id: this.$route.query.coupon_id,
-      data: {}
+      data: {},
+      copyText: ''
     }
   },
-  created () {
-    this.getData()
+  async created () {
+    await this.getData()
+    await this.copy()
   },
   computed: {
     url () {
@@ -40,20 +42,46 @@ export default {
       if (this.coupon_click_url) {
         url = this.coupon_click_url
       } else if (this.coupon_id) {
-        url = `uland.taobao.com/coupon/edetail?activityId=${
+        url = `https://uland.taobao.com/coupon/edetail?activityId=${
           this.coupon_id
         }&itemId=${this.num_iid}&src=pgy_pgyqf`
       } else {
-        url = `item.taobao.com/item.htm?id=${this.num_iid}`
+        url = `https://item.taobao.com/item.htm?id=${this.num_iid}`
       }
       const PID = 'mm_131778178_45276106_534348035'
       return url + `&pid=${PID}`
     },
     scheme () {
-      return 'taobao://' + this.url
+      return (
+        'taobao://' + this.url.replace('https://', '').replace('http://', '')
+      )
     }
   },
+  mounted () {
+
+  },
   methods: {
+    async copy () {
+      if (utils.is_weixn()) {
+        let model = (await utils.tbk('taobao.tbk.tpwd.create', {
+          user_id: '87491795',
+          text: this.data.title,
+          url: this.url,
+          logo: this.data.pict_url
+        })).data.data.model
+        this.copyText = `${this.data.title}
+        促销价:${this.data.zk_final_price}
+        淘口令:${model}元
+        抢购：${this.url}`
+        var clipboard = new window.ClipboardJS('.copyText')
+        clipboard.on('success', (e) => {
+          MessageBox.alert(
+            '打开手机淘宝APP,即可进入优惠券领取页面',
+            '口令复制成功'
+          )
+        })
+      }
+    },
     async getData () {
       let data = await utils.tbk('taobao.tbk.item.info.get', {
         fields:
@@ -63,8 +91,14 @@ export default {
       })
       this.data = data.data.results.n_tbk_item[0]
     },
-    buy () {
-      location.href = this.scheme
+    async buy () {
+      if (utils.is_weixn()) {
+        return false
+      } else if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+        location.href = this.scheme
+      } else {
+        location.href = this.url
+      }
     }
   }
 }
