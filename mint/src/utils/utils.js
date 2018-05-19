@@ -68,9 +68,12 @@ export default {
       if (ck) {
         if (model) {
           url = ''
-          this.copyBox(model)
+          this.copyBox(model, () => {
+            location.href = 'taobao://' + url
+          })
+        } else {
+          location.href = 'taobao://' + url
         }
-        location.href = 'taobao://' + url
       } else {
         url.replace('https://', '').replace('http://', '')
         location.href = 'taobao://' + url
@@ -79,11 +82,13 @@ export default {
       window.open(url)
     }
   },
-  copyBox (copyText) {
+  copyBox (copyText, cb) {
     MessageBox({
       title: '口令',
       message: '点击复制，打开淘宝APP,即可进入优惠券领取页面',
       confirmButtonText: '复制口令'
+    }).then(() => {
+      cb && cb()
     })
     let ele = document.getElementsByClassName('mint-msgbox-confirm')[0]
     ele.setAttribute('data-clipboard-action', 'copy')
