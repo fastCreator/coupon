@@ -23,9 +23,7 @@ export default {
   },
   is_weixn () {
     var ua = navigator.userAgent.toLowerCase()
-    alert(ua)
-    alert(ua.match(/MicroMessenger/i) === 'micromessenger')
-    if (ua.match(/MicroMessenger/i) === 'micromessenger') {
+    if (~ua.indexOf('micromessenger') || ~ua.indexOf('MicroMessenger')) {
       return true
     } else {
       return false
