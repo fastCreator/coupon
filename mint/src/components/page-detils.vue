@@ -63,7 +63,7 @@ export default {
       this.data = data.data.results.n_tbk_item[0]
     },
     buy () {
-      window.open(this.url)
+      // window.open(this.url)
     }
   }
 }
