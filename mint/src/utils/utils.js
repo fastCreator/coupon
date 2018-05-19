@@ -31,7 +31,7 @@ export default {
       return false
     }
   },
-  async copy (text, logo, price, numIid, couponId, couponClickUrl) {
+  async copy (text, logo, price, numIid, couponId, couponClickUrl, model) {
     const PID = 'mm_131778178_45276106_534348035'
     let url = ''
     if (couponId && numIid) {
@@ -45,14 +45,15 @@ export default {
     }
     url = url + `&pid=${PID}`
     if (this.is_weixn()) {
-      url = `https://uland.taobao.com/coupon/edetail?itemId=${numIid}${couponId ? ('&activityId=' + couponId) : ''}&src=pgy_pgyqf` + `&pid=${PID}`
-      let model = (await this.tbk('taobao.tbk.tpwd.create', {
-        user_id: '87491795',
-        text: text,
-        url: url,
-        logo: logo
-      })).data.data.model
-
+      if (!model) {
+        url = `https://uland.taobao.com/coupon/edetail?itemId=${numIid}${couponId ? ('&activityId=' + couponId) : ''}&src=pgy_pgyqf` + `&pid=${PID}`
+        model = (await this.tbk('taobao.tbk.tpwd.create', {
+          user_id: '87491795',
+          text: text,
+          url: url,
+          logo: logo
+        })).data.data.model
+      }
       let copyText = `
           ${text}
           促销价:${price}元

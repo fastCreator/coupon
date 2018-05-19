@@ -89,7 +89,7 @@ export default {
   },
   methods: {
     buy (it) {
-      utils.copy(it.title, it.pict_url, it.reserve_price, it.num_iid)
+      utils.copy(it.title, it.pic_url, it.reserve_price, it.num_iid)
     },
     async loadMore () {
       this.page_no++

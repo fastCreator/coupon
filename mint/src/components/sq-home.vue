@@ -4,7 +4,7 @@
       <div class="input" @click="toSearch">输入关键词搜索</div>
     </div>
     <mt-swipe :auto="3000" :style="{height:swipeHeight}">
-      <mt-swipe-item v-for="(item,i) in imgUrl" :key="i"><img :src="item.img" /></mt-swipe-item>
+      <mt-swipe-item v-for="(item,i) in imgUrl" :key="i"><img :src="item.img" @click="swipeGo(item)"/></mt-swipe-item>
     </mt-swipe>
 
     <div class="special border">
@@ -70,6 +70,9 @@ export default {
     })).data.results.tbk_favorites
   },
   methods: {
+    swipeGo (item) {
+      utils.copy(item.clip.title, item.img, 0, undefined, undefined, item.clip.dlj, item.clip.kl)
+    },
     theme (title) {
       let id = this.favorites.find(it => it.favorites_title === title).favorites_id
       this.$router.push({ path: '/them', query: { id: id } })
