@@ -1,21 +1,21 @@
 <template>
   <div class="page-detils">
-      <img class="imghead" :src="data.pict_url" mode="widthFix"/>
-<div class="title">{{data.title}}</div>
-<div class="item1 ltr">
-  <div class="price">￥{{data.zk_final_price}}</div>
-  <div class="numb">销量：{{data.volume}}</div>
-</div>
-<div class="imgList">
-  <img v-for="(src,i) in data.small_images.string" :key="i" :src="src" mode="widthFix"/>
-</div>
-<div class="fix-buttom">
-  <div class="it1 iconfont icon-home_light" bindtap='gohome'>首页</div>
-  <div class="it1 iconfont icon-share1" bindtap='share'>分享</div>
-  <div class="it2" @click='buy'>
-    领券购买
-  </div>
-</div>
+    <img class="imghead" :src="data.pict_url" mode="widthFix" />
+    <div class="title">{{data.title}}</div>
+    <div class="item1 ltr">
+      <div class="price">￥{{data.zk_final_price}}</div>
+      <div class="numb">销量：{{data.volume}}</div>
+    </div>
+    <div class="imgList">
+      <img v-for="(src,i) in data.small_images.string" :key="i" :src="src" mode="widthFix" />
+    </div>
+    <div class="fix-buttom">
+      <div class="it1 iconfont icon-home_light" bindtap='gohome'>首页</div>
+      <div class="it1 iconfont icon-share1" bindtap='share'>分享</div>
+      <a class="it2" @click='buy' :src="scheme">
+        领券购买
+      </a>
+    </div>
   </div>
 </template>
 
@@ -33,26 +33,37 @@ export default {
   created () {
     this.getData()
   },
+  computed: {
+    url () {
+      let url = ''
+      if (this.coupon_click_url) {
+        url = this.coupon_click_url
+      } else if (this.coupon_id) {
+        url = `https://uland.taobao.com/coupon/edetail?activityId=${
+          this.coupon_id
+        }&itemId=${this.num_iid}&src=pgy_pgyqf`
+      } else {
+        url = `http://item.taobao.com/item.htm?id=${this.num_iid}`
+      }
+      const PID = 'mm_131778178_45276106_534348035'
+      return url + `&pid=${PID}`
+    },
+    scheme () {
+      return 'taobao://' + this.url
+    }
+  },
   methods: {
     async getData () {
       let data = await utils.tbk('taobao.tbk.item.info.get', {
-        fields: 'volume,num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url',
+        fields:
+          'volume,num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url',
         platform: 2,
         num_iids: this.num_iid
       })
       this.data = data.data.results.n_tbk_item[0]
     },
     buy () {
-      let url = ''
-      if (this.coupon_click_url) {
-        url = this.coupon_click_url
-      } else if (this.coupon_id) {
-        url = `https://uland.taobao.com/coupon/edetail?activityId=${this.coupon_id}&itemId=${this.num_iid}&src=pgy_pgyqf`
-      } else {
-        url = `http://item.taobao.com/item.htm?id=${this.num_iid}`
-      }
-      const PID = 'mm_131778178_45276106_534348035'
-      window.location.href = url + `&pid=${PID}`
+      window.open(this.url)
     }
   }
 }

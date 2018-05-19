@@ -59,7 +59,7 @@ export default {
     }
   },
   async created () {
-    this.imgUrl = (await axios.get(
+    this.imgUrl = (await window.axios.get(
       'https://wx.firecloud.club/apis/imgUrls'
     )).data
   },

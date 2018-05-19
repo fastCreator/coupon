@@ -1,7 +1,7 @@
 <template>
   <div class="page-search">
         <div class="search">
-        <input placeholder="输入关键词搜索" bindinput="inputValue" v-model="value"/>
+        <input placeholder="输入关键词搜索" v-model="value"/>
         <button @click="addSearch(value)" >搜索</button>
     </div>
     <div class="hot">
@@ -26,7 +26,7 @@ export default {
     return {
       value: '',
       history: [],
-      tags: ['连衣裙', '女鞋', '两件套', 'T恤', '零食'],
+      tags: ['连衣裙', '女鞋', '两件套', 'T恤', '零食']
     }
   },
   created () {
