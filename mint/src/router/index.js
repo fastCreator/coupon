@@ -4,6 +4,7 @@ import index from '@/components/index'
 import search from '@/components/page-search'
 import list from '@/components/page-list'
 import detils from '@/components/page-detils'
+import them from '@/components/page-them'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/detils',
       name: 'detils',
       component: detils
+    },
+    {
+      path: '/them',
+      name: 'them',
+      component: them
     }
   ]
 })

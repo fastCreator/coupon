@@ -1,6 +1,5 @@
 <template>
   <div id="app">
-    <mt-header fixed title="固定在顶部"></mt-header>
     <router-view/>
   </div>
 </template>
@@ -34,7 +33,6 @@ img {
   width: 100%;
 }
 #app {
-  padding-top: 40px;
   background: #f0f0f0;
 }
 .flex3,

@@ -57,9 +57,7 @@ export default {
       )
     }
   },
-  mounted () {
-
-  },
+  mounted () {},
   methods: {
     async copy () {
       if (utils.is_weixn()) {
@@ -76,7 +74,7 @@ export default {
         抢购：${this.url}
         `
         var clipboard = new window.ClipboardJS('.copyText')
-        clipboard.on('success', (e) => {
+        clipboard.on('success', e => {
           MessageBox.alert(
             '打开手机淘宝APP,即可进入优惠券领取页面',
             '口令复制成功'
@@ -96,10 +94,12 @@ export default {
     async buy () {
       if (utils.is_weixn()) {
         return false
-      } else if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+      } else if (
+        /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
+      ) {
         location.href = this.scheme
       } else {
-        location.href = this.url
+        window.open(this.url)
       }
     }
   }
@@ -169,7 +169,7 @@ export default {
     background: #f96150;
     color: #fff;
     font-size: 16px;
-    line-height: 40px;
+    line-height: 42px;
   }
   .share {
     display: inline-block;
