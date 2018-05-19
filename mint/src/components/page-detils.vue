@@ -21,6 +21,7 @@
 
 <script>
 import utils from '../utils/utils.js'
+
 export default {
   data () {
     return {
@@ -39,7 +40,7 @@ export default {
       if (this.coupon_click_url) {
         url = this.coupon_click_url
       } else if (this.coupon_id) {
-        url = `https://uland.taobao.com/coupon/edetail?activityId=${
+        url = `http://uland.taobao.com/coupon/edetail?activityId=${
           this.coupon_id
         }&itemId=${this.num_iid}&src=pgy_pgyqf`
       } else {

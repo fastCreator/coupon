@@ -7,5 +7,18 @@ export default {
       adzone: true,
       site: true
     })
+  },
+  schemeUrl (url, callbak) {
+    var ifr = document.createElement('iframe')
+    ifr.src = url /** *打开app的协议，如zhe800://goto_home***/
+    ifr.style.display = 'none'
+    document.body.appendChild(ifr)
+    // app没反应1s后执行另外的方法
+    window.setTimeout(function () {
+      document.body.removeChild(ifr)
+      if (typeof callbak === 'function') {
+        callbak()
+      }
+    }, 1000)
   }
 }
