@@ -35,11 +35,11 @@ export default {
     const PID = 'mm_131778178_45276106_534348035'
     let url = ''
     if (couponId && numIid) {
-      url = `https://uland.taobao.com/coupon/edetail?activityId=${
-        couponId
-      }&itemId=${this.num_iid}&src=pgy_pgyqf`
+      url = `https://uland.taobao.com/coupon/edetail?activityId=${couponId}&itemId=${this.num_iid}&src=pgy_pgyqf`
     } else if (numIid) {
       url = `https://item.taobao.com/item.htm?id=${numIid}`
+    } else if (couponId) {
+      url = `https://uland.taobao.com/coupon/edetail?activityId=${couponId}&src=pgy_pgyqf`
     } else {
       url = couponClickUrl
     }

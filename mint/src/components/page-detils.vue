@@ -52,7 +52,7 @@ export default {
       this.data = data.data.results.n_tbk_item[0]
     },
     buy () {
-      utils.copy(this.data.title, this.data.pict_url, this.data.zk_final_price, this.num_iids, this.coupon_id)
+      utils.copy(this.data.title, this.data.pict_url, this.data.zk_final_price, this.num_iid, this.coupon_id)
     }
   }
 }
