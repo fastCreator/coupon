@@ -95,14 +95,10 @@ export default {
       if (utils.is_weixn()) {
         return false
       } else if (
-        /Android|webOS|iPhone|iPod|BlackBerry|UCBrowser/i.test(navigator.userAgent)
+        /Android|webOS|iPhone|iPod|BlackBerry|UCBrowser|iOS|Windows Phone/i.test(navigator.userAgent)
       ) {
-        alert(1)
-        alert(navigator.userAgent)
         location.href = this.scheme
       } else {
-        alert(2)
-        alert(navigator.userAgent)
         window.open(this.url)
       }
     }
