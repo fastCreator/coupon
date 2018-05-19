@@ -64,7 +64,7 @@ export default {
     } else if (
       /Android|webOS|iPhone|iPod|BlackBerry|UCBrowser|iOS|Windows Phone/i.test(navigator.userAgent)
     ) {
-      let ck = !~url.indexOf('s.click.taobao.com')
+      let ck = ~url.indexOf('s.click.taobao.com')
       if (ck) {
         if (model) {
           url = ''
