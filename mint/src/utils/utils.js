@@ -60,15 +60,7 @@ export default {
           淘口令:${model}
           抢购：${url}
           `
-      MessageBox({
-        title: '口令',
-        message: '点击复制，打开淘宝APP,即可进入优惠券领取页面',
-        confirmButtonText: '复制口令'
-      })
-      let ele = document.getElementsByClassName('mint-msgbox-confirm')[0]
-      ele.setAttribute('data-clipboard-action', 'copy')
-      ele.setAttribute('data-clipboard-text', copyText)
-      console.log(new window.ClipboardJS('.mint-msgbox-confirm'))
+      this.copyBox(copyText)
     } else if (
       /Android|webOS|iPhone|iPod|BlackBerry|UCBrowser|iOS|Windows Phone/i.test(navigator.userAgent)
     ) {
@@ -76,6 +68,7 @@ export default {
       if (ck) {
         if (model) {
           url = ''
+          this.copyBox(model)
         }
         location.href = 'taobao://' + url
       } else {
@@ -85,5 +78,16 @@ export default {
     } else {
       window.open(url)
     }
+  },
+  copyBox (copyText) {
+    MessageBox({
+      title: '口令',
+      message: '点击复制，打开淘宝APP,即可进入优惠券领取页面',
+      confirmButtonText: '复制口令'
+    })
+    let ele = document.getElementsByClassName('mint-msgbox-confirm')[0]
+    ele.setAttribute('data-clipboard-action', 'copy')
+    ele.setAttribute('data-clipboard-text', copyText)
+    console.log(new window.ClipboardJS('.mint-msgbox-confirm'))
   }
 }
