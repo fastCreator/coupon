@@ -69,7 +69,7 @@ export default {
         if (model) {
           url = 'uland.taobao.com'
           this.copyBox(model, () => {
-            location.href = 'taobao://' + url
+            // location.href = 'taobao://' + url
           })
         } else {
           location.href = 'taobao://' + url
@@ -88,9 +88,7 @@ export default {
       message: '点击复制，打开淘宝APP,即可进入优惠券领取页面',
       confirmButtonText: '复制口令'
     }).then(() => {
-      setTimeout(() => {
-        cb && cb()
-      }, 200)
+      cb && cb()
     })
     let ele = document.getElementsByClassName('mint-msgbox-confirm')[0]
     ele.setAttribute('data-clipboard-action', 'copy')
