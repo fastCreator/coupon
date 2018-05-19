@@ -31,8 +31,23 @@ export default {
       return false
     }
   },
-  async copy (text, url, logo, price) {
+  async copy (text, logo, price, numIid, couponId, couponClickUrl) {
+    const PID = 'mm_131778178_45276106_534348035'
+    let url = ''
+    if (couponId && numIid) {
+      url = `https://uland.taobao.com/coupon/edetail?activityId=${
+        couponId
+      }&itemId=${this.num_iid}&src=pgy_pgyqf`
+    } else if (numIid) {
+      url = `https://item.taobao.com/item.htm?id=${numIid}`
+    } else {
+      url = couponClickUrl
+    }
+    url = url + `&pid=${PID}`
     if (this.is_weixn()) {
+      url = `https://uland.taobao.com/coupon/edetail?activityId=${
+        couponId
+      }&itemId=${this.num_iid}&src=pgy_pgyqf` + `&pid=${PID}`
       let model = (await this.tbk('taobao.tbk.tpwd.create', {
         user_id: '87491795',
         text: text,

@@ -19,7 +19,7 @@
           <div class="zk_final_price">￥
             <div class="f16">{{item.zk_final_price}}</div>
           </div>
-          <div class="buy" bindtap='buy'>马上抢</div>
+          <div class="buy" @click="buy(item)">马上抢</div>
         </div>
       </div>
     </div>
@@ -88,6 +88,9 @@ export default {
     this.active = now
   },
   methods: {
+    buy (it) {
+      utils.copy(it.title, it.pict_url, it.reserve_price, it.num_iid)
+    },
     async loadMore () {
       this.page_no++
       this.loading = true
