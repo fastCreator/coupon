@@ -64,7 +64,7 @@ export default {
       this.data = data.data.results.n_tbk_item[0]
     },
     buy () {
-      window.open(this.scheme)
+      location.href = this.scheme
     }
   }
 }
