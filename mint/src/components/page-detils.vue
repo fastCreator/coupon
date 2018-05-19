@@ -12,7 +12,7 @@
     <div class="fix-buttom">
       <div class="it1 iconfont icon-home_light" bindtap='gohome'>首页</div>
       <div class="it1 iconfont icon-share1" bindtap='share'>分享</div>
-      <div class="it2 copyText" @click='buy' :data-clipboard-text="copyText">
+      <div class="it2 copyText" @click='buy' :data-clipboard-text="copyText" data-clipboard-action="copy">
         领券购买
       </div>
     </div>
@@ -69,10 +69,12 @@ export default {
           url: this.url,
           logo: this.data.pict_url
         })).data.data.model
-        this.copyText = `${this.data.title}
+        this.copyText = `
+        ${this.data.title}
         促销价:${this.data.zk_final_price}
         淘口令:${model}元
-        抢购：${this.url}`
+        抢购：${this.url}
+        `
         var clipboard = new window.ClipboardJS('.copyText')
         clipboard.on('success', (e) => {
           MessageBox.alert(
