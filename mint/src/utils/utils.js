@@ -26,7 +26,7 @@ export default {
     if (ua.match(/MicroMessenger/i) === 'micromessenger') {
       return true
     } else {
-      return true
+      return false
     }
   }
 }
