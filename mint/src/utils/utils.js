@@ -68,7 +68,7 @@ export default {
         window.open(url)
       } else {
         url = url + `&pid=${PID}`
-        url.replace('https://', '').replace('http://', '')
+        url = url.replace('https://', '').replace('http://', '')
         location.href = 'taobao://' + url
       }
     } else {
