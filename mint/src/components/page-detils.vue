@@ -98,9 +98,11 @@ export default {
         /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
       ) {
         alert(1)
+        alert(navigator.userAgent)
         location.href = this.scheme
       } else {
         alert(2)
+        alert(navigator.userAgent)
         window.open(this.url)
       }
     }
