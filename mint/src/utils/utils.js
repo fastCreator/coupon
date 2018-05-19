@@ -65,8 +65,7 @@ export default {
     ) {
       let ck = ~url.indexOf('s.click.taobao.com')
       if (ck) {
-        url.replace('https://', '').replace('http://', '')
-        location.href = 'taobao://' + url
+        window.open(url)
       } else {
         url = url + `&pid=${PID}`
         url.replace('https://', '').replace('http://', '')
