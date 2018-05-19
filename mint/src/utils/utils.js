@@ -43,7 +43,6 @@ export default {
     } else {
       url = couponClickUrl
     }
-    url = url + `&pid=${PID}`
     if (this.is_weixn()) {
       if (!model) {
         url = `https://uland.taobao.com/coupon/edetail?itemId=${numIid}${couponId ? ('&activityId=' + couponId) : ''}&src=pgy_pgyqf` + `&pid=${PID}`
@@ -66,12 +65,15 @@ export default {
     ) {
       let ck = ~url.indexOf('s.click.taobao.com')
       if (ck) {
-        window.open(url)
+        url.replace('https://', '').replace('http://', '')
+        location.href = 'taobao://' + url
       } else {
+        url = url + `&pid=${PID}`
         url.replace('https://', '').replace('http://', '')
         location.href = 'taobao://' + url
       }
     } else {
+      url = url + `&pid=${PID}`
       window.open(url)
     }
   },
