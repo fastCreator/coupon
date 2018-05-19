@@ -97,8 +97,10 @@ export default {
       } else if (
         /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
       ) {
+        alert(1)
         location.href = this.scheme
       } else {
+        alert(2)
         window.open(this.url)
       }
     }
