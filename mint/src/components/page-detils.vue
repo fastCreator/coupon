@@ -95,7 +95,7 @@ export default {
       if (utils.is_weixn()) {
         return false
       } else if (
-        /Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)
+        /Android|webOS|iPhone|iPod|BlackBerry|UCBrowser/i.test(navigator.userAgent)
       ) {
         alert(1)
         alert(navigator.userAgent)
