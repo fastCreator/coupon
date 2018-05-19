@@ -72,7 +72,10 @@ export default {
     } else if (
       /Android|webOS|iPhone|iPod|BlackBerry|UCBrowser|iOS|Windows Phone/i.test(navigator.userAgent)
     ) {
-      location.href = 'taobao://' + url.replace('https://', '').replace('http://', '')
+      if (~url.indexOf('s.click.taobao.com')) {
+        url.replace('https://', '').replace('http://', '')
+      }
+      location.href = 'taobao://' + url
     } else {
       window.open(url)
     }
