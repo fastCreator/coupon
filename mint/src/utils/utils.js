@@ -66,14 +66,7 @@ export default {
     ) {
       let ck = ~url.indexOf('s.click.taobao.com')
       if (ck) {
-        if (model) {
-          url = 'uland.taobao.com'
-          this.copyBox(model, () => {
-            // location.href = 'taobao://' + url
-          })
-        } else {
-          location.href = 'taobao://' + url
-        }
+        location.href = url
       } else {
         url.replace('https://', '').replace('http://', '')
         location.href = 'taobao://' + url
