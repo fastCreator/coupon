@@ -40,11 +40,11 @@ export default {
       if (this.coupon_click_url) {
         url = this.coupon_click_url
       } else if (this.coupon_id) {
-        url = `https//uland.taobao.com/coupon/edetail?activityId=${
+        url = `http//uland.taobao.com/coupon/edetail?activityId=${
           this.coupon_id
         }&itemId=${this.num_iid}&src=pgy_pgyqf`
       } else {
-        url = `https://item.taobao.com/item.htm?id=${this.num_iid}`
+        url = `http://item.taobao.com/item.htm?id=${this.num_iid}`
       }
       const PID = 'mm_131778178_45276106_534348035'
       return url + `&pid=${PID}`
