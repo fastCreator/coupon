@@ -5,8 +5,19 @@
 </template>
 
 <script>
+import { Toast } from 'mint-ui'
+import utils from './utils/utils.js'
 export default {
-  name: 'App'
+  name: 'App',
+  created () {
+    if (utils.is_weixn()) {
+      Toast({
+        message: '建议点击右上角，使用其他浏览器打开，可以直接唤醒淘宝',
+        position: 'top',
+        duration: 5000
+      })
+    }
+  }
 }
 </script>
 
