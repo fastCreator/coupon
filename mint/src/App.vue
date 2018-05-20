@@ -19,6 +19,10 @@ export default {
     }
   }
 }
+if (!/Android|webOS|iPhone|iPod|BlackBerry|UCBrowser|iOS|Windows Phone/i.test(navigator.userAgent)) {
+  document.getElementsByTagName('html')[0].setAttribute('class', 'pc')
+}
+
 </script>
 
 <style>
@@ -32,6 +36,9 @@ body,
   width: 100%;
   height: 100%;
   overflow: hidden;
+}
+html.pc .good-list .item{
+  width:20%;
 }
 .view > div {
   height: 100%;
