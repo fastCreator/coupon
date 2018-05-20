@@ -36,7 +36,7 @@ export default {
   },
   methods: {
     async loadMore () {
-      this.page_no++
+      this.filter.page_no++
       this.loading = true
       await this.search()
       this.loading = false
