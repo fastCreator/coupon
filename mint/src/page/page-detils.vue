@@ -37,7 +37,7 @@ export default {
   created () {
     this.getData()
   },
-  mounted () {},
+  mounted () { },
   methods: {
     gohome () {
       this.$router.push({ path: '/' })
@@ -52,7 +52,7 @@ export default {
       this.data = data.data.results.n_tbk_item[0]
     },
     buy () {
-      utils.copy(this.data.title, this.data.pict_url, this.data.zk_final_price, this.num_iid, this.coupon_id)
+      utils.copy(this.data.title, this.data.pict_url, this.data.zk_final_price, this.num_iid, this.coupon_id, this.coupon_click_url)
     }
   }
 }

@@ -34,14 +34,14 @@ export default {
   async copy (text, logo, price, numIid, couponId, couponClickUrl, model) {
     const PID = 'mm_131778178_45276106_534348035'
     let url = ''
-    if (couponId && numIid) {
+    if (couponClickUrl) {
+      url = couponClickUrl
+    } else if (couponId && numIid) {
       url = `https://uland.taobao.com/coupon/edetail?activityId=${couponId}&itemId=${numIid}&src=pgy_pgyqf`
     } else if (numIid) {
       url = `https://item.taobao.com/item.htm?id=${numIid}`
     } else if (couponId) {
       url = `https://uland.taobao.com/coupon/edetail?activityId=${couponId}&src=pgy_pgyqf`
-    } else {
-      url = couponClickUrl
     }
     if (this.is_weixn()) {
       if (!model) {
