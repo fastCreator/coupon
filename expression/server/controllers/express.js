@@ -1,4 +1,4 @@
-const size = 10
+const size = 12
 
 module.exports = async function (ctx, next) {
     const { mysql } = require('../qcloud')

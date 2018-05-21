@@ -1,0 +1,28 @@
+page {
+  text-align: center;
+}
+
+.select {
+  height: 140px;
+  margin: auto;
+  padding: 10px;
+}
+
+.select image {
+  height: 120px;
+  margin-top: 10px;
+  vertical-align: middle;
+}
+
+.title {
+  background: #f0eff4;
+  font-size: 14px;
+}
+
+.list image {
+  width: 25%;
+  height: 70px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ededed;
+  border-right: 1px solid #ededed;
+}
