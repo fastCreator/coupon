@@ -6,7 +6,7 @@
     <mt-swipe :auto="3000" :style="{height:swipeHeight}">
       <mt-swipe-item v-for="(item,i) in imgUrl" :key="i"><img :src="item.img" @click="swipeGo(item)"/></mt-swipe-item>
     </mt-swipe>
-    <c-hlist v-for="(it,i) in hd" :key="i" v-bind="it" @click="hdClick"></c-hlist>
+    <!-- <c-hlist v-for="(it,i) in hd" :key="i" v-bind="it" @click="hdClick"></c-hlist> -->
     <c-hlist v-for="(it,i) in hlist" :key="i" v-bind="it" @click="theme"></c-hlist>
   </div>
 </template>

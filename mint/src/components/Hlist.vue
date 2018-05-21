@@ -2,7 +2,7 @@
   <div class="h-list">
       <div class="special">
       <div>
-        <div :class="`iconfont ${icon}`">{{title}}</div>
+        <div :class="`iconfont ${icon}`" :style="{color:color}">{{title}}</div>
       </div>
       <div :class="'flex'+numb" :style="{borderTop:`2px solid ${color}`}">
         <img v-for="(it,i) in list" :key="i" @click="theme(it)" :src="it.img" />
@@ -44,10 +44,9 @@ export default {
   }
   .special .iconfont {
     font-size: 16px;
-    margin-bottom: 4px;
   }
   .special {
-    margin-top: 10px;
+    margin-top: 8px;
   }
 }
 </style>
