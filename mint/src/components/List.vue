@@ -2,15 +2,17 @@
   <div class="good-list">
     <div class="item" v-for="(item,i) in data" @click='godetils(item)' :key="i">
       <img :src="item.pict_url" />
-      <div class="title">{{item.title}}</div>
-      <div class="ltr">
-        <div class="coupon">{{item.coupon_info ? setc(item.coupon_info): '促'}}</div>
-        <div class="endprice">￥{{item.zk_final_price}}</div>
-      </div>
-      <div class="shop_title">{{item.shop_title}}</div>
-      <div class="ltr">
-        <div></div>
-        <div class="xl">已售{{item.volume}}</div>
+      <div class="box">
+        <div class="title">{{item.title}}</div>
+        <div class="ltr ck">
+          <div class="coupon">{{item.coupon_info ? setc(item.coupon_info): '促'}}</div>
+          <div class="endprice">￥{{item.zk_final_price}}</div>
+        </div>
+        <div class="shop_title ck">{{item.shop_title}}</div>
+        <div class="ltr">
+          <div></div>
+          <div class="xl">已售{{item.volume}}</div>
+        </div>
       </div>
     </div>
   </div>
@@ -51,15 +53,18 @@ export default {
     background: #fff;
     display: inline-block;
     width: 50%;
-    margin-top: 5px;
+    margin-top: 4px;
   }
   .item:nth-of-type(odd) {
-    border-left: 8px solid #f0f0f0;
-    border-right: 4px solid #f0f0f0;
+    border-left: 4px solid #f0f0f0;
+    border-right: 2px solid #f0f0f0;
   }
   .item:nth-of-type(even) {
-    border-left: 4px solid #f0f0f0;
-    border-right: 8px solid #f0f0f0;
+    border-left: 2px solid #f0f0f0;
+    border-right: 4px solid #f0f0f0;
+  }
+  .box{
+    padding:4px;
   }
   .title,
   .shop_title {
@@ -67,6 +72,9 @@ export default {
     overflow: hidden;
     text-overflow: ellipsis;
     font-size: 13px;
+  }
+  .ck{
+    margin:2px 0;
   }
   .shop_title {
     text-align: center;
