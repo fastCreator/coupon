@@ -5,7 +5,7 @@
       <input placeholder="输入关键词搜索" v-model="filters.q" />
       <button @click="ok">搜索</button>
     </div>
-    <list :data="data"></list>
+    <c-list :data="data"></c-list>
   </div>
 </template>
 

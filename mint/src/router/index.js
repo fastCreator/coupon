@@ -1,10 +1,10 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import index from '@/components/index'
-import search from '@/components/page-search'
-import list from '@/components/page-list'
-import detils from '@/components/page-detils'
-import them from '@/components/page-them'
+import index from '@/page/index'
+import search from '@/page/page-search'
+import list from '@/page/page-list'
+import detils from '@/page/page-detils'
+import them from '@/page/page-them'
 
 Vue.use(Router)
 

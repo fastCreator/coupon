@@ -6,7 +6,7 @@
     <div :class="filter.sort===SORT.price?'active':''" @click='toggleSort(SORT.price)'>价格</div>
     <div :class="{'iconfont icon-check':filter.has_coupon}" @click="toggleCoupon">优惠劵<span></span></div>
   </div>
-    <list :data="list"></list>
+    <c-list :data="list"></c-list>
   </div>
 </template>
 

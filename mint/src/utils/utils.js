@@ -72,7 +72,10 @@ export default {
         location.href = 'taobao://' + url
       }
     } else {
-      url = url + `&pid=${PID}`
+      let ck = ~url.indexOf('s.click.taobao.com')
+      if (!ck) {
+        url = url + `&pid=${PID}`
+      }
       window.open(url)
     }
   },

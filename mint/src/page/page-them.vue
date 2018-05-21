@@ -1,6 +1,6 @@
 <template>
   <div class="page-list" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="40">
-    <list :data="list"></list>
+    <c-list :data="list"></c-list>
   </div>
 </template>
 

@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  name: 'list',
+  name: 'c-list',
   props: {
     data: {
       defalut () {

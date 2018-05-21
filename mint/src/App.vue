@@ -53,9 +53,13 @@ img {
 #app {
   background: #f0f0f0;
 }
+.flex2,
 .flex3,
 .flex4 {
   font-size: 0;
+}
+.flex2 > * {
+  width: 50%;
 }
 .flex3 > * {
   width: 33.3333%;
