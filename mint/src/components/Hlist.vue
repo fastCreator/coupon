@@ -43,7 +43,7 @@ export default {
     margin-right: 4px;
   }
   .special .iconfont {
-    font-size: 16px;
+    font-size: 14px;
   }
   .special {
     margin-top: 8px;
