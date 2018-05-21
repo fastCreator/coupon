@@ -63,6 +63,9 @@ export default {
 <style scoped lang="less">
 .index {
   padding-bottom: 55px;
+  .mint-tabbar {
+    border-top: 1px solid #eaeaea;
+  }
   .mint-tabbar .iconfont {
     font-size: 22px;
   }
