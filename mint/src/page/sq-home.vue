@@ -34,8 +34,8 @@ export default {
     swipeGo (item) {
       utils.copy(item.clip.title, item.img, 0, undefined, undefined, item.clip.dlj, item.clip.kl)
     },
-    theme (it) {
-      let id = this.favorites.find(it => it.favorites_title === it.list.ext).favorites_id
+    theme (d) {
+      let id = this.favorites.find(it => it.favorites_title === d.ext).favorites_id
       this.$router.push({ path: '/them', query: { id: id } })
     },
     hdClick (it) {
