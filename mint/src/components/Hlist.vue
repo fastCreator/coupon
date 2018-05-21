@@ -2,7 +2,7 @@
   <div class="h-list">
       <div class="special">
       <div>
-        <div :class="`iconfont ${icon}`" :style="{color:color}">{{title}}</div>
+        <div :class="`iconfont ${icon}`" :style="{color:'#333'}">{{title}}</div>
       </div>
       <div :class="'flex'+numb" :style="{borderTop:`2px solid ${color}`}">
         <img v-for="(it,i) in list" :key="i" @click="theme(it)" :src="it.img" />

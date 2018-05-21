@@ -17,19 +17,19 @@ export default {
       }
     },
     {
-      img: 'http://gtms03.alicdn.com/tps/i3/TB1ibblIpXXXXczXVXXQO4D5VXX-440-180.jpg',
+      img: 'https://gw.alicdn.com/tfs/TB1_2lxhv9TBuNjy0FcXXbeiFXa-440-180.jpg',
       clip: {
-        title: '飞猪首页',
-        kl: '￥dqsR0FrnihF￥',
-        dlj: 'https://s.click.taobao.com/7eIobQw'
+        title: '天猫国际限时抢购',
+        kl: '￥jJOm0FsaQFJ￥',
+        dlj: 'https://s.click.taobao.com/boFabQw'
       }
     },
     {
-      img: 'http://zebra.alicdn.com/3f85b8d1-0f5c-4582-a005-9935e341ff41.jpg',
+      img: 'https://gw.alicdn.com/tfs/TB1c7WDhqmWBuNjy1XaXXXCbXXa-440-180.jpg',
       clip: {
-        title: '天猫-舌尖上的宠粮',
-        kl: '￥m9UF0FrMIIl￥',
-        dlj: 'https://s.click.taobao.com/2EBobQw'
+        title: '美食狂欢',
+        kl: '￥AX6J0FsZn2y￥',
+        dlj: 'https://s.click.taobao.com/yN2abQw'
       }
     }
   ],
@@ -101,7 +101,7 @@ export default {
     {
       title: '行业好货',
       icon: 'icon-appreciate_fill_light',
-      color: '#ec495e',
+      color: '#ed495e',
       numb: 3,
       list: [
         {
