@@ -1,0 +1,33 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/my/index"
+  ],
+  "window": {
+    "backgroundColor": "#ccc",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#FFC100",
+    "navigationBarTitleText": "表情果",
+    "navigationBarTextStyle": "#ffffff"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "vendor/images/home_light.png",
+        "selectedIconPath": "vendor/images/home_fill_light.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "vendor/images/my_light.png",
+        "selectedIconPath": "vendor/images/my_fill_light.png"
+      }
+    ],
+    "borderStyle": "white",
+    "backgroundColor": "#fff",
+    "color": "#8a8a8a",
+    "selectedColor": "#FA605D"
+  }
+}

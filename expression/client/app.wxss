@@ -1,0 +1,24 @@
+@import './vendor/weui.wxss';
+@import './vendor/font/iconfont.wxss';
+
+page {
+  min-height: 100%;
+  background-color: #f0f0f0;
+  color: #333;
+  padding-bottom: 6px;
+  box-sizing: border-box;
+}
+
+.ltr {
+  overflow: hidden;
+}
+
+.ltr>view:nth-child(odd) {
+  line-height: 22px;
+  float: left;
+}
+
+.ltr>view:nth-child(even) {
+  line-height: 22px;
+  float: right;
+}

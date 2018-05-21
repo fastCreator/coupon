@@ -2,7 +2,7 @@
  * ajax 服务路由集合
  */
 const router = require('koa-router')({
-    prefix: '/apis'
+    prefix: '/express'
 })
 const controllers = require('../controllers')
 
@@ -12,11 +12,12 @@ const controllers = require('../controllers')
 
 // --- 登录与授权 Demo --- //
 
-// 淘宝客接口
-router.post('/tbk', controllers.tbk)
-// 是否审核
+ 
+// 表情果
+router.get('/express', controllers.express)
+// // 是否审核
 // router.get('/issh', controllers.issh)
-// 登录接口
+// // 登录接口
 // router.get('/login', authorizationMiddleware, controllers.login)
 // // 用户信息接口（可以用来验证登录态）
 // router.get('/user', validationMiddleware, controllers.user)
