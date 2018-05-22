@@ -1,0 +1,33 @@
+
+    
+    <view class="scroll-view list" bindscroll="$scrollView$scroll">
+        
+        <view class="filter">
+            <view class="{{filter.sort===SORT.popular?'active item':'item'}}" bindtap="toggleSort" data-sort="{{SORT.popular}}">人气 </view>
+            <view class="{{filter.sort===SORT.sales?'active item':'item'}}" bindtap="toggleSort" data-sort="{{SORT.sales}}">销量</view>
+            <view class="{{filter.sort===SORT.price?'active item':'item'}}" bindtap="toggleSort" data-sort="{{SORT.price}}">价格</view>
+
+            <checkbox-group bindchange="selectCoupon" class="checkbox">
+                <label>
+                    <checkbox value="true" checked="{{filter.has_coupon}}"/>优惠劵
+                </label>
+            </checkbox-group>
+        </view>
+
+        <view class="list">
+            <view class="item"  wx:for="{{list}}" wx:key="{{index}}" bindtap="godetils" data-num_iid="{{item.num_iid}}" data-coupon_id="{{item.coupon_id}}" data-coupon="{{item.coupon || '促销'}}">
+                <image src="{{item.pict_url}}" mode="widthFix"/>
+                <view class="title">{{item.title}}</view>
+
+                <view class="ltr">
+                    <view class="coupon">{{item.coupon || '促'}}</view>
+                    <view class="endprice">￥{{item.zk_final_price}}</view>
+                </view>
+                <view class="ltr">
+                    <view/>
+                    <view class="xl">已售{{item.volume}}</view>
+                </view>
+            </view>
+        </view>
+    
+    </view>

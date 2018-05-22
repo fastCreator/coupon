@@ -1,0 +1,78 @@
+@import "./../components/scroll-view.wxss";
+.list {
+  height: 100%;
+}
+.list .none {
+  display: none;
+}
+.list .filter {
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  font-size: 0;
+}
+.list .filter > .item {
+  font-size: 18px;
+  line-height: 40px;
+  text-align: center;
+  display: inline-block;
+  width: 24%;
+  box-sizing: border-box;
+}
+.list .filter > .checkbox {
+  font-size: 18px;
+  width: 28%;
+  display: inline-block;
+}
+.list .filter .text {
+  display: inline-block;
+  margin-left: -2px;
+}
+.list .filter > .item.active {
+  color: #f26166;
+}
+.list .filter .iconfont {
+  display: inline;
+}
+.list .list .item:nth-of-type(odd) {
+  padding-right: 0;
+}
+.list .list .item {
+  display: inline-block;
+  width: 50%;
+  overflow: hidden;
+  border-left: 6px solid #f0f0f0;
+  box-sizing: border-box;
+  background: #fff;
+}
+.list .list .item:nth-child(even) {
+  border-right: 6px solid #f0f0f0;
+}
+.list .list .item .ltr,
+.list .list .item .title {
+  padding: 0 6px;
+}
+.list .list .item .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+.list .list .item .coupon {
+  background: #f26166;
+  color: #fff;
+  border: 1px solid #f26166;
+  border-radius: 5px;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 2px;
+}
+.list .list .item .endprice {
+  font-size: 14px;
+  line-height: 18px;
+  color: #f26166;
+}
+.list .list .item .xl {
+  color: #ccc;
+  font-size: 12px;
+}

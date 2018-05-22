@@ -1,0 +1,21 @@
+
+    <view class="search page">
+        <view class="search">
+            <input placeholder="输入关键词搜索" bindinput="inputValue"/>
+            <button bindtap="search">搜索</button>
+        </view>
+        <view class="hot">
+            <view class="title" bindtap="search">热门搜索</view>
+            <view class="tag">
+                <view  wx:for="{{tags}}" class="tag-item" bindtap="selectTag" data-item="{{item}}">{{item}}</view>
+            </view>
+        </view>
+        <view class="hot history">
+            <view class="title">历史搜索
+                <view class="iconfont icon-delete" bindtap="clearHistory"/>
+            </view>
+            <view class="tag">
+                <view  wx:for="{{history}}" class="tag-item" bindtap="selectTag" data-item="{{item}}">{{item}}</view>
+            </view>
+        </view>
+    </view>
