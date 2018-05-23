@@ -1,0 +1,33 @@
+page, scroll-view {
+  height: 100%;
+}
+.select{
+  width:36%;
+  padding: 10px;
+  margin: auto;
+}
+.list{
+  border-top: 1px solid #ededed;
+}
+.list .item {
+  width: 33.33333%;
+  display: inline-block;
+  text-align: center;
+  border-bottom: 1px solid #ededed;
+  border-right: 1px solid #ededed;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.item .title {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+
+.weui-search-bar__cancel-btn {
+  display: inline;
+  font-size: 14px;
+  float: right;
+}

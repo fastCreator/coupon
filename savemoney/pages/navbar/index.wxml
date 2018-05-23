@@ -1,0 +1,22 @@
+<view class="navbar">
+  <navigator url="/pages/index/index" open-type="redirect"  class="item {{active==='index'?'active':''}}">
+      <view class="iconfont {{active==='index'?'icon-home_fill_light':'icon-home_light'}}"></view>
+      <view class='text'>首页</view>
+  </navigator>
+  <navigator url="/pages/jxtj/index" open-type="redirect"  class="item {{active==='jxtj'?'active':''}}">
+      <view class="iconfont {{active==='jxtj'?'icon-choicenessfill':'icon-choiceness'}}"></view>
+      <view class='text'>精品推荐</view>
+  </navigator>
+  <navigator url="/pages/tqg/index" open-type="redirect"  class="item {{active==='tqg'?'active':''}}">
+      <view class="iconfont {{active==='tqg'?'icon-countdownfill':'icon-countdown'}}"></view>
+      <view class='text'>淘抢购</view>
+  </navigator>
+  <navigator url="/pages/search/index" open-type="redirect"  class="item {{active==='search'?'active':''}}">
+      <view class="iconfont icon-search"></view>
+      <view class='text'>搜索</view>
+  </navigator>
+  <navigator url="/pages/my/index" open-type="redirect"  class="item {{active==='my'?'active':''}}">
+      <view class="iconfont {{active==='my'?'icon-my_fill_light':'icon-my_light'}}"></view>
+      <view class='text'>我的</view>
+  </navigator>
+</view>

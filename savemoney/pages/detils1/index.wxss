@@ -1,0 +1,58 @@
+page {
+  text-align: center;
+}
+
+.select {
+  height: 140px;
+  margin: auto;
+  padding: 10px;
+}
+.select image {
+  height: 120px;
+  margin-top: 10px;
+  vertical-align: middle;
+}
+
+.title {
+  background: #f0eff4;
+  font-size: 16px;
+  padding: 2px 0;
+}
+
+.list {
+  text-align: left;
+  padding-bottom: 50px;
+}
+
+.list image {
+  width: 25%;
+  height: 70px;
+  box-sizing: border-box;
+  border-bottom: 1px solid #ededed;
+  border-right: 1px solid #ededed;
+}
+
+.fixbtn {
+  position: fixed;
+  bottom: 0;
+  width:100%;
+  height: 40px;
+  border-top:1px solid #ccc;
+  background: #fff;
+}
+.fixbtn > view,.fixbtn > button{
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: middle;
+  width: 33.333333%;
+  height:40px;
+  line-height: 40px;
+  border-right:1px solid #ccc;
+  font-size: 16px;
+}
+button[plain]{
+  border: none;
+}
+.iconfont::before{
+  margin-right: 5px;
+}

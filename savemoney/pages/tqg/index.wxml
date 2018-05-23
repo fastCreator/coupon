@@ -1,0 +1,27 @@
+<navbar active="tqg"></navbar>
+<scroll-view scroll-y class="page" bindscrolltolower="nextPage">
+  <scroll-view scroll-x class="time" scroll-left="{{scrollLeft}}" scroll-with-animation>
+    <view class="{{time[active]==item?'now item':'item'}}" wx:for="{{time}}">
+      <view>{{item}}:00</view>
+      <view bindtap='selectTime' data-index="{{index}}">{{time[now]==item?'正在疯抢':(time[now]>item?'已开抢':'即将开抢')}}</view>
+    </view>
+  </scroll-view>
+  <view class="good">
+    <view class="item" wx:for="{{list}}">
+      <image src="{{item.pic_url}}" mode="widthFix"/>
+      <view class="info">
+        <view class="title">[{{item.category_name}}]{{item.title}}</view>
+        <view class="ltr">
+          <view class="reserve_price">￥{{item.reserve_price}}</view>
+          <view class="sold_num">已抢购{{item.sold_num}}件</view>
+        </view>
+        <view class="ltr">
+          <view class="zk_final_price">￥
+            <view class="f16">{{item.zk_final_price}}</view>
+          </view>
+          <view class="buy" bindtap='buy' data-index="{{index}}">马上抢</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</scroll-view>

@@ -1,0 +1,20 @@
+<scroll-view scroll-y bindscrolltolower="next">
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="请输入搜索内容" value="{{search}}" bindinput="inputTyping" bindconfirm="searchOk"/>
+        <view class="weui-icon-clear" wx:if="{{search.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="14"></icon>
+        </view>
+      </view>
+    </view>
+    <view class="weui-search-bar__cancel-btn" bindtap="searchOk">搜索</view>
+  </view>
+  <view class="list">
+    <view wx:for="{{list}}" class="item" bindtap='go' data-index="{{index}}">
+      <image src="{{item.header}}" mode="widthFix"></image>
+      <view class="title">{{item.title}}</view>
+    </view>
+  </view>
+</scroll-view>

@@ -1,0 +1,12 @@
+<view class="select">
+  <image src="{{select}}" mode="aspectFit" bindtap='preview'></image>
+</view>
+<view class="title" bindtap='showQ'>{{title}}<text class="iconfont icon-questionfill"></text></view>
+<view class="list">
+  <image wx:for="{{list}}" src="{{item}}" bindtap='selectImg' data-select="{{item}}"></image>
+</view>
+<view class="fixbtn">
+    <view class="{{'iconfont '+ (collect?'icon-favorfill':'icon-favor')}}" bindtap='colecct'>收藏</view>
+     <view class="iconfont icon-home" bindtap='gohome'>首页</view>
+    <button open-type="share" class="iconfont icon-share" plain="true">分享</button>
+</view>

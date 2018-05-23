@@ -11,11 +11,12 @@ const controllers = require('../controllers')
 // const { auth: { authorizationMiddleware, validationMiddleware } } = require('../qcloud')
 
 // --- 登录与授权 Demo --- //
-
+// 滑动展示页面数据
+router.post('/imgUrls', controllers.imgUrls)
 // 淘宝客接口
 router.post('/tbk', controllers.tbk)
-// 是否审核
-// router.get('/issh', controllers.issh)
+是否审核
+router.get('/issh', controllers.issh)
 // 登录接口
 // router.get('/login', authorizationMiddleware, controllers.login)
 // // 用户信息接口（可以用来验证登录态）
