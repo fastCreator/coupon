@@ -1,56 +1,33 @@
-swiper image {
-  width: 100%;
+page, scroll-view {
+  height: 100%;
 }
-.z-search{
+.select{
+  width:36%;
   padding: 10px;
-  font-size:14px;
-  background-color: #F96153;
-  color: #fff;
+  margin: auto;
 }
-.z-search .input{
-  background-color: #F04E43;
-  padding: 6px 10px;
-  border-radius: 8px;
+.list{
+  border-top: 1px solid #ededed;
 }
-.z-tabs{
+.list .item {
+  width: 33.33333%;
   display: inline-block;
-  height:34px;
+  text-align: center;
+  border-bottom: 1px solid #ededed;
+  border-right: 1px solid #ededed;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.item .title {
   white-space: nowrap;
-  font-size:14px;
-  width:100%;
-}
-.z-tabs view{
-  display: inline-block;
-  padding: 6px 6px 4px 6px;
-  border-bottom: 2px solid #fff;
-}
-.z-tabs view.selected{
-  color: #FF6140;
-  border-color: #FF6140;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
 }
 
-.special .thtj image.weui-flex__item {
-  border-right: 1px solid #E2E2E9;
-  border-bottom: 1px solid #E2E2E9;
-}
-
-.special .iconfont:before{
-  margin-left: 4px;
-  margin-right:4px;
-}
-.special .iconfont{
-  font-size: 16px;
-  margin-bottom: 4px;
-}
-.special{
-  margin-top: 10px;
-} 
-.special .thtj{
-  border-top:2px solid #F28430;
-} 
-.special .hyjx1{
-  border-top:2px solid #a44bd0;
-} 
-.special .hyhh{
-  border-top:2px solid #EC495E;
+.weui-search-bar__cancel-btn {
+  display: inline;
+  font-size: 14px;
+  float: right;
 }

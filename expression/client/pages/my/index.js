@@ -1,70 +1,62 @@
-import { tbk, copy } from '../../utils/util.js'
 const app = getApp()
+import utils from '../../utils/util.js'
 Page({
   data: {
-    imgUrls: [],
-    imageHeight: 0.387 * wx.getSystemInfoSync().windowWidth,
-    favorites: []
+    list: [],
+    page: 0,
+    search: '',
+    first:true
   },
   onLoad() {
-    this.setissh()
-    this.getImageUrls()
+    // this.search()
   },
-  setissh() {
-    let that = this
-    wx.request({
-      url: 'https://wx.firecloud.club/apis/issh',
-      success: function (res) {
-        wx.setStorage({
-          key: "issh",
-          data: res.data
-        })
-      }
+  onShow() {
+    this.search()
+  },
+  search() {
+    if (wx.getStorageSync('nochange') === '1' && !this.data.first) {
+      return false
+    }
+    this.setData({ first:false})
+    wx.setStorageSync('nochange', '1')
+    wx.showLoading({
+      title: '加载中',
     })
-  },
-  getImageUrls() {
-    let that = this
-    wx.request({
-      url: 'https://wx.firecloud.club/apis/imgUrls',
-      success: function (res) {
-        that.setData({
-          imgUrls: res.data
-        })
-      }
-    })
-  },
-  onReady() {
-    tbk('taobao.tbk.uatm.favorites.get', {
-      fields: 'favorites_title,favorites_id,type',
-      type: '-1'
-    }, (d) => {
-      this.setData({ favorites: d.results.tbk_favorites })
-    })
-  },
-  toSearch() {
-    wx.navigateTo({
-      url: '../search/index'
-    })
-  },
-  hd(e) {
-    let d = this.data.imgUrls[e.currentTarget.dataset.index].clip
-    let clip = `
-      ${d.title}
-      淘口令:${d.kl}
-      活动地址：${d.dlj}
-      `
-    copy(clip, function () {
-      wx.showModal({
-        title: '提示',
-        showCancel: false,
-        content: `活动[${d.title}]链接复制成功，通过浏览器打开或者手动打开淘宝自动跳转；遇到延迟，请点击淘宝顶部搜索即可`
+    utils.imgs({ ids: wx.getStorageSync('collect') }, (d) => {
+      wx.hideLoading()
+      d.data.forEach(it => {
+        it.header = it.url.slice(0, it.url.indexOf(','))
       })
+      this.setData({ list: d.data })
     })
   },
-  theme(e) {
-
+  next() {
+    this.setData({ page: this.data.page + 1 })
+    this.search()
+  },
+  searchOk() {
+    this.setData({ page: 0, list: [] })
+    this.search()
+  },
+  inputTyping(e) {
+    this.setData({ search: e.detail.value })
+  },
+  clearInput() {
+    this.setData({ search: '' })
+  },
+  preview(e) {
+    console.log(e)
+    let img ="https://wx.firecloud.club/static/goodicon.png"
+    wx.previewImage({
+      current: img, // 当前显示图片的http链接
+      urls: [img] // 需要预览的图片http链接列表
+    })
+  },
+  go(e) {
+    let d = this.data.list[e.currentTarget.dataset.index]
+    wx.setStorageSync('data', JSON.stringify(d))
     wx.navigateTo({
-      url: '../them/index?favorites_id=' + this.data.favorites.find(it => it.favorites_title === e.currentTarget.dataset.type).favorites_id
+      url: '../detils/index',
     })
   }
 })

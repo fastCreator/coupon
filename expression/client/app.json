@@ -1,8 +1,8 @@
 {
   "pages": [
-    "pages/index/index",
+    "pages/my/index",
     "pages/detils/index",
-    "pages/my/index"
+    "pages/index/index"
   ],
   "window": {
     "backgroundColor": "#ccc",
@@ -16,19 +16,19 @@
       {
         "pagePath": "pages/index/index",
         "text": "首页",
-        "iconPath": "vendor/images/home_light.png",
-        "selectedIconPath": "vendor/images/home_fill_light.png"
+        "iconPath": "vendor/images/hot.png",
+        "selectedIconPath": "vendor/images/hot_fill.png"
       },
       {
         "pagePath": "pages/my/index",
         "text": "我的",
-        "iconPath": "vendor/images/my_light.png",
-        "selectedIconPath": "vendor/images/my_fill_light.png"
+        "iconPath": "vendor/images/favor.png",
+        "selectedIconPath": "vendor/images/favor_fill.png"
       }
     ],
     "borderStyle": "white",
     "backgroundColor": "#fff",
-    "color": "#8a8a8a",
-    "selectedColor": "#FA605D"
+    "color": "#2c2c2c",
+    "selectedColor": "#FFC100"
   }
 }
