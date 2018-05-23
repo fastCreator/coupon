@@ -14,17 +14,6 @@ Page({
     this.setData({ page_no: this.data.page_no + 1 })
     this.search()
   },
-  godetils(e) {
-    let d = e.currentTarget.dataset
-    let url = `../detils/index?num_iid=${d.num_iid}&coupon=${d.coupon}`
-    if (d.coupon_click_url) {
-      wx.setStorageSync('coupon_click_url', d.coupon_click_url)
-      url += '&coupon_click_url=true'
-    }
-    wx.navigateTo({
-      url: url
-    })
-  },
   search() {
     let that = this
     wx.showLoading({

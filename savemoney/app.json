@@ -1,14 +1,12 @@
 {
   "pages": [
-    "pages/index/index",
     "pages/index1/index",
-    "pages/my1/index",
+    "pages/jxtj/index",
+    "pages/index/index",
     "pages/detils1/index",
-    "pages/navbar/index",
     "pages/detils/index",
     "pages/list/index",
     "pages/them/index",
-    "pages/jxtj/index",
     "pages/tqg/index",
     "pages/search/index",
     "pages/my/index",
@@ -17,28 +15,8 @@
   "window": {
     "backgroundColor": "#ccc",
     "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#FFC100",
-    "navigationBarTitleText": "表情果",
+    "navigationBarBackgroundColor": "#F96153",
+    "navigationBarTitleText": "",
     "navigationBarTextStyle": "#ffffff"
-  },
-  "tabBar": {
-    "list": [
-      {
-        "pagePath": "pages/index1/index",
-        "text": "首页",
-        "iconPath": "vendor/images/hot.png",
-        "selectedIconPath": "vendor/images/hot_fill.png"
-      },
-      {
-        "pagePath": "pages/my1/index",
-        "text": "我的",
-        "iconPath": "vendor/images/favor.png",
-        "selectedIconPath": "vendor/images/favor_fill.png"
-      }
-    ],
-    "borderStyle": "white",
-    "backgroundColor": "#fff",
-    "color": "#2c2c2c",
-    "selectedColor": "#FFC100"
   }
 }

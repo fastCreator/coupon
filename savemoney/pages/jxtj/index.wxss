@@ -3,6 +3,7 @@ page {
   height: 100%;
   box-sizing: border-box;
   background: #f0f0f0;
+  padding-bottom: 50px;
 }
 
 .page {

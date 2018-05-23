@@ -7,20 +7,7 @@ Page({
     favorites: []
   },
   onLoad() {
-    this.setissh()
     this.getImageUrls()
-  },
-  setissh() {
-    let that = this
-    wx.request({
-      url: 'https://wx.firecloud.club/apis/issh',
-      success: function (res) {
-        wx.setStorage({
-          key: "issh",
-          data: res.data
-        })
-      }
-    })
   },
   getImageUrls() {
     let that = this

@@ -23,12 +23,6 @@ Page({
   onShareAppMessage: function () {
 
   },
-  godetils(e) {
-    let d = e.currentTarget.dataset
-    wx.navigateTo({
-      url: `../detils/index?num_iid=${d.num_iid}&coupon_id=${d.coupon_id}&coupon=${d.coupon}`
-    })
-  },
   search() {
     let that = this
     wx.showLoading({

@@ -28,12 +28,6 @@ Page({
     this.data.filter.page_no = this.data.filter.page_no + 1
     this.search()
   },
-  godetils(e) {
-    let d = e.currentTarget.dataset
-    wx.navigateTo({
-      url: `../detils/index?num_iid=${d.num_iid}&coupon_id=${d.coupon_id}&coupon=${d.coupon}`
-    })
-  },
   selectCoupon(e) {
     this.data.filter.has_coupon = !!e.detail.value.length
     this.setData({

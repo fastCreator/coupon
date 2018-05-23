@@ -12,13 +12,9 @@ Page({
   onLoad() {
     wx.request({
       url: 'https://wx.firecloud.club/apis/issh',
-      success: function (res) {
-        wx.setStorage({
-          key: "issh",
-          data: res.data
-        })
-        if (res.data) {
-          wx.redirectTo({
+      success: (res) => {
+        if (!res.data) {
+          wx.reLaunch({
             url: '../index/index',
           })
         } else {

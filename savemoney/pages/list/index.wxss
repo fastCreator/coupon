@@ -76,6 +76,7 @@ scroll-view {
 }
 
 .list .item .coupon {
+  display: inline;
   background: #f26166;
   color: #fff;
   border: 1px solid #f26166;

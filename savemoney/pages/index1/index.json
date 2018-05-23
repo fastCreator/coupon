@@ -1,1 +1,7 @@
-{}
+{
+  "backgroundColor": "#ccc",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#F96153",
+  "navigationBarTitleText": "GIF图片分享",
+  "navigationBarTextStyle": "#ffffff"
+}

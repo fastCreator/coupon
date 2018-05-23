@@ -5,6 +5,6 @@
   "navigationBarTitleText": "省钱小果",
   "navigationBarTextStyle": "#ffffff",
   "usingComponents": {
-    "navbar": "/pages/navbar/index"
+    "navbar": "/components/navbar/index"
   }
 }

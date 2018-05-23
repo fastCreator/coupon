@@ -28,7 +28,7 @@ Page({
   },
   onReady: function () { },
   gohome() {
-    wx.switchTab({
+    wx.reLaunch({
       url: '../index/index'
     })
   },
