@@ -21,7 +21,7 @@ const CONF = {
         host: 'gz-cdb-2q8ua6o0.sql.tencentcdb.com',
         port: 62925,
         user: 'root',
-        db: 'expression',
+        db: 'expressionbk',
         pass: 'Zg26220062',
         char: 'utf8mb4'
     },

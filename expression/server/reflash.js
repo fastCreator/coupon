@@ -16,20 +16,21 @@ var knex = require('knex')({
   }
 });
 const urls = []
-// 553
-// for(let i=1;i<=553;i++){
-//   urls.push(1)
-// }
+// 561
+for(let i=1;i<=561;i++){
+  urls.push(i)
+}
 
 
-// async.mapLimit(urls, 10, async function(index) {
-//   await getPage(index)
-//   console.log('success_page:',index)
-// }, (err, results) => {
-//   if (err) throw err
-//   console.error(results,index)
-// })
-getPage(105)
+async.mapLimit(urls, 10, async function(index) {
+  await getPage(index)
+  console.log('success_page:',index)
+}, (err, results) => {
+  if (err) throw err
+  console.error(results,index)
+})
+
+// getPage(561)
 
 async function getPage(index) {
   return new Promise((resolve, reject) => {
