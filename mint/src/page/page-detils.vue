@@ -1,6 +1,5 @@
 <template>
   <div class="page-detils">
-    <iscroll-view class="scroll-view" ref="scrollView">
       <img class="imghead" :src="data.pict_url" mode="widthFix" />
       <div class="title">{{data.title}}</div>
       <div class="item1 ltr">
@@ -17,7 +16,6 @@
           领券购买
         </div>
       </div>
-    </iscroll-view>
   </div>
 </template>
 
@@ -38,13 +36,6 @@ export default {
   },
   created () {
     this.getData()
-  },
-  watch: {
-    data () {
-      setTimeout(() => {
-        this.$refs.scrollView.refresh()
-      }, 0)
-    }
   },
   mounted () {},
   methods: {

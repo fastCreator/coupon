@@ -1,6 +1,6 @@
 <template>
   <div class="index">
-    <div class="view">
+    <div class="view ">
 
       <keep-alive>
         <sq-home v-if="selected==='home'"></sq-home>

@@ -10,7 +10,7 @@ export default {
   data () {
     return {
       list: [],
-      page_size: 8,
+      page_size: 10,
       page_no: 1,
       favorites_id: this.$route.query.id
     }
