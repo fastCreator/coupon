@@ -1,0 +1,3 @@
+<scroll-view scroll-y class="page" bindscrolltolower="nextPage">
+    <list list="{{list}}"></list>
+</scroll-view>

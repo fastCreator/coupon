@@ -1,0 +1,53 @@
+page{
+  padding-bottom: 56px;
+}
+swiper image {
+  width: 100%;
+}
+.z-search{
+  padding: 10px;
+  font-size:14px;
+  background-color: #F96153;
+  color: #fff;
+}
+.z-search .input{
+  background-color: #F04E43;
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+.z-tabs{
+  display: inline-block;
+  height:34px;
+  white-space: nowrap;
+  font-size:14px;
+  width:100%;
+}
+.z-tabs view{
+  display: inline-block;
+  padding: 6px 6px 4px 6px;
+  border-bottom: 2px solid #fff;
+}
+.z-tabs view.selected{
+  color: #FF6140;
+  border-color: #FF6140;
+}
+
+.special .iconfont:before{
+  margin-left: 4px;
+  margin-right:4px;
+}
+.special .iconfont{
+  font-size: 14px;
+}
+.special{
+  margin-top: 10px;
+} 
+.special .thtj{
+  border-top:2px solid #F28430;
+} 
+.special .hyjx1{
+  border-top:2px solid #a44bd0;
+} 
+.special .hyhh{
+  border-top:2px solid #EC495E;
+}

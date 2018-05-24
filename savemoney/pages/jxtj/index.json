@@ -1,0 +1,11 @@
+{
+  "backgroundColor": "#ccc",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#F96153",
+  "navigationBarTitleText": "省钱小果",
+  "navigationBarTextStyle": "#ffffff",
+  "usingComponents": {
+    "navbar": "/components/navbar/index",
+    "list": "/components/list/index"
+  }
+}

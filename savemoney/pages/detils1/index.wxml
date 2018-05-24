@@ -1,0 +1,7 @@
+<view class="select">
+  <image src="{{select}}" mode="aspectFit" bindtap='preview'></image>
+</view>
+<view class="title" bindtap='showQ'>{{title}}<text class="iconfont icon-questionfill"></text></view>
+<view class="list">
+  <image wx:for="{{list}}" src="{{item}}" bindtap='selectImg' data-select="{{item}}"></image>
+</view>

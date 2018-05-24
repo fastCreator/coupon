@@ -1,0 +1,26 @@
+@import '../../vendor/font/iconfont.wxss';
+.navbar{
+  background: #fff;
+  position: fixed;
+  width:100%;
+  bottom: 0;
+  text-align: center;
+  height: 50px;
+  color: #8a8a8a;
+  z-index:10000;
+}
+.navbar .item.active{
+  color: #FA605D;
+}
+.navbar .item{
+  font-size:12px;
+  display: inline-block;
+  width:20%;
+  box-sizing: border-box;
+}
+.navbar .iconfont::before{
+  font-size: 22px;
+}
+.item .text{
+  margin-top: -4px;
+}

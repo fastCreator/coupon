@@ -39,6 +39,7 @@ Page({
     this.search()
   },
   searchOk() {
+    this.setData({ no: false })
     this.setData({ page: 0, list: [] })
     this.search()
   },
