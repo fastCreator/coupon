@@ -19,10 +19,13 @@ export default {
     }
   }
 }
-if (!/Android|webOS|iPhone|iPod|BlackBerry|UCBrowser|iOS|Windows Phone/i.test(navigator.userAgent)) {
+if (
+  !/Android|webOS|iPhone|iPod|BlackBerry|UCBrowser|iOS|Windows Phone/i.test(
+    navigator.userAgent
+  )
+) {
   document.getElementsByTagName('html')[0].setAttribute('class', 'pc')
 }
-
 </script>
 
 <style>
@@ -37,8 +40,8 @@ body,
   height: 100%;
   overflow: hidden;
 }
-html.pc .good-list .item{
-  width:20%;
+html.pc .good-list .item {
+  width: 20%;
 }
 .view > div {
   height: 100%;
@@ -80,5 +83,16 @@ img {
 .ltr > div:nth-child(even) {
   margin-right: 5px;
   float: right;
+}
+.scroll-view {
+  /* -- Attention: This line is extremely important in chrome 55+! -- */
+  touch-action: none;
+  top: 0px;
+  /* -- Attention-- */
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  overflow: hidden;
 }
 </style>

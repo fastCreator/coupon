@@ -34,6 +34,7 @@ module.exports = {
   externals: {
     'vue': 'Vue',
     'vue-router': 'VueRouter',
+    'iscroll': 'IScroll',
     'mint-ui': 'MINT'
   },
   resolve: {

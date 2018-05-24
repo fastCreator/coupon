@@ -1,21 +1,23 @@
 <template>
   <div class="page-detils">
-    <img class="imghead" :src="data.pict_url" mode="widthFix" />
-    <div class="title">{{data.title}}</div>
-    <div class="item1 ltr">
-      <div class="price">￥{{data.zk_final_price}}</div>
-      <div class="numb">销量：{{data.volume}}</div>
-    </div>
-    <div class="imgList">
-      <img v-for="(src,i) in data.small_images.string" :key="i" :src="src"/>
-    </div>
-    <div class="fix-buttom">
-      <div class="it1 iconfont icon-home_light" @click='gohome'>首页</div>
-      <div class="it1 iconfont icon-share1" bindtap='share'>分享</div>
-      <div class="it2" @click='buy'>
-        领券购买
+    <iscroll-view class="scroll-view" ref="scrollView">
+      <img class="imghead" :src="data.pict_url" mode="widthFix" />
+      <div class="title">{{data.title}}</div>
+      <div class="item1 ltr">
+        <div class="price">￥{{data.zk_final_price}}</div>
+        <div class="numb">销量：{{data.volume}}</div>
       </div>
-    </div>
+      <div class="imgList">
+        <img v-for="(src,i) in data.small_images.string" :key="i" :src="src" />
+      </div>
+      <div class="fix-buttom">
+        <div class="it1 iconfont icon-home_light" @click='gohome'>首页</div>
+        <div class="it1 iconfont icon-share1" bindtap='share'>分享</div>
+        <div class="it2" @click='buy'>
+          领券购买
+        </div>
+      </div>
+    </iscroll-view>
   </div>
 </template>
 
@@ -37,7 +39,14 @@ export default {
   created () {
     this.getData()
   },
-  mounted () { },
+  watch: {
+    data () {
+      setTimeout(() => {
+        this.$refs.scrollView.refresh()
+      }, 0)
+    }
+  },
+  mounted () {},
   methods: {
     gohome () {
       this.$router.push({ path: '/' })
@@ -52,7 +61,14 @@ export default {
       this.data = data.data.results.n_tbk_item[0]
     },
     buy () {
-      utils.copy(this.data.title, this.data.pict_url, this.data.zk_final_price, this.num_iid, this.coupon_id, this.coupon_click_url)
+      utils.copy(
+        this.data.title,
+        this.data.pict_url,
+        this.data.zk_final_price,
+        this.num_iid,
+        this.coupon_id,
+        this.coupon_click_url
+      )
     }
   }
 }

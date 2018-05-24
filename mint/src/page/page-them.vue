@@ -1,6 +1,6 @@
 <template>
-  <div class="page-list" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="40">
-    <c-list :data="list"></c-list>
+  <div class="page-list">
+    <c-list :data="list" @refresh="refresh" :top="0"></c-list>
   </div>
 </template>
 
@@ -9,27 +9,27 @@ import utils from '../utils/utils.js'
 export default {
   data () {
     return {
-      loading: false,
       list: [],
       page_size: 8,
       page_no: 1,
       favorites_id: this.$route.query.id
     }
   },
-  created () {},
+  created () {
+    this.search()
+  },
   methods: {
-    async loadMore () {
+    refresh () {
       this.page_no++
-      this.loading = true
-      await this.search()
-      this.loading = false
+      this.search()
     },
     async search () {
       let data = await utils.tbk('taobao.tbk.uatm.favorites.item.get', {
         platform: 2,
         page_size: this.page_size,
         favorites_id: this.favorites_id,
-        fields: 'coupon_click_url,coupon_info,num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url,seller_id,volume,nick,shop_title,zk_final_price_wap,event_start_time,event_end_time,tk_rate,status,type',
+        fields:
+          'coupon_click_url,coupon_info,num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url,seller_id,volume,nick,shop_title,zk_final_price_wap,event_start_time,event_end_time,tk_rate,status,type',
         page_no: this.page_no
       })
       this.list = this.list.concat(data.data.results.uatm_tbk_item)

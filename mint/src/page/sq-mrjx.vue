@@ -1,11 +1,11 @@
 <template>
-  <div class="sq-mrjx" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="40">
+  <div class="sq-mrjx">
     <img src="http://alp.alicdn.com/1476310476060.png">
     <div class="search">
       <input placeholder="输入关键词搜索" v-model="filters.q" />
       <button @click="ok">搜索</button>
     </div>
-    <c-list :data="data"></c-list>
+    <c-list :data="data" @refresh="refresh" :top="90"></c-list>
   </div>
 </template>
 
@@ -14,18 +14,17 @@ import utils from '../utils/utils.js'
 export default {
   data () {
     return {
-      loading: false,
       data: [],
       filters: { platform: 2, page_size: 10, q: '', page_no: 0 }
     }
   },
-  created () {},
+  created () {
+    this.search()
+  },
   methods: {
-    async loadMore () {
+    refresh () {
       this.filters.page_no++
-      this.loading = true
-      await this.search()
-      this.loading = false
+      this.search()
     },
     ok () {
       this.filters.page_no = 1

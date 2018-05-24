@@ -1,20 +1,22 @@
 <template>
   <div class="good-list">
-    <div class="item" v-for="(item,i) in data" @click='godetils(item)' :key="i">
-      <img :src="item.pict_url" />
-      <div class="box">
-        <div class="title">{{item.title}}</div>
-        <div class="ltr ck">
-          <div class="coupon">{{item.coupon_info ? setc(item.coupon_info): '促'}}</div>
-          <div class="endprice">￥{{item.zk_final_price}}</div>
-        </div>
-        <div class="shop_title ck">{{item.shop_title}}</div>
-        <div class="ltr">
-          <div></div>
-          <div class="xl">已售{{item.volume}}</div>
+    <iscroll-view class="scroll-view" @pullUp="refresh" ref="scrollView" :options="{mouseWheel:true}" :style="{top:top+'px'}">
+      <div class="item" v-for="(item,i) in data" @click='godetils(item)' :key="i">
+        <img :src="item.pict_url" />
+        <div class="box">
+          <div class="title">{{item.title}}</div>
+          <div class="ltr ck">
+            <div class="coupon">{{item.coupon_info ? setc(item.coupon_info): '促'}}</div>
+            <div class="endprice">￥{{item.zk_final_price}}</div>
+          </div>
+          <div class="shop_title ck">{{item.shop_title}}</div>
+          <div class="ltr">
+            <div></div>
+            <div class="xl">已售{{item.volume}}</div>
+          </div>
         </div>
       </div>
-    </div>
+    </iscroll-view>
   </div>
 </template>
 
@@ -26,10 +28,20 @@ export default {
       defalut () {
         return []
       }
+    },
+    top: {
+      defalut: 0
     }
   },
   data () {
     return {}
+  },
+  watch: {
+    data () {
+      setTimeout(() => {
+        this.$refs.scrollView.refresh()
+      }, 0)
+    }
   },
   methods: {
     setc (c) {
@@ -42,11 +54,14 @@ export default {
         coupon_id: item.coupon_id
       }
       this.$router.push({ path: '/detils', query: query })
+    },
+    refresh () {
+      this.$emit('refresh')
     }
   }
 }
 </script>
-<style scoped lang="less">
+<style lang="less">
 .good-list {
   background: #f0f0f0;
   .item {
@@ -63,8 +78,8 @@ export default {
     border-left: 2px solid #f0f0f0;
     border-right: 4px solid #f0f0f0;
   }
-  .box{
-    padding:4px;
+  .box {
+    padding: 4px;
   }
   .title,
   .shop_title {
@@ -73,8 +88,8 @@ export default {
     text-overflow: ellipsis;
     font-size: 13px;
   }
-  .ck{
-    margin:2px 0;
+  .ck {
+    margin: 2px 0;
   }
   .shop_title {
     text-align: center;

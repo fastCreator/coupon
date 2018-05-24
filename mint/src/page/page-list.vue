@@ -1,12 +1,14 @@
 <template>
-  <div class="page-list" v-infinite-scroll="loadMore" infinite-scroll-disabled="loading" infinite-scroll-distance="40">
+  <div class="page-list">
     <div class='filter flex4'>
-    <div :class="filter.sort===SORT.popular?'active':''" @click='toggleSort(SORT.popular)'>人气 </div>
-    <div :class="filter.sort===SORT.sales?'active':''" @click='toggleSort(SORT.sales)'>销量</div>
-    <div :class="filter.sort===SORT.price?'active':''" @click='toggleSort(SORT.price)'>价格</div>
-    <div :class="{'iconfont icon-check':filter.has_coupon}" @click="toggleCoupon">优惠劵<span></span></div>
-  </div>
-    <c-list :data="list"></c-list>
+      <div :class="filter.sort===SORT.popular?'active':''" @click='toggleSort(SORT.popular)'>人气 </div>
+      <div :class="filter.sort===SORT.sales?'active':''" @click='toggleSort(SORT.sales)'>销量</div>
+      <div :class="filter.sort===SORT.price?'active':''" @click='toggleSort(SORT.price)'>价格</div>
+      <div :class="{'iconfont icon-check':filter.has_coupon}" @click="toggleCoupon">优惠劵
+        <span></span>
+      </div>
+    </div>
+    <c-list :data="list" @refresh="refresh" :top="42"></c-list>
   </div>
 </template>
 
@@ -15,7 +17,6 @@ import utils from '../utils/utils.js'
 export default {
   data () {
     return {
-      loading: false,
       SORT: {
         popular: 'tk_total_sales_des',
         sales: 'total_sales_des',
@@ -33,13 +34,12 @@ export default {
     }
   },
   created () {
+    this.search()
   },
   methods: {
-    async loadMore () {
+    refresh () {
       this.filter.page_no++
-      this.loading = true
-      await this.search()
-      this.loading = false
+      this.search()
     },
     toggleCoupon () {
       this.list = []
@@ -52,7 +52,10 @@ export default {
       this.search()
     },
     async search () {
-      let data = await utils.tbk('taobao.tbk.sc.material.optional', this.filter)
+      let data = await utils.tbk(
+        'taobao.tbk.sc.material.optional',
+        this.filter
+      )
       this.list = this.list.concat(data.data.result_list.map_data)
     }
   }
