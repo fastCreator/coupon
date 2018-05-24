@@ -1,5 +1,6 @@
 <template>
   <div class="page-detils">
+      <div class="scroll">
       <img class="imghead" :src="data.pict_url" mode="widthFix" />
       <div class="title">{{data.title}}</div>
       <div class="item1 ltr">
@@ -8,6 +9,7 @@
       </div>
       <div class="imgList">
         <img v-for="(src,i) in data.small_images.string" :key="i" :src="src" />
+      </div>
       </div>
       <div class="fix-buttom">
         <div class="it1 iconfont icon-home_light" @click='gohome'>首页</div>
@@ -37,7 +39,7 @@ export default {
   created () {
     this.getData()
   },
-  mounted () {},
+  mounted () { },
   methods: {
     gohome () {
       this.$router.push({ path: '/' })
@@ -68,7 +70,11 @@ export default {
 <style scoped lang="less">
 .page-detils {
   height: 100%;
-  overflow: scroll;
+  overflow: hidden;
+  .scroll {
+    height: 100%;
+    overflow: scroll;
+  }
   .title {
     background: #fff;
     padding: 4px;

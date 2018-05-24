@@ -33,7 +33,7 @@ window.PointerEvent = undefined
 .sq-home,
 .sq-mrjx,
 .page-list,
-.page-detils,
+.scroll,
 .sq-tqg {
   overflow-scrolling: touch;
   transform: translate3d(0, 0, 0);

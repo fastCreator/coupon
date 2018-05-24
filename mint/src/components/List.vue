@@ -46,8 +46,10 @@ export default {
     data (n, o) {
       setTimeout(() => {
         Indicator.close()
-        this.loading = false
-      }, 50)
+        if (n.length >= 10) {
+          this.loading = false
+        }
+      }, 80)
     }
   },
   methods: {
