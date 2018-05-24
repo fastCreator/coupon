@@ -1,6 +1,7 @@
 page, scroll-view {
   height: 100%;
 }
+
 .select{
   width:36%;
   padding: 10px;
@@ -8,6 +9,9 @@ page, scroll-view {
 }
 .list{
   border-top: 1px solid #ededed;
+}
+.list image{
+  height:100px;
 }
 .list .item {
   width: 33.33333%;

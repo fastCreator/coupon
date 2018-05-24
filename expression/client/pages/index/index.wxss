@@ -1,7 +1,9 @@
 page, scroll-view {
   height: 100%;
 }
-
+image{
+  height:100px;
+}
 .list .item {
   width: 33.33333%;
   display: inline-block;

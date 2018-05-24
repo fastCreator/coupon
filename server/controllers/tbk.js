@@ -1,7 +1,7 @@
 ﻿// 登录授权接口
 var ApiClient = require('../lib/api/topClient.js').TopClient
 // var tmcClient = require('../lib/tmc/tmcClient.js').TmcClient
-const SESSION = '6102926d215e65bafd5b3277d2acc8d153178ce376d1c2d87491795'
+const SESSION = '6101430bfcec90e4aff760322400aa2d549ee018d14071f87491795'
 const PID = 'mm_131778178_45276106_534348035'
 const ADZONE_ID = '534348035'
 const SITE_ID = '45276106'
