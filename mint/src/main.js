@@ -12,6 +12,7 @@ Vue.use(Mint)
 Vue.use(IScrollView, IScroll)
 
 function importAll (r) {
+  console.log(1)
   r.keys().forEach(key => {
     let c = r(key).default
     console.log(c)
