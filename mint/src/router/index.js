@@ -5,6 +5,7 @@ import search from '@/page/page-search'
 import list from '@/page/page-list'
 import detils from '@/page/page-detils'
 import them from '@/page/page-them'
+import fanli from '@/page/fanli'
 
 Vue.use(Router)
 
@@ -34,6 +35,11 @@ export default new Router({
       path: '/them',
       name: 'them',
       component: them
+    },
+    {
+      path: '/fanli',
+      name: 'fanli',
+      component: fanli
     }
   ]
 })
