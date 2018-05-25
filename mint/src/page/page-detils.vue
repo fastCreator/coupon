@@ -1,6 +1,6 @@
 <template>
   <div class="page-detils">
-    <iscroll-view class="scroll-view" ref="scrollView">
+      <div class="scroll">
       <img class="imghead" :src="data.pict_url" mode="widthFix" />
       <div class="title">{{data.title}}</div>
       <div class="item1 ltr">
@@ -10,6 +10,7 @@
       <div class="imgList">
         <img v-for="(src,i) in data.small_images.string" :key="i" :src="src" />
       </div>
+      </div>
       <div class="fix-buttom">
         <div class="it1 iconfont icon-home_light" @click='gohome'>首页</div>
         <div class="it1 iconfont icon-share1" bindtap='share'>分享</div>
@@ -17,7 +18,6 @@
           领券购买
         </div>
       </div>
-    </iscroll-view>
   </div>
 </template>
 
@@ -39,14 +39,7 @@ export default {
   created () {
     this.getData()
   },
-  watch: {
-    data () {
-      setTimeout(() => {
-        this.$refs.scrollView.refresh()
-      }, 0)
-    }
-  },
-  mounted () {},
+  mounted () { },
   methods: {
     gohome () {
       this.$router.push({ path: '/' })
@@ -77,7 +70,11 @@ export default {
 <style scoped lang="less">
 .page-detils {
   height: 100%;
-  overflow: scroll;
+  overflow: hidden;
+  .scroll {
+    height: 100%;
+    overflow: scroll;
+  }
   .title {
     background: #fff;
     padding: 4px;

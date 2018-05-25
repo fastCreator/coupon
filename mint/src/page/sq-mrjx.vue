@@ -15,7 +15,7 @@ export default {
   data () {
     return {
       data: [],
-      filters: { platform: 2, page_size: 10, q: '', page_no: 0 }
+      filters: { platform: 2, page_size: 10, q: '', page_no: 1 }
     }
   },
   created () {

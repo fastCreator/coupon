@@ -29,6 +29,7 @@
 
 <script>
 import utils from '../utils/utils.js'
+import { Indicator } from 'mint-ui'
 const time = ['00', '08', '10', '13', '15', '17', '19', '20', '21', '24']
 var padLeft = n => {
   n -= 0
@@ -104,6 +105,7 @@ export default {
       this.search()
     },
     async search () {
+      Indicator.open('加载中...')
       let d = myformatTime(new Date(), 'yyyy-MM-dd ')
 
       let data = await utils.tbk('taobao.tbk.ju.tqg.get', {
@@ -114,6 +116,7 @@ export default {
         page_size: 10,
         page_no: this.page_no
       })
+      Indicator.close()
       this.list = this.list.concat(data.data.results.results)
     }
   }

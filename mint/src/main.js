@@ -4,17 +4,13 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import Mint from 'mint-ui'
-import IScrollView from 'vue-iscroll-view'
-import IScroll from 'iscroll'
 Vue.config.productionTip = false
 
 Vue.use(Mint)
-Vue.use(IScrollView, IScroll)
 
 function importAll (r) {
   r.keys().forEach(key => {
     let c = r(key).default
-    console.log(c)
     Vue.component(c.name, c)
   })
 }

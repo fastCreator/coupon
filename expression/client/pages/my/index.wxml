@@ -4,7 +4,7 @@
   </view>
   <view class="list">
     <view wx:for="{{list}}" class="item" bindtap='go' data-index="{{index}}">
-      <image src="{{item.header}}" mode="widthFix"></image>
+      <image src="{{item.header}}"></image>
       <view class="title">{{item.title}}</view>
     </view>
   </view>

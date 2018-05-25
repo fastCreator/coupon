@@ -26,9 +26,21 @@ if (
 ) {
   document.getElementsByTagName('html')[0].setAttribute('class', 'pc')
 }
+window.PointerEvent = undefined
 </script>
 
 <style>
+.sq-home,
+.sq-mrjx,
+.page-list,
+.scroll,
+.sq-tqg {
+  overflow-scrolling: touch;
+  transform: translate3d(0, 0, 0);
+  -webkit-overflow-scrolling: touch;
+  -webkit-transform: translate3d(0, 0, 0);
+}
+
 html,
 body,
 #app,
@@ -83,16 +95,5 @@ img {
 .ltr > div:nth-child(even) {
   margin-right: 5px;
   float: right;
-}
-.scroll-view {
-  /* -- Attention: This line is extremely important in chrome 55+! -- */
-  touch-action: none;
-  top: 0px;
-  /* -- Attention-- */
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  overflow: hidden;
 }
 </style>

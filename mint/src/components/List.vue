@@ -1,6 +1,7 @@
 <template>
-  <div class="good-list">
-    <iscroll-view class="scroll-view" @pullUp="refresh" ref="scrollView" :options="{mouseWheel:true}" :style="{top:top+'px'}">
+  <div class="good-list" v-infinite-scroll="loadMore"
+  infinite-scroll-disabled="loading"
+  infinite-scroll-distance="20">
       <div class="item" v-for="(item,i) in data" @click='godetils(item)' :key="i">
         <img :src="item.pict_url" />
         <div class="box">
@@ -16,11 +17,11 @@
           </div>
         </div>
       </div>
-    </iscroll-view>
   </div>
 </template>
 
 <script>
+import { Indicator } from 'mint-ui'
 export default {
   name: 'c-list',
   props: {
@@ -34,13 +35,21 @@ export default {
     }
   },
   data () {
-    return {}
+    return {
+      loading: true
+    }
+  },
+  created () {
+    Indicator.open('加载中...')
   },
   watch: {
-    data () {
+    data (n, o) {
       setTimeout(() => {
-        this.$refs.scrollView.refresh()
-      }, 0)
+        Indicator.close()
+        if (n.length >= 10) {
+          this.loading = false
+        }
+      }, 80)
     }
   },
   methods: {
@@ -55,8 +64,10 @@ export default {
       }
       this.$router.push({ path: '/detils', query: query })
     },
-    refresh () {
+    loadMore () {
       this.$emit('refresh')
+      Indicator.open('加载中...')
+      this.loading = true
     }
   }
 }
