@@ -22,12 +22,12 @@
 </template>
 
 <script>
-import { Indicator } from "mint-ui"
+import { Indicator } from 'mint-ui'
 export default {
-  name: "c-list",
+  name: 'c-list',
   props: {
     data: {
-      defalut() {
+      defalut () {
         return []
       }
     },
@@ -35,16 +35,16 @@ export default {
       defalut: 0
     }
   },
-  data() {
+  data () {
     return {
       loading: true
     }
   },
-  created() {
-    Indicator.open("加载中...")
+  created () {
+    Indicator.open('加载中...')
   },
   watch: {
-    data(n, o) {
+    data (n, o) {
       setTimeout(() => {
         Indicator.close()
         if (n.length >= 10) {
@@ -54,28 +54,28 @@ export default {
     }
   },
   methods: {
-    compareTime(t){
+    compareTime (t) {
       return new Date(t) > Date.now()
     },
-    round(v) {
+    round (v) {
       if (v) return Math.round(v)
       return 0
     },
-    setc(c) {
+    setc (c) {
       if (c) return c.match(/减(\d+)元/)[1] - 0
       return 0
     },
-    godetils(item) {
+    godetils (item) {
       let query = {
         num_iid: item.num_iid,
         coupon_click_url: item.coupon_click_url,
         coupon_id: item.coupon_id
       }
-      this.$router.push({ path: "/detils", query: query })
+      this.$router.push({ path: '/detils', query: query })
     },
-    loadMore() {
-      this.$emit("refresh")
-      Indicator.open("加载中...")
+    loadMore () {
+      this.$emit('refresh')
+      Indicator.open('加载中...')
       this.loading = true
     }
   }
