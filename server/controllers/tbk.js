@@ -40,10 +40,14 @@ module.exports = async (ctx, next) => {
         })
     })
 }
-flashToken()
+setTimeout(() => {
+    flashToken()
+}, 1000 * 60 * 60 * 1)
+
 setInterval(() => {
     flashToken()
 }, 1000 * 60 * 60 * 6)
+
 function flashToken () {
     let url = `https://oauth.taobao.com/token?grant_type=refresh_token&refresh_token=${token.refresh_token}&client_id=${APPKEY}&client_secret=${APPSECRET}`
     request({
