@@ -23,7 +23,7 @@ scroll-view {
   line-height: 40px;
   text-align: center;
   display: inline-block;
-  width: 24%;
+  width: 33.33333%;
   box-sizing: border-box; 
 }
 

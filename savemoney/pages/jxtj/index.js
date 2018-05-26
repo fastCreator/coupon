@@ -44,11 +44,6 @@ Page({
         }, 500)
         return false
       }
-      d.results.tbk_coupon.forEach(it => {
-        if (it.coupon_info) {
-          it.coupon = it.coupon_info.match(/减(\d+)元/)[1] + '元劵'
-        }
-      })
       this.setData({
         list: that.data.list.concat(d.results.tbk_coupon)
       })

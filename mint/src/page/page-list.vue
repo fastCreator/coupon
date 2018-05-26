@@ -1,8 +1,8 @@
 <template>
   <div class="page-list">
     <div class='filter flex3'>
-      <div :class="filter.sort===SORT.popular?'active':''" @click='toggleSort(SORT.popular)'>人气 </div>
       <div :class="filter.sort===SORT.sales?'active':''" @click='toggleSort(SORT.sales)'>销量</div>
+      <div :class="filter.sort===SORT.popular?'active':''" @click='toggleSort(SORT.popular)'>人气 </div>
       <div :class="filter.sort===SORT.price?'active':''" @click='toggleSort(SORT.price)'>价格</div>
       <!-- <div :class="{'iconfont icon-check':filter.has_coupon}" @click="toggleCoupon">优惠劵
         <span></span>
@@ -26,7 +26,7 @@ export default {
         page_no: 1,
         page_size: 10,
         platform: 1,
-        sort: 'tk_total_sales_des',
+        sort: 'total_sales_des',
         q: this.$route.query.q,
         has_coupon: true
       },

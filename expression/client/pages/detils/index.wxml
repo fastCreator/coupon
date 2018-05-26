@@ -1,7 +1,8 @@
 <view class="select">
   <image src="{{select}}" mode="aspectFit" bindtap='preview'></image>
+  <view class="btitle">温馨提示：点击大图，可左右滑动，和发送给朋友哦</view>
 </view>
-<view class="title" bindtap='showQ'>{{title}}<text class="iconfont icon-questionfill"></text></view>
+<view class="title">{{title}}</view>
 <view class="list">
   <image wx:for="{{list}}" src="{{item}}" bindtap='selectImg' data-select="{{item}}"></image>
 </view>

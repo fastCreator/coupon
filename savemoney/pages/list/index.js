@@ -1,6 +1,5 @@
 import { tbk } from '../../utils/util.js'
 const app = getApp()
-//综合（月支出佣金从高到低）
 Page({
   data: {
     SORT: {
@@ -12,7 +11,7 @@ Page({
       page_no: 1,
       page_size: 10,
       platform: 1,
-      sort: 'tk_total_sales_des',
+      sort: 'total_sales_des',
       q: '',
       has_coupon: true
     },
@@ -59,11 +58,6 @@ Page({
         }, 500)
         return false
       }
-      d.result_list.map_data.forEach(it => {
-        if (it.coupon_info) {
-          it.coupon = it.coupon_info.match(/减(\d+)元/)[1] + '元劵'
-        }
-      })
       this.setData({
         list: that.data.list.concat(d.result_list.map_data)
       })

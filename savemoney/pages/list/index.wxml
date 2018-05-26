@@ -1,15 +1,8 @@
 <scroll-view scroll-y bindscrolltolower="nextPage">
   <view class='filter'>
-    <view class="{{filter.sort===SORT.popular?'active':''}}" bindtap='toggleSort' data-sort='{{SORT.popular}}'>人气 </view>
     <view class="{{filter.sort===SORT.sales?'active':''}}" bindtap='toggleSort' data-sort='{{SORT.sales}}'>销量</view>
+    <view class="{{filter.sort===SORT.popular?'active':''}}" bindtap='toggleSort' data-sort='{{SORT.popular}}'>人气 </view>
     <view class="{{filter.sort===SORT.price?'active':''}}" bindtap='toggleSort' data-sort='{{SORT.price}}'>价格</view>
-
-    <checkbox-group bindchange="selectCoupon" class="checkbox">
-      <label>
-        <checkbox value="true" checked="{{filter.has_coupon}}" />优惠劵
-      </label>
-    </checkbox-group>
   </view>
-
   <list list="{{list}}"></list>
 </scroll-view>

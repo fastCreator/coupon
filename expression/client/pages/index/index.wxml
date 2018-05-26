@@ -11,10 +11,21 @@
     </view>
     <view class="weui-search-bar__cancel-btn" bindtap="searchOk">搜索</view>
   </view>
+  <view class="out-title iconfont icon-shuaxin" wx:if="{{!search}}" bindtap='nsearch'>点击刷新</view>
+  <view class="list" wx:if="{{!search}}">
+    <view wx:for="{{nlist}}" class="item" bindtap='gon' data-index="{{index}}">
+      <image src="{{item.header}}"></image>
+      <view class="title">{{item.title}}</view>
+    </view>
+  </view>
+  <view class="out-title">表情列表</view>
   <view class="list">
     <view wx:for="{{list}}" class="item" bindtap='go' data-index="{{index}}">
       <image src="{{item.header}}"></image>
       <view class="title">{{item.title}}</view>
     </view>
+  </view>
+  <view class="iconfont icon-iconhui goH" bindtap='goH'>
+   
   </view>
 </scroll-view>

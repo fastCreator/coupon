@@ -14,8 +14,8 @@ Page({
     this.search(it)
   },
   setHistory:function(){
-    var history = wx.getStorageSync('historySearch')
-    this.setData({ history: history.split(',') })
+    var history = wx.getStorageSync('historySearch')||''
+    this.setData({ history: history?history.split(','):[] })
   },
   clearHistory:function(){
     wx.setStorageSync('historySearch', '')

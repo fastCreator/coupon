@@ -5,8 +5,19 @@ Component({
   properties: {
     list: {
       type: 'array',
-      value: []
+      value: [],
+      observer(v) {
+        v.forEach(it=>{
+          it.coupon = it.coupon_info.match(/减(\d+)元/)[1]
+          it.show = new Date(it.coupon_end_time).getTime() > Date.now()
+          it.zk_final_price = (it.zk_final_price - it.coupon).toFixed(1)
+        })
+        this.setData({ myList: v })
+      }
     }
+  },
+  data: {
+    myList: []
   },
   methods: {
     godetils(e) {

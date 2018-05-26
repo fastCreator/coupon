@@ -9,7 +9,6 @@ const imgs = function (data, cb) {
   if (data.ids) {
     url += `&ids=${data.ids}`
   }
-  console.log(url)
   wx.request({
     url: url,
     success(res) {

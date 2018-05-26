@@ -14,7 +14,7 @@
   </button>
   <view class="it2" bindtap='buy'>
     <view class="it1 icon-A iconfont">
-      <view>{{sPrice}}</view>
+      <view>{{sPrice+'元券'}}</view>
     </view>
     <view class="it2">领券购买</view>
   </view>

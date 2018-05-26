@@ -26,3 +26,21 @@ image{
   font-size: 14px;
   float: right;
 }
+.out-title{
+  background: #F3F3F3;
+  padding: 4px 8px;
+}
+.goH{
+  position: fixed;
+  right: 8px;
+  top:50%;
+  font-size: 30px;
+  background: #FBEF05;
+  border-radius: 100%;
+  display: inline-block;
+  width:1.5em;
+  height:1.5em;
+  line-height: 1.5em;
+  text-align: center;
+  color: #E41E51;
+}

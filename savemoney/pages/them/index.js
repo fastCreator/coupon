@@ -23,7 +23,7 @@ Page({
       platform: 2,
       page_size: that.data.page_size,
       favorites_id: that.data.favorites_id,
-      fields: 'coupon_click_url,coupon_info,num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url,seller_id,volume,nick,shop_title,zk_final_price_wap,event_start_time,event_end_time,tk_rate,status,type',
+      fields: 'coupon_end_time,coupon_click_url,coupon_info,num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url,seller_id,volume,nick,shop_title,zk_final_price_wap,event_start_time,event_end_time,tk_rate,status,type',
       page_no: that.data.page_no
     }, (d) => {
       wx.hideLoading()
@@ -36,11 +36,6 @@ Page({
         }, 500)
         return false
       }
-      d.results.uatm_tbk_item.forEach(it => {
-        if (it.coupon_info) {
-          it.coupon = it.coupon_info.match(/减(\d+)元/)[1] + '元劵'
-        }
-      })
       this.setData({
         list: that.data.list.concat(d.results.uatm_tbk_item)
       })

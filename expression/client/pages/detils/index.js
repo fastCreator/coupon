@@ -104,13 +104,5 @@ Page({
         data: arr.length ? arr.join(',') : '',
       })
     }
-  },
-  showQ(){
-    console.log(123123)
-    wx.showToast({
-      title: `点击大图后，可左右滑动;长按全屏图片，选择“发送给朋友"吧。`,
-      icon: 'none',
-      duration: 4000
-    })
   }
 })

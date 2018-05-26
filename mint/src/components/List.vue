@@ -6,7 +6,7 @@
         <div class="title">{{item.title}}</div>
         <div class="ltr ck">
           <div class="coupon">{{item.coupon_info ? (setc(item.coupon_info)+'元券'): '促'}}</div>
-          <div class="xl" v-if="item.coupon_info">剩余{{round(item.coupon_remain_count/100)}}</div>
+          <!-- <div class="xl" v-if="item.coupon_info">剩余{{round(item.coupon_remain_count/100)}}</div> -->
         </div>
 
         <div class="ltr">
@@ -55,7 +55,7 @@ export default {
   },
   methods: {
     compareTime (t) {
-      return new Date(t) > Date.now()
+      return new Date(t).getTime() > Date.now()
     },
     round (v) {
       if (v) return Math.round(v)

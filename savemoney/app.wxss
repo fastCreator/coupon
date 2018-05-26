@@ -10,3 +10,13 @@ page {
 image {
   width: 100%;
 }
+.ltr{
+  overflow: hidden;
+}
+.ltr>view:nth-of-type(odd) {
+  float: left;
+}
+
+.ltr>view:nth-of-type(even) {
+  float: right;
+}
