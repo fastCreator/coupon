@@ -1,13 +1,18 @@
-﻿// 登录授权接口
+﻿const fs = require('fs')
+const path = require('path')
+const request = require('request')
+// 登录授权接口
 var ApiClient = require('../lib/api/topClient.js').TopClient
 // var tmcClient = require('../lib/tmc/tmcClient.js').TmcClient
-const SESSION = '6102129bdd8566ba04706048cf7e5725724a0126e6152f187491795'
+let SESSION = ''
 const PID = 'mm_131778178_45276106_534348035'
 const ADZONE_ID = '534348035'
 const SITE_ID = '45276106'
+const APPKEY = '24884330'
+const APPSECRET = 'bac78cb1d551fbcfd517b8e10d6c310d'
 const client = new ApiClient({
-    'appkey': '24884330',
-    'appsecret': 'bac78cb1d551fbcfd517b8e10d6c310d',
+    'appkey': APPKEY,
+    'appsecret': APPSECRET,
     'REST_URL': 'http://gw.api.taobao.com/router/rest'
 })
 
@@ -32,5 +37,23 @@ module.exports = async (ctx, next) => {
                 r()
             } else j(JSON.stringify(error, null, 2))
         })
+    })
+}
+flashToken()
+setInterval(() => {
+    flashToken()
+}, 1000 * 60 * 60 * 6)
+function flashToken () {
+    const repath = path.resolve(__dirname, 'flashToken.txt')
+    const refreshToken = fs.readFileSync(repath, 'utf-8')
+
+    let url = `https://oauth.taobao.com/token?grant_type=refresh_token&refresh_token=${refreshToken}&client_id=${APPKEY}&client_secret=${APPSECRET}`
+    request({
+        url: url,
+        method: 'POST',
+        json: true
+    }, (error, response, body) => {
+        SESSION = body.access_token
+        fs.writeFileSync(repath, body.refresh_token)
     })
 }
