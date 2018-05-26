@@ -4,7 +4,7 @@ const request = require('request')
 // 登录授权接口
 var ApiClient = require('../lib/api/topClient.js').TopClient
 // var tmcClient = require('../lib/tmc/tmcClient.js').TmcClient
-let SESSION = ''
+let SESSION = '6101113f9dcd38cb64ac31b48679b2e682ca86f67631cc387491795'
 const PID = 'mm_131778178_45276106_534348035'
 const ADZONE_ID = '534348035'
 const SITE_ID = '45276106'
@@ -46,14 +46,18 @@ setInterval(() => {
 function flashToken () {
     const repath = path.resolve(__dirname, 'flashToken.txt')
     const refreshToken = fs.readFileSync(repath, 'utf-8')
-
+    console.log(repath)
     let url = `https://oauth.taobao.com/token?grant_type=refresh_token&refresh_token=${refreshToken}&client_id=${APPKEY}&client_secret=${APPSECRET}`
     request({
         url: url,
         method: 'POST',
         json: true
     }, (error, response, body) => {
-        SESSION = body.access_token
-        fs.writeFileSync(repath, body.refresh_token)
+        if(body.error){
+                console.log(body)
+        }else{
+            SESSION = body.access_token
+            fs.writeFileSync(repath, body.refresh_token)
+        }
     })
 }
