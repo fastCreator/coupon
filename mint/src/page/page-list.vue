@@ -1,12 +1,12 @@
 <template>
   <div class="page-list">
-    <div class='filter flex4'>
+    <div class='filter flex3'>
       <div :class="filter.sort===SORT.popular?'active':''" @click='toggleSort(SORT.popular)'>人气 </div>
       <div :class="filter.sort===SORT.sales?'active':''" @click='toggleSort(SORT.sales)'>销量</div>
       <div :class="filter.sort===SORT.price?'active':''" @click='toggleSort(SORT.price)'>价格</div>
-      <div :class="{'iconfont icon-check':filter.has_coupon}" @click="toggleCoupon">优惠劵
+      <!-- <div :class="{'iconfont icon-check':filter.has_coupon}" @click="toggleCoupon">优惠劵
         <span></span>
-      </div>
+      </div> -->
     </div>
     <c-list :data="list" @refresh="refresh" :top="42"></c-list>
   </div>

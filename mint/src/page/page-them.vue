@@ -29,7 +29,7 @@ export default {
         page_size: this.page_size,
         favorites_id: this.favorites_id,
         fields:
-          'coupon_click_url,coupon_info,num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url,seller_id,volume,nick,shop_title,zk_final_price_wap,event_start_time,event_end_time,tk_rate,status,type',
+          'coupon_end_time,coupon_remain_count,coupon_click_url,coupon_info,num_iid,title,pict_url,small_images,reserve_price,zk_final_price,user_type,provcity,item_url,seller_id,volume,nick,shop_title,zk_final_price_wap,event_start_time,event_end_time,tk_rate,status,type',
         page_no: this.page_no
       })
       this.list = this.list.concat(data.data.results.uatm_tbk_item)
