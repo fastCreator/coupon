@@ -30,7 +30,7 @@ Page({
   },
   toSearch() {
     wx.navigateTo({
-      url: '../search/index'
+      url: '../search-n/index'
     })
   },
   hd(e) {
