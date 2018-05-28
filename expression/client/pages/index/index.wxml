@@ -25,7 +25,7 @@
       <view class="title">{{item.title}}</view>
     </view>
   </view>
-  <view class="iconfont icon-iconhui goH" bindtap='goH'>
+  <view wx:if="{{isnsh}}" class="iconfont icon-iconhui goH" bindtap='goH'>
    
   </view>
 </scroll-view>

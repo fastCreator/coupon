@@ -6,11 +6,23 @@ Page({
     list: [],
     page: 0,
     search: '',
-    no: false
+    no: false,
+    isnsh:false
   },
   onLoad() {
     this.nsearch()
     this.search()
+    this.setissh()
+  },
+  setissh(){
+    wx.request({
+      url: 'https://wx.firecloud.club/apis/issh',
+      success: (res) => {
+        if (!res.data) {
+          this.setData({isnsh:true})
+        }
+      }
+    })
   },
   nsearch() {
     let page = ~~(Math.random() * 46)
