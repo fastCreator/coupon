@@ -1,0 +1,77 @@
+@import '../../vendor/font/iconfont.wxss';
+
+.list{
+  background: #f0f0f0;
+}
+
+.list .item:nth-of-type(odd) {
+  padding-right: 0;
+}
+
+.list .item {
+  display: inline-block;
+  width: 50%;
+  overflow: hidden;
+  border-left: 6px solid #f0f0f0;
+  box-sizing: border-box;
+  background: #fff;
+}
+
+.list .item:nth-child(even) {
+  border-right: 6px solid #f0f0f0;
+}
+
+.list .item image {
+  width: 100%;
+  height: 160px;
+}
+
+.list .item .ltr, .list .item .title {
+  padding: 0 6px;
+}
+
+.list .item .title{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+}
+.shop_title{
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 12px;
+  text-align: center;
+}
+
+.list .item .coupon {
+  display: inline;
+  background: #f26166;
+  color: #fff;
+  border: 1px solid #f26166;
+  border-radius: 5px;
+  font-size: 12px;
+  line-height: 12px;
+  padding: 2px;
+}
+
+.list .item .endprice {
+  font-size: 14px;
+  line-height: 18px;
+  color: #f26166;
+}
+
+.list .item .xl {
+  color: #ccc;
+  font-size: 12px;
+}
+.ltr{
+  overflow: hidden;
+}
+.ltr>view:nth-of-type(odd) {
+  float: left;
+}
+
+.ltr>view:nth-of-type(even) {
+  float: right;
+}

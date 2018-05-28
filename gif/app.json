@@ -1,0 +1,22 @@
+{
+  "pages": [
+    "pages/index1/index",
+    "pages/jxtj/index",
+    "pages/index/index",
+    "pages/detils1/index",
+    "pages/detils/index",
+    "pages/list/index",
+    "pages/them/index",
+    "pages/tqg/index",
+    "pages/search/index",
+    "pages/my/index",
+    "pages/search-nav/index"
+  ],
+  "window": {
+    "backgroundColor": "#ccc",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F96153",
+    "navigationBarTitleText": "",
+    "navigationBarTextStyle": "#ffffff"
+  }
+}

@@ -1,0 +1,91 @@
+page {
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  background: #fff;
+  padding-bottom: 50px;
+}
+
+.page {
+  height: 100%;
+}
+
+.time {
+  display: inline-block;
+  height: 62px;
+  white-space: nowrap;
+  width: 100%;
+  color: #fff;
+  background-color: #de595b;
+  font-size: 12px;
+  text-align: center;
+}
+
+.time .item {
+  display: inline-block;
+  width: 20%;
+  height: 50px;
+  padding-top: 12px;
+}
+
+.time .now {
+  background: #da2432;
+}
+
+.good .item {
+  padding: 8px;
+  border-bottom: 1px solid #eee;
+}
+
+.good .item image {
+  display: inline-block;
+  width: 120px;
+  height: 120px;
+}
+
+.good .item .info {
+  vertical-align: top;
+  box-sizing: border-box;
+  padding-left: 8px;
+  font-size: 14px;
+  display: inline-block;
+  overflow: hidden;
+  width: calc(100% - 120px);
+}
+
+.good .item .info .title {
+  width: 100%;
+  font-size: 16px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.good .item .info .reserve_price {
+  color: #ff5501;
+  text-decoration: line-through;
+}
+
+.good .item .info .sold_num {
+  color: #ccc;
+}
+
+.good .item .info .zk_final_price {
+  color: #ff5501;
+  font-size: 12px;
+}
+
+.f16 {
+  display: inline;
+  font-size: 16px;
+}
+
+.good .item .info .ltr {
+  margin-top: 10px;
+}
+
+.good .item .info .buy {
+  background: #df2434;
+  color: #fff;
+  padding: 2px 18px;
+}

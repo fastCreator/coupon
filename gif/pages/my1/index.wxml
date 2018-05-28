@@ -1,0 +1,11 @@
+<scroll-view scroll-y bindscrolltolower="next">
+  <view class="select">
+    <image src="../../vendor/images/goodicon.png" mode="widthFix" bindtap='preview'></image>
+  </view>
+  <view class="list">
+    <view wx:for="{{list}}" class="item" bindtap='go' data-index="{{index}}">
+      <image src="{{item.header}}" mode="widthFix"></image>
+      <view class="title">{{item.title}}</view>
+    </view>
+  </view>
+</scroll-view>
