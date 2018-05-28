@@ -3,25 +3,38 @@ page {
   min-height: 100%;
   box-sizing: border-box;
 }
-
+.content{
+  padding: 0 10px;
+}
 image {
   width: 100%;
+  margin-top: -6px;
 }
-
+.guide_article{
+  padding-top: 6px;
+  padding-bottom: 12px;
+}
+.guide_article .t{
+  font-size: 14px;
+}
+.guide_article .c{
+  font-size: 14px;
+  color: #ccc;
+}
 .title {
-  background: #fff;
-  padding: 4px;
+  font-size:14px;
+  padding: 6px 0;
   background: #fff;
   border-bottom: 1px solid #f0f0f0;
 }
 
-.item1 {
-  padding: 4px;
-  background: #fff;
+.item1{
+  padding: 6px 0;
+  border-bottom: 1px solid #f0f0f0;
 }
-
 .item1 .price {
-  color: #fe0136;
+  font-size: 14px;
+  color: #EE605D;
 }
 
 .item1 .numb {

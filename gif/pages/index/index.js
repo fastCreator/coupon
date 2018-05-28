@@ -2,56 +2,111 @@ import { tbk, copy } from '../../utils/util.js'
 const app = getApp()
 Page({
   data: {
-    imgUrls: [],
-    imageHeight: 0.387 * wx.getSystemInfoSync().windowWidth,
-    favorites: []
+    banners: [],
+    navs: [],
+    categories: [],
+    favorites: [],
+    fqcats: [],
+    min_id: 0,
+    cid: 0,
+    searchList: ['全部', '女装', '男装', '内衣', '美妆', '配饰', '鞋品', '箱包', '儿童', '母婴', '居家', '美食', '数码', '家电']
   },
   onLoad() {
-    this.getImageUrls()
+    this.get_banner()
+    this.get_nav()
+    this.get_categories()
+    this.get_fqcat_items()
   },
-  getImageUrls() {
-    let that = this
+  onReachBottom: function () {
+    this.get_fqcat_items()
+  },
+  gocid(e) {
+    this.setData({
+      min_id: 0,
+      fqcats: [],
+      cid: e.target.dataset.index
+    })
+    this.get_fqcat_items()
+  },
+  get_banner() {
     wx.request({
-      url: 'https://wx.firecloud.club/apis/imgUrls',
-      success: function (res) {
-        that.setData({
-          imgUrls: res.data
+      url: 'https://wx.firecloud.club/hykefu/api_get_banner',
+      method: 'post',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        seller_id: 76233,
+        version: '1.3.0'
+      },
+      success: (res) => {
+        this.setData({
+          banners: res.data
         })
       }
     })
   },
-  onReady() {
-    tbk('taobao.tbk.uatm.favorites.get', {
-      fields: 'favorites_title,favorites_id,type',
-      type: '-1'
-    }, (d) => {
-      this.setData({ favorites: d.results.tbk_favorites })
+  get_nav() {
+    wx.request({
+      url: 'https://wx.firecloud.club/hykefu/api_get_nav',
+      success: (res) => {
+        this.setData({
+          navs: res.data.datainfo
+        })
+      }
     })
+  },
+  get_categories() {
+    wx.request({
+      url: 'https://wx.firecloud.club/hykefu/api_get_categories',
+      success: (res) => {
+        this.setData({
+          categories: res.data
+        })
+      }
+    })
+  },
+  get_fqcat_items() {
+    wx.showLoading({
+      title: '加载中...',
+    })
+    wx.request({
+      url: 'https://wx.firecloud.club/haodanku/app/get_fqcat_items',
+      method: 'post',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: {
+        min_id: this.data.min_id,
+        cid: this.data.cid,
+        isonline: 1
+      },
+      success: (res) => {
+        wx.hideLoading()
+        this.setData({
+          fqcats: this.data.fqcats.concat(res.data.data),
+          min_id: res.data.min_id
+        })
+        console.log(this.data.fqcats)
+      }
+    })
+  },
+  onReady() {
+
   },
   toSearch() {
     wx.navigateTo({
       url: '../search-n/index'
     })
   },
-  hd(e) {
-    let d = this.data.imgUrls[e.currentTarget.dataset.index].clip
-    let clip = `
-      ${d.title}
-      淘口令:${d.kl}
-      活动地址：${d.dlj}
-      `
-    copy(clip, function () {
-      wx.showModal({
-        title: '提示',
-        showCancel: false,
-        content: `活动[${d.title}]链接复制成功，通过浏览器打开或者手动打开淘宝自动跳转；遇到延迟，请点击淘宝顶部搜索即可`
-      })
-    })
-  },
-  theme(e) {
-
+  goList(e) {
+    let str = ''
+    let v = e.currentTarget.dataset
+    for (let key in v) {
+      str = key + '=' + v[key]
+    }
     wx.navigateTo({
-      url: '../them/index?favorites_id=' + this.data.favorites.find(it => it.favorites_title === e.currentTarget.dataset.type).favorites_id
+      url: '../list/index?' + str
     })
   }
 })

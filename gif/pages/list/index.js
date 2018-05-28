@@ -2,76 +2,57 @@ import { tbk } from '../../utils/util.js'
 const app = getApp()
 Page({
   data: {
-    SORT: {
-      popular: 'tk_total_sales_des',
-      sales: 'total_sales_des',
-      price: 'price_asc'
-    },
-    filter: {
-      page_no: 1,
-      page_size: 10,
-      platform: 1,
-      sort: 'total_sales_des',
-      q: '',
-      has_coupon: true
-    },
-    list: []
+    sort:0,
+    min_id:-1,
+    list: [],
+    filter:{},
+    navs: ['综合','券后价','销售','超优惠']
   },
   onLoad: function (option) {
-    this.data.filter.q = option.search || '123'
-    this.search()
-  },
-  onReady: function () {
+    this.setData({filter:option})
+    this.nextPage()
   },
   nextPage() {
-    this.data.filter.page_no = this.data.filter.page_no + 1
-    this.search()
-  },
-  selectCoupon(e) {
-    this.data.filter.has_coupon = !!e.detail.value.length
-    this.setData({
-      list: []
+    let url = ''
+    if (this.data.filter.keyword){
+      url = 'get_keyword_items'
+    }
+    if (this.data.filter.nav) {
+      url = 'get_sub_nav_items'
+    }
+    if (this.data.filter.column_type) {
+      url = 'get_column_items'
+    }
+    wx.showLoading({
+      title: '加载中...',
     })
-    this.search()
+    wx.request({
+      url: 'https://wx.firecloud.club/haodanku/app/' + url ,
+      method: 'post',
+      header: {
+        'content-type': 'application/x-www-form-urlencoded'
+      },
+      data: Object.assign({
+        min_id: this.data.min_id,
+        isonline: 1,
+        cid:-1,
+        sort:this.data.sort
+      },this.data.filter),
+      success: (res) => {
+        wx.hideLoading()
+        this.setData({
+          list: this.data.list.concat(res.data.data),
+          min_id: res.data.min_id
+        })
+      }
+    })
   },
   toggleSort(e) {
     this.setData({
-      list: []
+      list: [],
+      min_id:-1,
+      sort: e.target.dataset.index
     })
-    this.data.filter.sort = e.currentTarget.dataset.sort
-    this.search()
-  },
-  search() {
-    let that = this
-    this.flashFilter()
-    wx.showLoading({
-      title: '加载中',
-    })
-    tbk('taobao.tbk.sc.material.optional', that.data.filter, (d) => {
-      wx.hideLoading()
-      if (!d.result_list.map_data || !d.result_list.map_data.length) {
-        wx.showLoading({
-          title: '暂无更多',
-        })
-        setTimeout(function () {
-          wx.hideLoading()
-        }, 500)
-        return false
-      }
-      this.setData({
-        list: that.data.list.concat(d.result_list.map_data)
-      })
-    })
-  },
-  flashFilter() {
-    this.setData({
-      filter: this.data.filter
-    })
-  },
-  parseInfo(v) {
-    if (v) {
-      console.log(v)
-      return v.match(/减(\d+)元/)[1]
-    }
+    this.nextPage()
   }
 })

@@ -5,25 +5,19 @@ Component({
   properties: {
     list: {
       type: 'array',
-      value: [],
-      observer(v) {
-        v.forEach(it=>{
-          it.coupon = it.coupon_info.match(/减(\d+)元/)[1]
-          it.show = new Date(it.coupon_end_time).getTime() > Date.now()
-          it.zk_final_price = (it.zk_final_price - it.coupon).toFixed(1)
-        })
-        this.setData({ myList: v })
-      }
+      value: []
     }
   },
-  data: {
-    myList: []
+  created() {
+    console.log(this)
   },
   methods: {
     godetils(e) {
-      let d = e.currentTarget.dataset
+      let d = this.properties.list[e.currentTarget.dataset.index]
+      wx.setStorageSync('shop', d)
+      //https://api.haodanku.com/Hltaoke/couponinfo&itemid=569573695552
       wx.navigateTo({
-        url: `../detils/index?num_iid=${d.num_iid}&coupon_id=${d.coupon_id}&coupon=${d.coupon}`
+        url: `../detils/index`
       })
     }
   }

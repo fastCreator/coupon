@@ -1,32 +1,29 @@
 <navbar active="index"></navbar>
-<view class="z-search">
-  <view class="input" bindtap="toSearch">输入关键词搜索</view>
-</view>
- <scroll-view class="z-tabs" scroll-x>
-  <view class="selected">全部</view>
-  <view>女装</view>
-  <view>女装</view>
-  <view>女装</view>
-  <view>女装</view>
-  <view>女装</view>
-  <view>女装</view>
-  <view>女装</view>
-  <view>女装</view>
-  <view>女装</view>
-  <view>女装</view>
-  <view>女装</view>
-</scroll-view> 
-<swiper indicator-dots="true" autoplay="true" interval="3000" duration="500" style="height:{{imageHeight}}px;">
-  <block wx:for="{{imgUrls}}">
-    <swiper-item>
-      <image src="{{item.img}}" class="slide-image" mode="widthFix" bindtap='hd' data-index='{{index}}'/>
-    </swiper-item>
-  </block>
-</swiper>
 
-<view class="new">
-  <view>
-    <image src='http://img.fqapps.com/Fuef7MzlncI_HMNOGxelm6b25UCd-600'></image>
-    今日上新
+  <view class="z-search">
+    <view class="input" bindtap="toSearch">输入关键词搜索</view>
+  </view>
+  <scroll-view class="z-tabs" scroll-x>
+    <view wx:for="{{searchList}}" class="{{index == cid ?'selected':''}}" bindtap='gocid' data-index='{{index}}'>{{item}}</view>
+  </scroll-view>
+  <view wx:if="{{!cid}}">
+  <swiper indicator-dots="true" autoplay="true" interval="3000" duration="500">
+    <block wx:for="{{banners}}">
+      <swiper-item>
+        <image src="{{item.imgurl}}" class="slide-image" bindtap='goList' data-keyword='{{item.keyword}}' />
+      </swiper-item>
+    </block>
+  </swiper>
+
+  <view class="nav">
+    <view class="item" wx:for="{{navs}}"  bindtap='goList' data-nav='{{item.nav_id}}'>
+      <image src="{{item.imge_url}}" mode="widthFix" />
+      <view>{{item.name}}</view>
+    </view>
+  </view>
+
+  <view class="categories">
+    <image wx:for="{{categories}}" src="{{item.category_url}}" mode="widthFix" bindtap='goList' data-column_type='{{item.category_id}}'></image>
   </view>
 </view>
+<list list="{{fqcats}}"></list>

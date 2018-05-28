@@ -1,6 +1,6 @@
 @import '../../vendor/font/iconfont.wxss';
 
-.list{
+.list {
   background: #f0f0f0;
 }
 
@@ -15,6 +15,7 @@
   border-left: 6px solid #f0f0f0;
   box-sizing: border-box;
   background: #fff;
+  padding-bottom: 6px;
 }
 
 .list .item:nth-child(even) {
@@ -30,13 +31,14 @@
   padding: 0 6px;
 }
 
-.list .item .title{
+.list .item .title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   font-size: 12px;
 }
-.shop_title{
+
+.shop_title {
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -45,33 +47,50 @@
 }
 
 .list .item .coupon {
-  display: inline;
-  background: #f26166;
-  color: #fff;
-  border: 1px solid #f26166;
-  border-radius: 5px;
+  color: #f96153;
+  font-size: 14px;
+}
+
+.list .item .coupon text {
   font-size: 12px;
-  line-height: 12px;
-  padding: 2px;
+  margin-right: 4px;
 }
 
 .list .item .endprice {
   font-size: 14px;
   line-height: 18px;
-  color: #f26166;
+  color: #f3634b;
 }
 
 .list .item .xl {
   color: #ccc;
   font-size: 12px;
 }
-.ltr{
+
+.ltr {
   overflow: hidden;
+  line-height: 24px;
 }
+
 .ltr>view:nth-of-type(odd) {
   float: left;
+  vertical-align: bottom;
 }
 
 .ltr>view:nth-of-type(even) {
   float: right;
+  vertical-align: bottom;
+}
+
+.cp {
+  font-size: 12px;
+  padding:0 2px;
+  color: #fff;
+  background: url(//oss1.lanlanlife.com/105634c31956b0be54ac867a209c26ca_46x140.png) no-repeat;
+  background-size: 100%;
+}
+
+.share {
+  color: #f3634b;
+  font-size: 14px;
 }

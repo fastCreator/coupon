@@ -1,8 +1,14 @@
 page{
   padding-bottom: 56px;
+  background: #F4F4F4;
+}
+swiper{
+  height: 130px;
+  margin-top: -6px;
 }
 swiper image {
   width: 100%;
+  height: 100%;
 }
 .z-search{
   padding: 10px;
@@ -31,23 +37,22 @@ swiper image {
   color: #FF6140;
   border-color: #FF6140;
 }
-
-.special .iconfont:before{
-  margin-left: 4px;
-  margin-right:4px;
+.nav{
+  background: #fff;
+  padding: 4px 0;
 }
-.special .iconfont{
-  font-size: 14px;
+.nav .item{
+  display: inline-block;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 12px;
+  width: 20%;
 }
-.special{
-  margin-top: 10px;
-} 
-.special .thtj{
-  border-top:2px solid #F28430;
-} 
-.special .hyjx1{
-  border-top:2px solid #a44bd0;
-} 
-.special .hyhh{
-  border-top:2px solid #EC495E;
+.nav .item image{
+  width:60%;
+}
+.categories image{
+  width: 50%;
+  display: inline-block;
+  margin-top: -6px;
 }

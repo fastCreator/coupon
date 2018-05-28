@@ -1,15 +1,15 @@
 <view class="list">
-    <view class="item" wx:for="{{myList}}" wx:key="{{index}}" wx:if="{{item.show}}" bindtap='godetils'  data-num_iid='{{item.num_iid}}' data-coupon_id='{{item.coupon_id}}' data-coupon='{{item.coupon||"促销"}}'>
-      <image src="{{item.pict_url}}" />
-      <view class="title">{{item.title}}</view>
+    <view class="item" wx:for="{{list}}" wx:key="{{index}}">
+      <image src="{{item.itempic}}"  bindtap='godetils' data-index='{{index}}'/>
+      <view class="title">{{item.itemtitle}}</view>
 
       <view class="ltr">
-        <view class="coupon">{{item.coupon+"元券"}}</view>
-        
+        <view class="coupon"><text>券后</text>{{item.itemendprice}}</view>
+        <view class="xl">已售{{item.itemsale}}</view>
       </view>
       <view class="ltr">
-        <view class="endprice">￥{{item.zk_final_price}}</view>
-        <view class="xl">已售{{item.volume}}</view>
+        <view class="cp">领券立减{{item.couponmoney}}元</view>
+        <view class="share iconfont icon-share1">分享</view>
       </view>
       <view class="shop_title ck">{{item.shop_title}}</view>
     </view>

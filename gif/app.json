@@ -1,13 +1,13 @@
 {
   "pages": [
     "pages/index/index",
+    "pages/detils/index",
     "pages/search/index",
     "pages/search-n/index",
     
     "pages/index1/index",
     "pages/jxtj/index",
     "pages/detils1/index",
-    "pages/detils/index",
     "pages/list/index",
     "pages/them/index",
     "pages/tqg/index",
