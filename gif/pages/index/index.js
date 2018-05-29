@@ -94,7 +94,6 @@ Page({
           fqcats: this.data.fqcats.concat(res.data.data),
           min_id: res.data.min_id
         })
-        console.log(this.data.fqcats)
       }
     })
   },

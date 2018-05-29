@@ -7,7 +7,7 @@ Page({
   onLoad: function (option) {
     if (option.id) {
       wx.request({
-        url: `https://wx.firecloud.club/haodanku/Hltaoke/couponinfo?itemid=${id}`,
+        url: `https://wx.firecloud.club/haodanku/Hltaoke/couponinfo?itemid=${option.id}`,
         success: (res) => {
           this.setData({ 'shop': res.data })
         }
@@ -18,11 +18,10 @@ Page({
   },
   onReady: function () { },
   onShareAppMessage: function (res) {
-    console.log(res)
     return {
       imageUrl: this.data.shop.itempic,
       title: this.data.shop.itemtitle,
-      path: `/page/detils/index?id=${res.target.id}`
+      path: `/pages/detils/index?id=${res.target.id}`
     }
   },
   gohome() {
@@ -51,7 +50,7 @@ Page({
       ${title}
       促销价:${price}
       淘口令:${d.data.model}
-      抢购：${url}
+      抢购：${url +'&pid=mm_131778178_45276106_534348035'}
       `
       copy(clip, () => {
         wx.showModal({

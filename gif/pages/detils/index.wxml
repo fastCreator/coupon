@@ -15,8 +15,8 @@
 </view>
 <view class="fix-buttom">
   <view class="it1 iconfont icon-home_light" bindtap='gohome'>首页</view>
-  <button open-type='share' class="share" plain>
-    <view class="it1 it3 iconfont icon-share1" bindtap='share' id="{{shop.itemid}}">分享</view>
+  <button open-type='share' class="share" plain id="{{shop.itemid}}">
+    <view class="it1 it3 iconfont icon-share1" bindtap='share'>分享</view>
   </button>
   <view class="it2" bindtap='buy'>
     <view class="it1 icon-A iconfont">
