@@ -1,9 +1,0 @@
-<navbar active="jxtj"></navbar>
-<scroll-view scroll-y class="page" bindscrolltolower="nextPage">
-  <image class="logo" src="http://alp.alicdn.com/1476310476060.png" mode="widthFix"></image>
-  <view class="search">
-    <input placeholder="输入关键词搜索" bindinput="inputValue"></input>
-    <button bindtap="btnSearch">搜索</button>
-  </view>
-  <list list="{{list}}"></list>
-</scroll-view>

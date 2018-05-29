@@ -1,0 +1,13 @@
+<navbar active="cjfl"></navbar>
+<view class="main">
+    <view wx:for="{{info}}" class="item {{active ===index?'active':''}}" bindtap='select' data-index="{{index}}">{{item.main_name}}</view>
+</view>
+<view class="data">
+    <view wx:for="{{info[active].data}}">
+      <view class="title"><text>——</text>{{item.next_name}}<text>——</text></view>
+      <view class="detils" wx:for="{{item.info}}" wx:for-item="it" bindtap='god' data-keyword="{{it.son_name}}">
+        <image src="{{it.imgurl}}" mode="widthFix"></image>
+        <view>{{it.son_name}}</view>
+      </view>
+    </view>
+</view>

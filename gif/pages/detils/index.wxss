@@ -120,10 +120,6 @@ image {
   font-size: 12px;
 }
 
-button[plain] {
-  border: 0;
-}
-
 .share {
   display: inline-block;
   width: 25%;

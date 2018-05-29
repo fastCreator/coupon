@@ -20,3 +20,6 @@ image {
 .ltr>view:nth-of-type(even) {
   float: right;
 }
+button[plain] {
+  border: 0;
+}

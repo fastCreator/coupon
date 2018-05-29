@@ -12,6 +12,13 @@ Page({
     this.setData({filter:option})
     this.nextPage()
   },
+  onShareAppMessage: function (res) {
+    return {
+      title: res.target.dataset.title,
+      path: `/pages/detils/index?id=${res.target.dataset.id}`,
+      imageUrl: res.target.dataset.img
+    }
+  },
   nextPage() {
     let url = ''
     if (this.data.filter.keyword){

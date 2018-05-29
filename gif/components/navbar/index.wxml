@@ -3,9 +3,9 @@
       <view class="iconfont {{active==='index'?'icon-home_fill_light':'icon-home_light'}}"></view>
       <view class='text'>首页</view>
   </navigator>
-  <navigator url="/pages/jxtj/index" open-type="redirect"  class="item {{active==='jxtj'?'active':''}}">
-      <view class="iconfont {{active==='jxtj'?'icon-choicenessfill':'icon-choiceness'}}"></view>
-      <view class='text'>精品推荐</view>
+  <navigator url="/pages/cjfl/index" open-type="redirect"  class="item {{active==='cjfl'?'active':''}}">
+      <view class="iconfont {{active==='cjfl'?'icon-news_hot_fill_light':'icon-news_hot_light'}}"></view>
+      <view class='text'>超级分类</view>
   </navigator>
   <navigator url="/pages/tqg/index" open-type="redirect"  class="item {{active==='tqg'?'active':''}}">
       <view class="iconfont {{active==='tqg'?'icon-countdownfill':'icon-countdown'}}"></view>

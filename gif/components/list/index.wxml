@@ -9,7 +9,9 @@
       </view>
       <view class="ltr">
         <view class="cp">领券立减{{item.couponmoney}}元</view>
-        <view class="share iconfont icon-share1">分享</view>
+        <button plain class="sh" open-type='share'  data-id='{{item.itemid}}' data-title='{{item.itemtitle}}' data-img='{{item.itempic}}'>
+          <view class="share iconfont icon-share1">分享</view>
+        </button>
       </view>
       <view class="shop_title ck">{{item.shop_title}}</view>
     </view>

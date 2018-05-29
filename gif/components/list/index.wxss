@@ -90,6 +90,13 @@
   background-size: 100%;
 }
 
+.sh{
+  padding: 0;
+  margin: 0;
+  margin-top: -5px;
+  text-align: right;
+}
+
 .share {
   color: #f3634b;
   font-size: 14px;

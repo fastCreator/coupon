@@ -1,0 +1,45 @@
+.main{
+  position: fixed;
+  width:80px;
+  top:0;
+  left:0;
+  bottom:50px;
+  overflow: auto;
+  z-index: 100;
+}
+.main .item{
+  line-height: 40px;
+  background: #EFEFEF;
+  text-align: center;
+}
+.main .item.active{
+  background: #fff;
+  border-left: 2px solid #F96153;
+}
+.data{
+  overflow: scroll;
+  position: fixed;
+  top:0;
+  left:80px;
+  right:0;
+  bottom:50px;
+}
+.data .title{
+  text-align: center;
+}
+.data .title text{
+  color: #EBEBEB;
+  margin: 0 8px;
+}
+.detils{
+  display: inline-block;
+  width:33.333%;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 12px;
+  text-align: center;
+  position: relative;
+}
+.detils image{
+  width:80%;
+}

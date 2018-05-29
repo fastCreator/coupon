@@ -2,12 +2,29 @@ import { tbk, copy } from '../../utils/util.js'
 const app = getApp()
 Page({
   data: {
-    shop:{}
+    shop: {}
   },
   onLoad: function (option) {
-    this.setData({ 'shop': wx.getStorageSync('shop')})
+    if (option.id) {
+      wx.request({
+        url: `https://wx.firecloud.club/haodanku/Hltaoke/couponinfo?itemid=${id}`,
+        success: (res) => {
+          this.setData({ 'shop': res.data })
+        }
+      })
+    } else {
+      this.setData({ 'shop': wx.getStorageSync('shop') })
+    }
   },
   onReady: function () { },
+  onShareAppMessage: function (res) {
+    console.log(res)
+    return {
+      imageUrl: this.data.shop.itempic,
+      title: this.data.shop.itemtitle,
+      path: `/page/detils/index?id=${res.target.id}`
+    }
+  },
   gohome() {
     wx.reLaunch({
       url: '../index/index'

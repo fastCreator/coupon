@@ -20,6 +20,13 @@ Page({
   onReachBottom: function () {
     this.get_fqcat_items()
   },
+  onShareAppMessage: function (res) {
+    return {
+      title: res.target.dataset.title,
+      path: `/pages/detils/index?id=${res.target.dataset.id}`,
+      imageUrl: res.target.dataset.img
+    }
+  },
   gocid(e) {
     this.setData({
       min_id: 0,
