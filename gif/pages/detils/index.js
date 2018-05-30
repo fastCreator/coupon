@@ -43,7 +43,7 @@ Page({
     tbk('taobao.tbk.tpwd.create', {
       user_id: '87491795',
       text: title,
-      url: url,
+      url: url.replace('http://','https://'),
       logo: logo
     }, (d) => {
       let clip = `

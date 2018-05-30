@@ -10,8 +10,7 @@
     "pages/list/index",
     "pages/them/index",
     "pages/tqg/index",
-    "pages/my/index",
-    "pages/search-nav/index"
+    "pages/my/index"
   ],
   "window": {
     "backgroundColor": "#ccc",

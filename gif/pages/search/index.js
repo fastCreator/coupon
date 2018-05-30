@@ -31,10 +31,9 @@ Page({
     this.setData({ value: e.detail.value })
   },
   search: function (v) {
-    if (v.type) {
+    if(v.target){
       v = this.data.value
     }
-    if (!v) return false
     var history = wx.getStorageSync('historySearch')
     if (history) {
       let s = history.split(',')
@@ -45,8 +44,9 @@ Page({
       wx.setStorageSync('historySearch', v)
     }
     this.setHistory()
+    console.log(v)
     wx.navigateTo({
-      url: '../list/index?search=' + v
+      url: '../list/index?keyword=' + v
     })
   }
 })

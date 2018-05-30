@@ -11,9 +11,9 @@
       <view class="iconfont {{active==='tqg'?'icon-countdownfill':'icon-countdown'}}"></view>
       <view class='text'>淘抢购</view>
   </navigator>
-  <navigator url="/pages/search/index" open-type="redirect"  class="item {{active==='search'?'active':''}}">
+  <navigator url="/pages/search-n/index" open-type="redirect"  class="item {{active==='search'?'active':''}}">
       <view class="iconfont icon-search"></view>
-      <view class='text'>搜索</view>
+      <view class='text'>超级搜索</view>
   </navigator>
   <navigator url="/pages/my/index" open-type="redirect"  class="item {{active==='my'?'active':''}}">
       <view class="iconfont {{active==='my'?'icon-my_fill_light':'icon-my_light'}}"></view>

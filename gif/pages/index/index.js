@@ -3,6 +3,7 @@ const app = getApp()
 Page({
   data: {
     banners: [],
+    mybanners: [],
     navs: [],
     categories: [],
     favorites: [],
@@ -13,6 +14,7 @@ Page({
   },
   onLoad() {
     this.get_banner()
+    this.get_my_banner()
     this.get_nav()
     this.get_categories()
     this.get_fqcat_items()
@@ -34,6 +36,17 @@ Page({
       cid: e.target.dataset.index
     })
     this.get_fqcat_items()
+  },
+  get_my_banner() {
+    wx.request({
+      url: 'https://wx.firecloud.club/apis/imgUrls',
+      success: (res) => {
+        console.log(res)
+        this.setData({
+          mybanners: res.data
+        })
+      }
+    })
   },
   get_banner() {
     wx.request({
@@ -102,7 +115,7 @@ Page({
   },
   toSearch() {
     wx.navigateTo({
-      url: '../search-n/index'
+      url: '../search/index'
     })
   },
   goList(e) {

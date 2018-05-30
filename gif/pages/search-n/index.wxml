@@ -2,12 +2,13 @@
 <view class='heade'>
   <image src="http://img.fqapps.com/FgLirb6hafRdaj0WzGZUF1hCSXc_-600" mode="widthFix"></image>
   <view class="search">
-    <input placeholder="输入关键词或商品标题" bindinput="inputValue"></input>
+    <input placeholder="输入关键词或商品标题" bindinput="inputValue" bindconfirm="search"></input>
     <view class="btn" bindtap="search" >搜索</view>
   </view>
 </view>
+<image src="http://img.fqapps.com/FqQfkSw3Irz73tHQcYiQEHbRXjGH-600" mode="widthFix"></image>
 <view class="hot">
-  <view class="title" bindtap="search">热门搜索<view class="iconfont icon-refresh" bindtap="flashs"> 换一批</view></view>
+  <view class="title">热门搜索<view class="iconfont icon-refresh" bindtap="flashs"> 换一批</view></view>
   <view class="tag">
     <view wx:for="{{tags}}" class="tag-item" bindtap="selectTag" data-item="{{item}}">{{item}}</view>
   </view>
