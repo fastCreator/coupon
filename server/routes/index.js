@@ -15,8 +15,10 @@ const controllers = require('../controllers')
 router.post('/tbk', controllers.tbk)
 // 滑动展示页面数据
 router.get('/imgUrls', controllers.imgUrls)
-//是否审核
+// 是否审核斗图
 router.get('/issh', controllers.issh)
+// 是否审核省钱小果
+router.get('/isshsq', controllers.isshsq)
 // 登录接口
 // router.get('/login', authorizationMiddleware, controllers.login)
 // // 用户信息接口（可以用来验证登录态）

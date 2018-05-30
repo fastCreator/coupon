@@ -11,7 +11,7 @@ Page({
   },
   onLoad() {
     wx.request({
-      url: 'https://wx.firecloud.club/apis/issh',
+      url: 'https://wx.firecloud.club/apis/isshsq',
       success: (res) => {
         if (!res.data) {
           wx.reLaunch({
