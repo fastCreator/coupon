@@ -16,6 +16,7 @@
         <div v-for="(item,i) in history" :key="i" class="tag-item" @click="search(item)">{{item}}</div>
       </div>
     </div>
+    <router-link to="/" class="home">回到首页</router-link>
   </div>
 </template>
 
@@ -108,6 +109,11 @@ export default {
   .title .iconfont {
     float: right;
     color: #333;
+  }
+  .home{
+    text-align: center;
+    display: block;
+    margin-top: 50px;
   }
 }
 </style>
