@@ -17,10 +17,13 @@ var knex = require('knex')({
 });
 const urls = []
 // 561
-for(let i=1;i<=561;i++){
-  urls.push(i)
-}
+// for(let i=1;i<=561;i++){
+//   urls.push(i)
+// }
 
+// for(let i=562;i<=564;i++){
+//   urls.push(i)
+// }
 
 async.mapLimit(urls, 10, async function(index) {
   await getPage(index)
@@ -70,4 +73,4 @@ async function addData(instance, url, i) {
   obj.url = imgs + '',
     obj.id = i
   await knex('expression').insert(obj)
-} 
+}
