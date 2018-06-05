@@ -42,6 +42,7 @@
 </template>
 
 <script>
+import { MessageBox } from 'mint-ui'
 import Home from './sq-home.vue'
 import Mrjx from './sq-mrjx.vue'
 import Tqg from './sq-tqg.vue'
@@ -57,6 +58,13 @@ export default {
     return {
       selected: 'home'
     }
+  },
+  created () {
+    MessageBox({
+      title: '通知',
+      message: '关注微信公众号 " 小果知道 " ,获取省钱小果"小程序"地址，使用起来更方便哦?',
+      showCancelButton: false
+    })
   }
 }
 </script>

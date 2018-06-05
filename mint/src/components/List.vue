@@ -44,11 +44,6 @@ export default {
     Indicator.open('加载中...')
     setTimeout(() => {
       Indicator.close()
-      Toast({
-        message: '暂无更多数据',
-        position: 'middle',
-        duration: 3000
-      })
     }, 2000)
   },
   watch: {

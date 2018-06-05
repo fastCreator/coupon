@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { Toast, MessageBox } from 'mint-ui'
+import { Toast } from 'mint-ui'
 import utils from './utils/utils.js'
 export default {
   name: 'App',
@@ -27,11 +27,7 @@ if (
   document.getElementsByTagName('html')[0].setAttribute('class', 'pc')
 }
 window.PointerEvent = undefined
-MessageBox({
-  title: '通知',
-  message: '关注微信公众号 " 小果知道 " ,获取省钱小果"小程序"地址，使用起来更方便哦?',
-  showCancelButton: false
-})
+
 </script>
 
 <style>
