@@ -22,7 +22,7 @@
 </template>
 
 <script>
-import { Indicator, Toast } from 'mint-ui'
+import { Indicator } from 'mint-ui'
 export default {
   name: 'c-list',
   props: {
